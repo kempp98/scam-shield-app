@@ -1,31 +1,56 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-
-// This would normally come from the API, but we'll hardcode it for now
-const modules = [
-  {
-    id: 'common-scam-types',
-    title: 'Common Text Scam Types',
-    description: 'Learn about the most prevalent text message scams and how they attempt to manipulate recipients.',
-    estimatedTime: '10 minutes'
-  },
-  {
-    id: 'identifying-red-flags',
-    title: 'Identifying Red Flags in Text Scams',
-    description: 'Learn to spot the warning signs that indicate a text message might be a scam, regardless of the specific scenario.',
-    estimatedTime: '15 minutes'
-  },
-  {
-    id: 'safe-response-techniques',
-    title: 'Safe Response Techniques',
-    description: 'Learn what to do when you receive suspicious text messages and how to protect yourself from scams.',
-    estimatedTime: '12 minutes'
-  }
-];
+import { ModuleList, ModuleSummary } from '@/components/educational/module-list';
 
 export default function LearnPage() {
+  const [modules, setModules] = useState<ModuleSummary[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Fetch modules from API
+  useEffect(() => {
+    const fetchModules = async () => {
+      try {
+        const response = await fetch('/api/modules');
+        if (!response.ok) throw new Error('Failed to fetch modules');
+        const data = await response.json();
+        setModules(data);
+      } catch (error) {
+        console.error('Error fetching modules:', error);
+        // Fallback to hardcoded modules in case of error
+        setModules([
+          {
+            id: 'common-scam-types',
+            title: 'Common Text Scam Types',
+            description: 'Learn about the most prevalent text message scams and how they attempt to manipulate recipients.',
+            coverImage: '/images/common-scams-cover.jpg',
+            estimatedTime: '10 minutes'
+          },
+          {
+            id: 'identifying-red-flags',
+            title: 'Identifying Red Flags in Text Scams',
+            description: 'Learn to spot the warning signs that indicate a text message might be a scam, regardless of the specific scenario.',
+            coverImage: '/images/red-flags-cover.jpg',
+            estimatedTime: '15 minutes'
+          },
+          {
+            id: 'safe-response-techniques',
+            title: 'Safe Response Techniques',
+            description: 'Learn what to do when you receive suspicious text messages and how to protect yourself from scams.',
+            coverImage: '/images/safe-response-cover.jpg',
+            estimatedTime: '12 minutes'
+          }
+        ]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchModules();
+  }, []);
+
   return (
     <div className="container-padded py-12">
       <div className="max-w-4xl mx-auto">
@@ -35,30 +60,7 @@ export default function LearnPage() {
           and learn how to respond safely to suspicious messages.
         </p>
         
-        <div className="space-y-6">
-          {modules.map((module) => (
-            <Card key={module.id} className="hover:shadow-md transition-shadow">
-              <CardHeader>
-                <CardTitle>{module.title}</CardTitle>
-                <CardDescription>{module.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center gap-2">
-                  <Badge variant="secondary">
-                    {module.estimatedTime}
-                  </Badge>
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Link href={`/learn/${module.id}`}>
-                  <Button variant="default">
-                    Start Module
-                  </Button>
-                </Link>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
+        <ModuleList modules={modules} isLoading={isLoading} />
         
         <div className="mt-10 text-center">
           <p className="text-gray-500 mb-4">
