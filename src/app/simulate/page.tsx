@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function SimulatePage() {
   return (
@@ -9,7 +9,7 @@ export default function SimulatePage() {
         <h1 className="text-3xl font-bold mb-6">Text Scam Simulations</h1>
         <p className="text-lg text-gray-600 mb-8">
           Practice identifying and responding to text scams in our safe simulation environment.
-          These realistic scenarios will help you apply what you've learned without any real-world risk.
+          These realistic scenarios will help you apply what you&apos;ve learned without any real-world risk.
         </p>
         
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-10">
@@ -68,7 +68,7 @@ export default function SimulatePage() {
         
         <div className="text-center mt-12">
           <p className="text-gray-500 mb-4">
-            Haven't completed the educational modules yet?
+            Haven&apos;t completed the educational modules yet?
           </p>
           <Link href="/learn">
             <Button variant="outline">

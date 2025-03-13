@@ -70,7 +70,7 @@ export default function SignupPage() {
         
         <div className="mt-8 text-center text-sm text-gray-500">
           <p>
-            ScamShield is currently in development. By signing up, you'll be notified when we launch and may be invited to participate in beta testing.
+            ScamShield is currently in development. By signing up, you&apos;ll be notified when we launch and may be invited to participate in beta testing.
           </p>
         </div>
       </div>
