@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -90,7 +89,7 @@ export function ModuleList({ modules = [], isLoading = false }: ModuleListProps)
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap items-center gap-2 mb-4">
-                <Badge variant={status.color as any}>{status.text}</Badge>
+                <Badge variant={status.color}>{status.text}</Badge>
                 <Badge variant="secondary">{module.estimatedTime}</Badge>
               </div>
               
