@@ -67,9 +67,9 @@ export async function getAllModules(): Promise<EducationalModule[]> {
         const fileContents = fs.readFileSync(filePath, 'utf8');
         
         // Parse the JSON content
-        const module: EducationalModule = JSON.parse(fileContents);
+        const moduleData: EducationalModule = JSON.parse(fileContents);
         
-        return module;
+        return moduleData;
       });
     
     // Sort modules by title or any other criteria
@@ -86,13 +86,13 @@ export async function getAllModules(): Promise<EducationalModule[]> {
 export async function getModuleById(id: string): Promise<EducationalModule | null> {
   try {
     const modules = await getAllModules();
-    const module = modules.find(m => m.id === id);
+    const moduleData = modules.find(m => m.id === id);
     
-    if (!module) {
+    if (!moduleData) {
       return null;
     }
     
-    return module;
+    return moduleData;
   } catch (error) {
     console.error(`Error loading module with ID ${id}:`, error);
     return null;
@@ -125,13 +125,13 @@ export async function getModuleSummaries(): Promise<Array<Omit<EducationalModule
  */
 export async function getModuleQuiz(moduleId: string): Promise<QuizQuestion[] | null> {
   try {
-    const module = await getModuleById(moduleId);
+    const moduleData = await getModuleById(moduleId);
     
-    if (!module) {
+    if (!moduleData) {
       return null;
     }
     
-    return module.quiz;
+    return moduleData.quiz;
   } catch (error) {
     console.error(`Error loading quiz for module ${moduleId}:`, error);
     return null;
@@ -143,8 +143,8 @@ export async function getModuleQuiz(moduleId: string): Promise<QuizQuestion[] | 
  * This is a placeholder that would be replaced with actual storage implementation
  */
 export async function saveUserProgress(
-  userId: string,
-  moduleId: string,
+  _userId: string, // Prefixed with underscore to indicate it's intentionally unused
+  _moduleId: string, // Prefixed with underscore to indicate it's intentionally unused
   progress: { 
     completedSections: string[],
     quizResults?: { 
@@ -155,7 +155,7 @@ export async function saveUserProgress(
 ): Promise<boolean> {
   try {
     // This would be replaced with actual storage logic (e.g., to a database)
-    console.log(`Saving progress for user ${userId} on module ${moduleId}:`, progress);
+    console.log('Saving progress:', progress);
     
     // For now, just return success
     return true;
@@ -170,8 +170,8 @@ export async function saveUserProgress(
  * This is a placeholder that would be replaced with actual storage implementation
  */
 export async function getUserProgress(
-  userId: string,
-  moduleId: string
+  _userId: string, // Prefixed with underscore to indicate it's intentionally unused
+  _moduleId: string // Prefixed with underscore to indicate it's intentionally unused
 ): Promise<{
   completedSections: string[],
   quizResults?: {

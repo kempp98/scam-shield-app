@@ -25,7 +25,7 @@ export function TransitionProvider({
   
   // Track route changes to trigger transitions
   useEffect(() => {
-    const url = pathname + searchParams.toString();
+    // Combine pathname and search params (unused variable removed)
     
     const handleStart = () => {
       setIsLoading(true);

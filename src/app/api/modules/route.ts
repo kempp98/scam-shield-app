@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAllModules, getModuleById, getModuleSummaries } from '@/lib/education';
+import { getModuleById, getModuleSummaries } from '@/lib/education';
 
 /**
  * GET /api/modules
@@ -13,16 +13,16 @@ export async function GET(request: Request) {
     
     if (moduleId) {
       // If a specific module ID is requested
-      const module = await getModuleById(moduleId);
+      const moduleData = await getModuleById(moduleId);
       
-      if (!module) {
+      if (!moduleData) {
         return NextResponse.json(
           { error: 'Module not found' },
           { status: 404 }
         );
       }
       
-      return NextResponse.json(module);
+      return NextResponse.json(moduleData);
     }
     
     // Otherwise return all module summaries
