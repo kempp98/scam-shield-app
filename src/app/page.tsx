@@ -6,6 +6,7 @@ export default function Home() {
   return (
     <div className="container-padded">
       {/* Hero Section */}
+      <button className="test-button">Test CSS Button</button>
       <section className="py-20 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           Protect Yourself from <span className="text-gradient">Text Message Scams</span>
