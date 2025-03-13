@@ -13,17 +13,16 @@ export function Header() {
     { name: 'Simulate', href: '/simulate' },
   ];
   
-  // Right side content with signup button
+  // Right side content with signup button - fixed to remove asChild prop
   const rightContent = (
-    <Button 
-      variant="default" 
-      size="default"
-      asChild
-    >
-      <Link href="/signup">
+    <Link href="/signup">
+      <Button 
+        variant="default" 
+        size="default"
+      >
         Get Early Access
-      </Link>
-    </Button>
+      </Button>
+    </Link>
   );
 
   return (
