@@ -143,8 +143,9 @@ export async function getModuleQuiz(moduleId: string): Promise<QuizQuestion[] | 
  * This is a placeholder that would be replaced with actual storage implementation
  */
 export async function saveUserProgress(
-  _userId: string, // Prefixed with underscore to indicate it's intentionally unused
-  _moduleId: string, // Prefixed with underscore to indicate it's intentionally unused
+  // Commenting out unused parameters instead of using underscores
+  // userId: string,
+  // moduleId: string,
   progress: { 
     completedSections: string[],
     quizResults?: { 
@@ -170,8 +171,9 @@ export async function saveUserProgress(
  * This is a placeholder that would be replaced with actual storage implementation
  */
 export async function getUserProgress(
-  _userId: string, // Prefixed with underscore to indicate it's intentionally unused
-  _moduleId: string // Prefixed with underscore to indicate it's intentionally unused
+  // Commenting out unused parameters instead of using underscores
+  // userId: string,
+  // moduleId: string
 ): Promise<{
   completedSections: string[],
   quizResults?: {
