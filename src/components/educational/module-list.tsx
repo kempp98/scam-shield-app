@@ -60,7 +60,7 @@ export function ModuleList({ modules = [], isLoading = false }: ModuleListProps)
   }
 
   // Get progress status text and color
-  const getProgressStatus = (moduleId: string) => {
+  const getProgressStatus = (moduleId: string): { text: string, color: 'default' | 'secondary' | 'danger' | 'warning' | 'success' | 'outline' } => {
     const moduleProgress = progress[moduleId];
     if (!moduleProgress) return { text: 'Not started', color: 'secondary' };
     
@@ -69,7 +69,7 @@ export function ModuleList({ modules = [], isLoading = false }: ModuleListProps)
     } else if (moduleProgress.inProgress) {
       return { 
         text: `${moduleProgress.percentComplete}% complete`, 
-        color: 'primary' 
+        color: 'default' 
       };
     }
     return { text: 'Not started', color: 'secondary' };
