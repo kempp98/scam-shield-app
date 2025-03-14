@@ -4,15 +4,7 @@ import { Button } from '@/components/ui/button';
 import { getModuleById } from '@/lib/education';
 import { Metadata } from 'next';
 
-interface PageParams {
-  module: string;
-}
-
-export default async function QuizPage({
-  params,
-}: {
-  params: PageParams;
-}) {
+export default async function QuizPage({ params }: any) {
   const moduleId = params.module;
   const moduleData = await getModuleById(moduleId);
   
@@ -20,7 +12,6 @@ export default async function QuizPage({
     notFound();
   }
   
-  // This is a placeholder until we implement the actual quiz component
   return (
     <div className="container-padded py-12">
       <div className="max-w-4xl mx-auto">
@@ -43,12 +34,7 @@ export default async function QuizPage({
   );
 }
 
-// Generate dynamic metadata for SEO
-export async function generateMetadata({
-  params,
-}: {
-  params: PageParams;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: any): Promise<Metadata> {
   const moduleId = params.module;
   const moduleData = await getModuleById(moduleId);
   

@@ -3,15 +3,7 @@ import { getModuleById } from '@/lib/education';
 import { ModuleDetail } from '@/components/educational/module-detail';
 import { Metadata } from 'next';
 
-interface PageParams {
-  module: string;
-}
-
-export default async function ModulePage({
-  params,
-}: {
-  params: PageParams;
-}) {
+export default async function ModulePage({ params }: any) {
   const moduleId = params.module;
   const moduleData = await getModuleById(moduleId);
   
@@ -34,12 +26,7 @@ export default async function ModulePage({
   );
 }
 
-// Generate dynamic metadata for SEO
-export async function generateMetadata({
-  params,
-}: {
-  params: PageParams;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: any): Promise<Metadata> {
   const moduleId = params.module;
   const moduleData = await getModuleById(moduleId);
   
