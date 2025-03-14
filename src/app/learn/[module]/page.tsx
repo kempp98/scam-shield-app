@@ -1,14 +1,17 @@
 import { notFound } from 'next/navigation';
 import { getModuleById } from '@/lib/education';
 import { ModuleDetail } from '@/components/educational/module-detail';
+import { Metadata } from 'next';
 
-// Type definitions for page props
-type PageProps = {
-  params: { module: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+interface PageParams {
+  module: string;
 }
 
-export default async function ModulePage({ params }: PageProps) {
+export default async function ModulePage({
+  params,
+}: {
+  params: PageParams;
+}) {
   const moduleId = params.module;
   const moduleData = await getModuleById(moduleId);
   
@@ -32,7 +35,11 @@ export default async function ModulePage({ params }: PageProps) {
 }
 
 // Generate dynamic metadata for SEO
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({
+  params,
+}: {
+  params: PageParams;
+}): Promise<Metadata> {
   const moduleId = params.module;
   const moduleData = await getModuleById(moduleId);
   
