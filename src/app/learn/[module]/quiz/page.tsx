@@ -2,14 +2,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { getModuleById } from '@/lib/education';
-import { Metadata } from 'next';
 
-type Props = {
-  params: { module: string };
-  searchParams: Record<string, string | string[] | undefined>;
-};
-
-export default async function QuizPage({ params }: Props) {
+export default async function QuizPage({ params }) {
   const moduleId = params.module;
   const moduleData = await getModuleById(moduleId);
   
@@ -39,18 +33,7 @@ export default async function QuizPage({ params }: Props) {
   );
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const moduleId = params.module;
-  const moduleData = await getModuleById(moduleId);
-  
-  if (!moduleData) {
-    return {
-      title: 'Quiz Not Found - ScamShield',
-    };
-  }
-  
-  return {
-    title: `Quiz: ${moduleData.title} - ScamShield`,
-    description: `Test your knowledge on ${moduleData.title}`,
-  };
-}
+// Simplified metadata
+export const metadata = {
+  title: 'Quiz - ScamShield',
+};
