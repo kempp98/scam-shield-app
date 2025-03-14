@@ -3,13 +3,13 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { getModuleById } from '@/lib/education';
 
-interface QuizPageProps {
-  params: {
-    module: string;
-  };
+// Type definitions for page props
+type PageProps = {
+  params: { module: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default async function QuizPage({ params }: QuizPageProps) {
+export default async function QuizPage({ params }: PageProps) {
   const moduleId = params.module;
   const moduleData = await getModuleById(moduleId);
   
@@ -41,7 +41,7 @@ export default async function QuizPage({ params }: QuizPageProps) {
 }
 
 // Generate dynamic metadata for SEO
-export async function generateMetadata({ params }: QuizPageProps) {
+export async function generateMetadata({ params }: PageProps) {
   const moduleId = params.module;
   const moduleData = await getModuleById(moduleId);
   

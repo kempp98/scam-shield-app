@@ -2,13 +2,13 @@ import { notFound } from 'next/navigation';
 import { getModuleById } from '@/lib/education';
 import { ModuleDetail } from '@/components/educational/module-detail';
 
-interface ModulePageProps {
-  params: {
-    module: string;
-  };
+// Type definitions for page props
+type PageProps = {
+  params: { module: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default async function ModulePage({ params }: ModulePageProps) {
+export default async function ModulePage({ params }: PageProps) {
   const moduleId = params.module;
   const moduleData = await getModuleById(moduleId);
   
@@ -32,7 +32,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
 }
 
 // Generate dynamic metadata for SEO
-export async function generateMetadata({ params }: ModulePageProps) {
+export async function generateMetadata({ params }: PageProps) {
   const moduleId = params.module;
   const moduleData = await getModuleById(moduleId);
   
