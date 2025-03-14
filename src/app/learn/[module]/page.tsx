@@ -3,7 +3,12 @@ import { getModuleById } from '@/lib/education';
 import { ModuleDetail } from '@/components/educational/module-detail';
 import { Metadata } from 'next';
 
-export default async function ModulePage({ params }: any) {
+type Props = {
+  params: { module: string };
+  searchParams: Record<string, string | string[] | undefined>;
+};
+
+export default async function ModulePage({ params }: Props) {
   const moduleId = params.module;
   const moduleData = await getModuleById(moduleId);
   
@@ -26,7 +31,7 @@ export default async function ModulePage({ params }: any) {
   );
 }
 
-export async function generateMetadata({ params }: any): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const moduleId = params.module;
   const moduleData = await getModuleById(moduleId);
   
