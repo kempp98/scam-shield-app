@@ -10,7 +10,7 @@ export default function SignupPage() {
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">Get Early Access</CardTitle>
             <CardDescription>
-              Be among the first to experience ScamShield when we launch.
+              Be among the first to experience ScamSafe when we launch.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -70,7 +70,7 @@ export default function SignupPage() {
         
         <div className="mt-8 text-center text-sm text-gray-500">
           <p>
-            ScamShield is currently in development. By signing up, you&apos;ll be notified when we launch and may be invited to participate in beta testing.
+            ScamSafe is currently in development. By signing up, you&apos;ll be notified when we launch and may be invited to participate in beta testing.
           </p>
         </div>
       </div>

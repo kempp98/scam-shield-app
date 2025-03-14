@@ -14,7 +14,7 @@ const inter = Inter({
 
 // Metadata for the application
 export const metadata: Metadata = {
-  title: 'ScamShield - Learn to identify and avoid text scams',
+  title: 'ScamSafe - Learn to identify and avoid text scams',
   description: 'Educational platform for learning about text message scams and how to protect yourself',
   keywords: 'scam, text scam, phishing, cybersecurity, education, security awareness',
 };

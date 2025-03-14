@@ -19,7 +19,7 @@ interface NavbarProps {
 }
 
 export function Navbar({
-  logo = <span className="font-bold text-xl text-primary">ScamShield</span>,
+  logo = <span className="font-bold text-xl text-primary">ScamSafe</span>,
   items = [],
   rightContent,
   sticky = false,

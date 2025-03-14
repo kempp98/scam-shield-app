@@ -31,7 +31,7 @@ export default function Home() {
       {/* Feature Section */}
       <section className="py-16 bg-gray-50 -mx-4 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">How ScamShield Helps You</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">How ScamSafe Helps You</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             {/* Feature 1 */}
