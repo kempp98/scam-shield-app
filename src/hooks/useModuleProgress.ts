@@ -12,7 +12,7 @@ export interface ModuleProgress {
 
 export type ProgressRecord = Record<string, ModuleProgress>;
 
-const LOCAL_STORAGE_KEY = 'scamshield-module-progress';
+const LOCAL_STORAGE_KEY = 'scamsafe-module-progress';
 
 export function useModuleProgress() {
   const [progress, setProgress] = useState<ProgressRecord>({});

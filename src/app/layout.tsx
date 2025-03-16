@@ -4,6 +4,7 @@ import './globals.css';
 import { Header } from '@/components/ui/header';
 import { Footer } from '@/components/ui/footer';
 import { TransitionProvider } from '@/components/transitions/transition-provider';
+import GoogleAnalytics from '@/components/analytics/google-analytics';
 
 // Load Inter font with Latin subset
 const inter = Inter({ 
@@ -14,7 +15,7 @@ const inter = Inter({
 
 // Metadata for the application
 export const metadata: Metadata = {
-  title: 'ScamShield - Learn to identify and avoid text scams',
+  title: 'ScamSafe - Learn to identify and avoid text scams',
   description: 'Educational platform for learning about text message scams and how to protect yourself',
   keywords: 'scam, text scam, phishing, cybersecurity, education, security awareness',
 };
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-sans min-h-screen flex flex-col">
+        <GoogleAnalytics />
         <TransitionProvider>
           <Header />
           <main className="flex-grow">

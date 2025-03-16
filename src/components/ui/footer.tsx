@@ -10,7 +10,7 @@ export function Footer() {
         <div className="py-8 md:flex md:items-center md:justify-between">
           <div className="text-center md:text-left">
             <p className="text-sm text-gray-500">
-              &copy; {currentYear} ScamShield. All rights reserved.
+              &copy; {currentYear} ScamSafe. All rights reserved.
             </p>
             <p className="text-xs text-gray-400 mt-1">
               Educational platform for recognizing and avoiding scams.
@@ -43,7 +43,7 @@ export function Footer() {
         
         <div className="py-4 border-t border-gray-200 text-center md:text-left">
           <p className="text-xs text-gray-400">
-            ScamShield is an educational service and does not guarantee protection from all scams. 
+            ScamSafe is an educational service and does not guarantee protection from all scams. 
             Always verify communications from financial institutions and businesses through official channels.
           </p>
         </div>
