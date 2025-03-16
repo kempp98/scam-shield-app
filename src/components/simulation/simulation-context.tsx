@@ -5,7 +5,6 @@ import {
   SimulationScenario, 
   SimulationNode, 
   SimulationState,
-  ResponseOption,
   Message
 } from '@/types/simulation';
 import { getScenarioById } from '@/lib/simulation';
