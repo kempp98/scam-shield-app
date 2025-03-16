@@ -4,6 +4,7 @@ import './globals.css';
 import { Header } from '@/components/ui/header';
 import { Footer } from '@/components/ui/footer';
 import { TransitionProvider } from '@/components/transitions/transition-provider';
+import GoogleAnalytics from '@/components/analytics/google-analytics';
 
 // Load Inter font with Latin subset
 const inter = Inter({ 
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-sans min-h-screen flex flex-col">
+        <GoogleAnalytics />
         <TransitionProvider>
           <Header />
           <main className="flex-grow">
