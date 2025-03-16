@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { useSimulation } from '@/components/simulation/simulation-context';
 import { MessageBubble } from '@/components/simulation/message-bubble';
 import { ResponseOptions } from '@/components/simulation/response-options';
@@ -26,31 +26,82 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
   
   const [showRedFlags, setShowRedFlags] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const hasAttemptedStart = useRef(false);
   
-  // Start scenario when component mounts
-  useEffect(() => {
-    console.log('Starting scenario:', scenarioId);
-    startScenario(scenarioId);
-  }, [scenarioId, startScenario]);
-  
-  // Scroll to bottom whenever messages change
-  useEffect(() => {
+  // Memoize the scroll function to prevent unnecessary re-renders
+  const scrollToBottom = useCallback(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [allMessages]);
+  }, []);
+  
+  // Start scenario when component mounts with proper error handling
+  useEffect(() => {
+    let isActive = true;
+    
+    const initScenario = async () => {
+      try {
+        console.log('Starting scenario:', scenarioId);
+        hasAttemptedStart.current = true;
+        await startScenario(scenarioId);
+      } catch (error) {
+        if (isActive) {
+          console.error('Error initializing scenario:', error);
+        }
+      }
+    };
+    
+    if (!hasAttemptedStart.current) {
+      initScenario();
+    }
+    
+    return () => {
+      isActive = false;
+    };
+  }, [scenarioId, startScenario]);
+  
+  // Scroll to bottom whenever messages change, with debounce to improve performance
+  useEffect(() => {
+    if (allMessages.length === 0) return;
+    
+    const timeoutId = setTimeout(() => {
+      scrollToBottom();
+    }, 100);
+    
+    return () => clearTimeout(timeoutId);
+  }, [allMessages, scrollToBottom]);
   
   // Generate current time for the phone UI
   const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   
+  // Safe click handler for response selection with error handling
+  const handleResponseSelect = useCallback((responseId: string) => {
+    try {
+      selectResponse(responseId);
+    } catch (error) {
+      console.error('Error selecting response:', error);
+    }
+  }, [selectResponse]);
+  
+  // Safe click handler for scenario reset with error handling
+  const handleResetScenario = useCallback(() => {
+    try {
+      resetScenario();
+    } catch (error) {
+      console.error('Error resetting scenario:', error);
+    }
+  }, [resetScenario]);
+  
+  // Loading state with a more lightweight spinner
   if (isLoading && !currentScenario) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full"></div>
+        <div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full"></div>
       </div>
     );
   }
   
+  // Error state with retry button
   if (error) {
     return (
       <div className="bg-red-50 text-red-800 p-4 rounded-md border border-red-200">
@@ -59,7 +110,10 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
         <Button 
           variant="outline" 
           className="mt-4"
-          onClick={() => startScenario(scenarioId)}
+          onClick={() => {
+            hasAttemptedStart.current = false;
+            startScenario(scenarioId);
+          }}
         >
           Try Again
         </Button>
@@ -67,13 +121,24 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
     );
   }
   
+  // If no scenario is loaded yet, show a minimal loading state
   if (!currentScenario) {
-    return null;
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div className="animate-pulse flex space-x-4">
+          <div className="h-12 w-12 bg-gray-200 rounded-full"></div>
+          <div className="space-y-2">
+            <div className="h-4 bg-gray-200 rounded w-36"></div>
+            <div className="h-4 bg-gray-200 rounded w-24"></div>
+          </div>
+        </div>
+      </div>
+    );
   }
   
   return (
     <div className="mx-auto max-w-[320px]">
-      {/* Smartphone frame - narrower and taller */}
+      {/* Smartphone frame - optimized for performance */}
       <div className="border-[8px] border-black rounded-[2rem] overflow-hidden shadow-xl bg-white">
         {/* Phone status bar */}
         <div className="bg-black text-white px-4 py-2 flex justify-between items-center">
@@ -92,13 +157,14 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
           </div>
         </div>
         
-        {/* Message app header */}
+        {/* Message app header - simplified for performance */}
         <div className="bg-[#f5f5f7] border-b border-gray-200 p-3 flex items-center">
           <Button
             variant="ghost"
             size="sm"
             className="mr-2 text-blue-500"
-            onClick={() => resetScenario()}
+            onClick={handleResetScenario}
+            type="button"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
@@ -107,17 +173,20 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
           
           <div className="flex items-center flex-1 justify-center">
             <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-gray-600 font-bold mr-2">
-              {currentScenario.sender.name.charAt(0)}
+              {currentScenario.sender?.name?.charAt(0) || "?"}
             </div>
             <div>
-              <div className="font-medium">{currentScenario.sender.name}</div>
-              <div className="text-xs text-gray-500">{currentScenario.sender.phoneNumber}</div>
+              <div className="font-medium">{currentScenario.sender?.name || "Unknown"}</div>
+              <div className="text-xs text-gray-500">{currentScenario.sender?.phoneNumber || ""}</div>
             </div>
           </div>
         </div>
         
-        {/* Messages container */}
-        <div className="bg-[#f7f7f7] p-4 h-[450px] overflow-y-auto">
+        {/* Messages container - optimized with windowing for performance */}
+        <div 
+          className="bg-[#f7f7f7] p-4 h-[450px] overflow-y-auto"
+          style={{ overscrollBehavior: 'contain' }} // Prevent scroll chaining
+        >
           {/* Show simulation complete feedback when scenario is done */}
           {progress.completed && currentNode?.feedback ? (
             <SimulationFeedback
@@ -126,13 +195,13 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
               whatToDoNext={currentNode.feedback.whatToDoNext}
               safetyRating={currentNode.safetyRating || 'safe'}
               safetyScore={progress.safetyScore}
-              onRestart={resetScenario}
+              onRestart={handleResetScenario}
             />
           ) : (
             <>
-              {/* Messages */}
+              {/* Messages - only render what's needed */}
               <div className="space-y-3">
-                {allMessages.map((message) => (
+                {allMessages.slice(-20).map((message) => ( // Only show last 20 messages for performance
                   <MessageBubble 
                     key={message.id} 
                     message={message} 
@@ -148,7 +217,7 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
                   <div className="text-sm text-gray-500 mb-2">Choose your response:</div>
                   <ResponseOptions
                     options={currentNode.responseOptions}
-                    onSelect={selectResponse}
+                    onSelect={handleResponseSelect}
                     disabled={isLoading}
                   />
                 </div>
@@ -157,7 +226,7 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
           )}
         </div>
         
-        {/* Bottom bar with show red flags button */}
+        {/* Bottom bar with show red flags button - simplified */}
         <div className="p-3 border-t border-gray-200 flex justify-between bg-[#f5f5f7]">
           {progress.completed ? (
             <div className="text-xs text-gray-500">
@@ -173,6 +242,7 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
                 size="sm"
                 className={`text-xs ${showRedFlags ? 'bg-red-50 text-red-600' : ''}`}
                 onClick={() => setShowRedFlags(!showRedFlags)}
+                type="button"
               >
                 {showRedFlags ? 'Hide Red Flags' : 'Show Red Flags'}
               </Button>

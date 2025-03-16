@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { 
   SimulationScenario, 
   SimulationNode, 
@@ -47,6 +47,12 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   
+  // Use a ref to track if component is mounted to prevent memory leaks
+  const isMounted = useRef(true);
+  
+  // Track pending timeouts to clear them if needed
+  const pendingTimeouts = useRef<number[]>([]);
+  
   const [progress, setProgress] = useState<SimulationState>({
     scenarioId: null,
     currentNodeId: null,
@@ -54,14 +60,33 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
     completed: false,
   });
 
-  // Start a new scenario
-  const startScenario = async (scenarioId: string) => {
+  // Clear all pending timeouts
+  const clearAllTimeouts = useCallback(() => {
+    pendingTimeouts.current.forEach(timeoutId => window.clearTimeout(timeoutId));
+    pendingTimeouts.current = [];
+  }, []);
+
+  // Make sure to clear timeouts when unmounting
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+      clearAllTimeouts();
+    };
+  }, [clearAllTimeouts]);
+
+  // Start a new scenario with proper error handling
+  const startScenario = useCallback(async (scenarioId: string) => {
+    if (!isMounted.current) return;
+    
     setIsLoading(true);
     setError(null);
+    clearAllTimeouts();
     
     try {
       console.log('Loading scenario:', scenarioId);
       const scenario = await getScenarioById(scenarioId);
+      
+      if (!isMounted.current) return;
       
       if (!scenario) {
         console.error(`Scenario with ID ${scenarioId} not found`);
@@ -75,7 +100,7 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
         throw new Error(`Initial node ${scenario.initialNodeId} not found in scenario`);
       }
       
-      setAllMessages(initialNode.messages);
+      setAllMessages(initialNode.messages || []);
       setCurrentNode(initialNode);
       setCurrentScenario(scenario);
       
@@ -87,15 +112,59 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
       });
       
     } catch (err) {
+      if (!isMounted.current) return;
       console.error('Error loading scenario:', err);
       setError(err instanceof Error ? err.message : 'An unknown error occurred');
     } finally {
-      setIsLoading(false);
+      if (isMounted.current) {
+        setIsLoading(false);
+      }
     }
-  };
+  }, [clearAllTimeouts]);
 
-  // Select a response and move to the next node
-  const selectResponse = (responseId: string) => {
+  // Helper function to get current time for message timestamps
+  const getCurrentTime = (): string => {
+    const now = new Date();
+    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+  
+  // Calculate a safety score based on chosen responses
+  const calculateSafetyScore = useCallback((
+    history: Array<{nodeId: string, responseId?: string}>,
+    finalResponseId: string,
+    scenario: SimulationScenario
+  ): number => {
+    // This is a simplified scoring algorithm
+    
+    let safeResponses = 0;
+    let totalResponses = 0;
+    
+    // Count previous responses
+    history.forEach(item => {
+      if (item.responseId) {
+        totalResponses++;
+        const node = scenario.nodes[item.nodeId];
+        const response = node.responseOptions?.find(r => r.id === item.responseId);
+        if (response && response.safetyLevel === 'safe') {
+          safeResponses++;
+        }
+      }
+    });
+    
+    // Add final response
+    totalResponses++;
+    const finalNode = currentNode;
+    const currentResponse = finalNode?.responseOptions?.find(r => r.id === finalResponseId);
+    if (currentResponse && currentResponse.safetyLevel === 'safe') {
+      safeResponses++;
+    }
+    
+    // Calculate percentage (handle division by zero)
+    return totalResponses > 0 ? Math.round((safeResponses / totalResponses) * 100) : 0;
+  }, [currentNode]);
+
+  // Select a response and move to the next node - optimized to prevent freezing
+  const selectResponse = useCallback((responseId: string) => {
     if (!currentNode || !currentScenario) {
       console.error("Cannot select response: missing currentNode or currentScenario");
       return;
@@ -136,40 +205,64 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
       timestamp: getCurrentTime()
     };
     
-    // Update messages with user response
+    // Update messages with user response (make a copy to avoid state mutation issues)
     const updatedMessages = [...allMessages, userResponseMessage];
     setAllMessages(updatedMessages);
     
     // Use setTimeout to create a small delay between user response and next node
-    setTimeout(() => {
-      // Update with next node messages
-      setAllMessages([...updatedMessages, ...nextNode.messages]);
+    // Store the timeout ID so we can clear it if needed
+    const timeoutId = window.setTimeout(() => {
+      if (!isMounted.current) return;
+      
+      // Make sure we have nextNode.messages and it's an array to avoid crashes
+      const nextNodeMessages = nextNode.messages || [];
+      
+      // Update with next node messages (make a copy to avoid state mutation issues)
+      setAllMessages([...updatedMessages, ...nextNodeMessages]);
       
       // Update current node
       setCurrentNode(nextNode);
       
       // Update progress
-      setProgress(prev => ({
-        ...prev,
-        currentNodeId: nextNode.id,
-        history: [
-          ...prev.history,
-          { nodeId: nextNode.id, responseId }
-        ],
-        completed: nextNode.isEndNode,
-        safetyScore: nextNode.isEndNode ? calculateSafetyScore(prev.history, responseId, currentScenario) : undefined
-      }));
+      setProgress(prev => {
+        // Only calculate safety score if this is an end node
+        const safetyScore = nextNode.isEndNode 
+          ? calculateSafetyScore(prev.history, responseId, currentScenario)
+          : undefined;
+          
+        return {
+          ...prev,
+          currentNodeId: nextNode.id,
+          history: [
+            ...prev.history,
+            { nodeId: nextNode.id, responseId }
+          ],
+          completed: nextNode.isEndNode,
+          safetyScore
+        };
+      });
+      
+      // Remove the timeout ID from our tracking list
+      pendingTimeouts.current = pendingTimeouts.current.filter(id => id !== timeoutId);
       
       // End loading
       setIsLoading(false);
-    }, 400);
-  };
+    }, 300); // Reduced from 400ms to 300ms to improve responsiveness
+    
+    // Add the timeout ID to our tracking list
+    pendingTimeouts.current.push(timeoutId);
+  }, [currentNode, currentScenario, allMessages, isLoading, calculateSafetyScore]);
 
   // Reset the current scenario to start over
-  const resetScenario = () => {
+  const resetScenario = useCallback(() => {
     if (!currentScenario) return;
     
     const scenarioId = currentScenario.id;
+    
+    // Clear all pending operations
+    clearAllTimeouts();
+    
+    // Reset state
     setCurrentScenario(null);
     setCurrentNode(null);
     setAllMessages([]);
@@ -180,62 +273,38 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
       completed: false,
     });
     
-    // Restart the same scenario
-    startScenario(scenarioId);
-  };
-  
-  // Helper function to get current time for message timestamps
-  const getCurrentTime = (): string => {
-    const now = new Date();
-    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  };
-  
-  // Calculate a safety score based on chosen responses
-  const calculateSafetyScore = (
-    history: Array<{nodeId: string, responseId?: string}>,
-    finalResponseId: string,
-    scenario: SimulationScenario
-  ): number => {
-    // This is a simplified scoring algorithm
-    // In a real implementation, this would be more sophisticated
-    
-    let safeResponses = 0;
-    let totalResponses = 0;
-    
-    // Count previous responses
-    history.forEach(item => {
-      if (item.responseId) {
-        totalResponses++;
-        const node = scenario.nodes[item.nodeId];
-        const response = node.responseOptions?.find(r => r.id === item.responseId);
-        if (response && response.safetyLevel === 'safe') {
-          safeResponses++;
-        }
+    // Use a short timeout to ensure state is properly reset before restarting
+    const timeoutId = window.setTimeout(() => {
+      if (isMounted.current) {
+        // Restart the same scenario
+        startScenario(scenarioId);
       }
-    });
+      // Remove the timeout ID from our tracking list
+      pendingTimeouts.current = pendingTimeouts.current.filter(id => id !== timeoutId);
+    }, 50);
     
-    // Add final response
-    totalResponses++;
-    const currentResponse = currentNode?.responseOptions?.find(r => r.id === finalResponseId);
-    if (currentResponse && currentResponse.safetyLevel === 'safe') {
-      safeResponses++;
-    }
-    
-    // Calculate percentage
-    return Math.round((safeResponses / totalResponses) * 100);
-  };
+    // Add the timeout ID to our tracking list
+    pendingTimeouts.current.push(timeoutId);
+  }, [currentScenario, startScenario, clearAllTimeouts]);
 
-  // Safety mechanism for loading state
+  // Safety mechanism for loading state - prevent stuck loading state
   useEffect(() => {
     if (isLoading) {
-      const timer = setTimeout(() => {
-        if (isLoading) {
-          console.warn("Loading state stuck for 5 seconds, resetting");
+      const timer = window.setTimeout(() => {
+        if (isLoading && isMounted.current) {
+          console.warn("Loading state stuck for 3 seconds, resetting");
           setIsLoading(false);
         }
-      }, 5000);
+      }, 3000); // Reduced from 5s to 3s
       
-      return () => clearTimeout(timer);
+      // Add the timeout ID to our tracking list
+      pendingTimeouts.current.push(timer);
+      
+      return () => {
+        window.clearTimeout(timer);
+        // Remove the timeout ID from our tracking list
+        pendingTimeouts.current = pendingTimeouts.current.filter(id => id !== timer);
+      };
     }
   }, [isLoading]);
 

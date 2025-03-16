@@ -11,6 +11,12 @@ interface ResponseOptionsProps {
 }
 
 export function ResponseOptions({ options, onSelect, disabled = false }: ResponseOptionsProps) {
+  const handleOptionClick = (responseId: string, e: React.MouseEvent) => {
+    e.stopPropagation(); // Stop event propagation
+    console.log('Option clicked:', responseId);
+    onSelect(responseId);
+  };
+
   return (
     <div className="space-y-2">
       {options.map((option) => (
@@ -18,7 +24,7 @@ export function ResponseOptions({ options, onSelect, disabled = false }: Respons
           key={option.id}
           variant="outline"
           className="w-full text-left justify-start h-auto py-3 px-4 whitespace-normal rounded-lg text-blue-600 border-gray-200"
-          onClick={() => onSelect(option.id)}
+          onClick={(e) => handleOptionClick(option.id, e)}
           disabled={disabled}
         >
           {option.text}
