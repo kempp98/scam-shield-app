@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from 'firebase/firestore';
+import { getAnalytics, isSupported } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,4 +19,21 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+// Initialize Firestore
+const db = getFirestore(app);
+
+// Initialize Analytics conditionally (only in browser environment)
+const initializeAnalytics = async () => {
+  const isBrowser = typeof window !== 'undefined';
+  if (isBrowser && await isSupported()) {
+    return getAnalytics(app);
+  }
+  return null;
+};
+
+// We're creating the analytics variable but not using it yet
+// We'll initialize it when needed to avoid the ESLint warning
+const analyticsPromise = initializeAnalytics();
+
+export { db, analyticsPromise };

@@ -81,13 +81,16 @@ export default function SignupPage() {
       } else {
         setSubmitResult({
           success: false,
-          message: 'Failed to submit. Please try again.'
+          message: result.error || 'Failed to submit. Please try again.'
         });
       }
-    } catch (error) {
+    } catch (err) {
+      // Convert the error to a string message
+      const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
+      
       setSubmitResult({
         success: false,
-        message: 'An error occurred. Please try again later.'
+        message: errorMessage
       });
     } finally {
       setIsSubmitting(false);
