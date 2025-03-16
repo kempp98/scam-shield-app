@@ -11,6 +11,11 @@ interface SmartphoneSimulatorProps {
   scenarioId: string;
 }
 
+const handleSimulatorClick = (e: React.MouseEvent) => {
+  // Prevent clicks within the simulator from propagating up
+  e.stopPropagation();
+};
+
 export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
   const { 
     startScenario,
@@ -77,7 +82,7 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
   }
   
   return (
-    <div className="mx-auto max-w-md">
+    <div className="mx-auto max-w-md" onClick={handleSimulatorClick}>
       {/* Smartphone frame */}
       <div className="border-4 border-gray-800 rounded-[3rem] overflow-hidden shadow-xl bg-white">
         {/* Phone status bar */}
