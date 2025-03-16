@@ -36,16 +36,16 @@ export function MessageBubble({ message, showRedFlags = false }: MessageBubblePr
   };
   
   return (
-    <div className={`flex ${message.isUserMessage ? 'justify-end' : 'justify-start'} mb-2`}>
+    <div className={`flex ${message.isUserMessage ? 'justify-end' : 'justify-start'} mb-3`}>
       <div className={`max-w-[75%] ${message.isUserMessage ? 'order-1' : 'order-none'}`}>
         <div
-          className={`px-4 py-2.5 ${
+          className={`px-3.5 py-2.5 ${
             message.isUserMessage
-              ? 'bg-[#0b93f6] text-white rounded-t-xl rounded-l-xl rounded-br-none'
-              : 'bg-[#e9e9eb] text-black rounded-t-xl rounded-r-xl rounded-bl-none'
-          } shadow-sm`}
+              ? 'bg-blue-500 text-white rounded-t-lg rounded-l-lg rounded-br-sm'
+              : 'bg-gray-200 text-gray-800 rounded-t-lg rounded-r-lg rounded-bl-sm'
+          }`}
         >
-          <div className="text-sm leading-tight">
+          <div className="text-sm">
             {formatMessageText(message.text)}
           </div>
           
@@ -62,19 +62,19 @@ export function MessageBubble({ message, showRedFlags = false }: MessageBubblePr
         
         {/* Red flags section - only show for non-user messages when enabled */}
         {showRedFlags && !message.isUserMessage && message.redFlags && message.redFlags.length > 0 && (
-          <div className="mt-2 space-y-1.5">
+          <div className="mt-2 space-y-1">
             {message.redFlags.map((flag) => (
               <div key={flag.id}>
                 <Badge 
                   redFlag={true}
-                  className="cursor-pointer text-xs hover:bg-red-100"
+                  className="cursor-pointer text-xs"
                   onClick={() => setShowFlagDetails(showFlagDetails === flag.id ? null : flag.id)}
                 >
                   {flag.text}
                 </Badge>
                 
                 {showFlagDetails === flag.id && (
-                  <div className="mt-1.5 p-2.5 bg-red-50 text-red-800 rounded-lg border border-red-200 text-xs shadow-sm">
+                  <div className="mt-1 p-2 bg-red-50 text-red-800 rounded-md border border-red-200 text-xs">
                     {flag.explanation}
                   </div>
                 )}

@@ -1,11 +1,11 @@
 'use client';
 
-// CHANGE 1: Add useEffect to imports
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { 
   SimulationScenario, 
   SimulationNode, 
   SimulationState,
+  ResponseOption,
   Message
 } from '@/types/simulation';
 import { getScenarioById } from '@/lib/simulation';
@@ -55,40 +55,12 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
     completed: false,
   });
 
-  // CHANGE 2: Fix the localStorage effect - it should use progress.scenarioId instead
-  useEffect(() => {
-    // Save progress to localStorage whenever it changes
-    if (progress.scenarioId) {
-      localStorage.setItem(`sim-progress-${progress.scenarioId}`, JSON.stringify(progress));
-    }
-  }, [progress]);
-
-  // CHANGE 3: Add loading timeout safety
-  useEffect(() => {
-    // Add a timeout to ensure loading state gets reset if something goes wrong
-    let loadingTimeout: NodeJS.Timeout | null = null;
-    
-    if (isLoading) {
-      loadingTimeout = setTimeout(() => {
-        if (isLoading) {
-          console.warn("Loading state stuck for 5 seconds, resetting");
-          setIsLoading(false);
-        }
-      }, 5000);
-    }
-    
-    return () => {
-      if (loadingTimeout) clearTimeout(loadingTimeout);
-    };
-  }, [isLoading]);
-
   // Start a new scenario
   const startScenario = async (scenarioId: string) => {
     setIsLoading(true);
     setError(null);
     
     try {
-      // Add more error handling and logging
       console.log('Loading scenario:', scenarioId);
       const scenario = await getScenarioById(scenarioId);
       
@@ -104,7 +76,6 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
         throw new Error(`Initial node ${scenario.initialNodeId} not found in scenario`);
       }
       
-      // Set state in a more predictable order
       setAllMessages(initialNode.messages);
       setCurrentNode(initialNode);
       setCurrentScenario(scenario);
@@ -124,22 +95,19 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
     }
   };
 
-  // CHANGE 4: Fix the selectResponse function
+  // Select a response and move to the next node
   const selectResponse = (responseId: string) => {
     if (!currentNode || !currentScenario) {
-      console.error("Cannot select response: currentNode or currentScenario is null");
+      console.error("Cannot select response: missing currentNode or currentScenario");
       return;
     }
     
-    // Prevent selecting responses while loading
+    // Prevent duplicate clicks
     if (isLoading) {
-      console.log("Ignoring selection while loading");
+      console.log("Ignoring response while loading");
       return;
     }
     
-    console.log('Selecting response:', responseId);
-    
-    // First find the selected response
     const selectedResponse = currentNode.responseOptions?.find(
       option => option.id === responseId
     );
@@ -150,19 +118,18 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
       return;
     }
     
-    // Find the next node
     const nextNode = currentScenario.nodes[selectedResponse.nextNodeId];
     
     if (!nextNode) {
-      console.error(`Next node ${selectedResponse.nextNodeId} not found`);
+      console.error(`Next node ${selectedResponse.nextNodeId} not found in scenario`);
       setError(`Next node ${selectedResponse.nextNodeId} not found in scenario`);
       return;
     }
     
-    // Set loading to prevent multiple clicks
+    // Start loading
     setIsLoading(true);
     
-    // Create a user message from the response
+    // Add user's selected response as a message
     const userResponseMessage: Message = {
       id: `user-response-${responseId}`,
       text: selectedResponse.text,
@@ -170,32 +137,33 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
       timestamp: getCurrentTime()
     };
     
-    // First update messages array with just the user's selection
-    setAllMessages(prev => [...prev, userResponseMessage]);
+    // Update messages with user response
+    const updatedMessages = [...allMessages, userResponseMessage];
+    setAllMessages(updatedMessages);
     
-    // Use setTimeout to create a small delay before showing the next node's messages
+    // Use setTimeout to create a small delay between user response and next node
     setTimeout(() => {
-      try {
-        // CHANGE 5: Only add the next node's messages, not the user message again
-        setAllMessages(prev => [...prev, ...nextNode.messages]);
-        setCurrentNode(nextNode);
-        setProgress(prev => ({
-          ...prev,
-          currentNodeId: nextNode.id,
-          history: [
-            ...prev.history,
-            { nodeId: nextNode.id, responseId }
-          ],
-          completed: nextNode.isEndNode,
-          safetyScore: nextNode.isEndNode ? calculateSafetyScore(prev.history, responseId, currentScenario) : undefined
-        }));
-      } catch (err) {
-        console.error("Error updating state after response:", err);
-        setError("An error occurred processing your response");
-      } finally {
-        setIsLoading(false);
-      }
-    }, 500); // 500ms delay feels natural for a conversation
+      // Update with next node messages
+      setAllMessages([...updatedMessages, ...nextNode.messages]);
+      
+      // Update current node
+      setCurrentNode(nextNode);
+      
+      // Update progress
+      setProgress(prev => ({
+        ...prev,
+        currentNodeId: nextNode.id,
+        history: [
+          ...prev.history,
+          { nodeId: nextNode.id, responseId }
+        ],
+        completed: nextNode.isEndNode,
+        safetyScore: nextNode.isEndNode ? calculateSafetyScore(prev.history, responseId, currentScenario) : undefined
+      }));
+      
+      // End loading
+      setIsLoading(false);
+    }, 400);
   };
 
   // Reset the current scenario to start over
@@ -206,6 +174,12 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
     setCurrentScenario(null);
     setCurrentNode(null);
     setAllMessages([]);
+    setProgress({
+      scenarioId: null,
+      currentNodeId: null,
+      history: [],
+      completed: false,
+    });
     
     // Restart the same scenario
     startScenario(scenarioId);
@@ -251,6 +225,20 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
     // Calculate percentage
     return Math.round((safeResponses / totalResponses) * 100);
   };
+
+  // Safety mechanism for loading state
+  useEffect(() => {
+    if (isLoading) {
+      const timer = setTimeout(() => {
+        if (isLoading) {
+          console.warn("Loading state stuck for 5 seconds, resetting");
+          setIsLoading(false);
+        }
+      }, 5000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading]);
 
   const value = {
     currentScenario,

@@ -17,14 +17,11 @@ export function ResponseOptions({ options, onSelect, disabled = false }: Respons
         <Button
           key={option.id}
           variant="outline"
-          className="w-full text-left justify-start h-auto py-3 px-4 whitespace-normal rounded-2xl text-blue-600 border-blue-200 hover:bg-blue-50 shadow-sm transition-all hover:translate-y-[-1px]"
-          onClick={(e) => {
-            e.stopPropagation();
-            onSelect(option.id);
-          }}
+          className="w-full text-left justify-start h-auto py-3 px-4 whitespace-normal rounded-lg text-blue-600 border-gray-200"
+          onClick={() => onSelect(option.id)}
           disabled={disabled}
         >
-          <div className="text-sm">{option.text}</div>
+          {option.text}
         </Button>
       ))}
     </div>
