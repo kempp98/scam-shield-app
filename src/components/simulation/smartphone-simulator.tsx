@@ -11,11 +11,6 @@ interface SmartphoneSimulatorProps {
   scenarioId: string;
 }
 
-const handleSimulatorClick = (e: React.MouseEvent) => {
-  // Prevent clicks within the simulator from propagating up
-  e.stopPropagation();
-};
-
 export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
   const { 
     startScenario,
@@ -31,17 +26,11 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
   
   const [showRedFlags, setShowRedFlags] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const [scenarioStarted, setScenarioStarted] = useState(false);
   
   // Start scenario when component mounts
   useEffect(() => {
-    if (!scenarioStarted) {
-      console.log('Starting scenario:', scenarioId);
-      startScenario(scenarioId);
-      setScenarioStarted(true);
-    }
-  }, [scenarioId, startScenario, scenarioStarted]);
+    startScenario(scenarioId);
+  }, [scenarioId, startScenario]);
   
   // Scroll to bottom whenever messages change
   useEffect(() => {
@@ -52,11 +41,6 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
   
   // Generate current time for the phone UI
   const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-  const handleResponseSelection = (responseId: string) => {
-    console.log('Response selected:', responseId);
-    selectResponse(responseId);
-  };
   
   if (isLoading) {
     return (
@@ -87,7 +71,7 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
   }
   
   return (
-    <div className="mx-auto max-w-md" onClick={handleSimulatorClick}>
+    <div className="mx-auto max-w-md">
       {/* Smartphone frame */}
       <div className="border-4 border-gray-800 rounded-[3rem] overflow-hidden shadow-xl bg-white">
         {/* Phone status bar */}
@@ -161,8 +145,7 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
               {currentNode?.responseOptions && !progress.completed && (
                 <ResponseOptions
                   options={currentNode.responseOptions}
-                  onSelect={handleResponseSelection}
-                  disabled={isLoading} // Add this to prevent multiple clicks
+                  onSelect={selectResponse}
                 />
               )}
             </>

@@ -12,18 +12,19 @@ interface ResponseOptionsProps {
 
 export function ResponseOptions({ options, onSelect, disabled = false }: ResponseOptionsProps) {
   return (
-    <div className="mt-4 space-y-3">
-      <div className="text-sm text-gray-500 mb-1">Choose your response:</div>
-      
+    <div className="space-y-2">
       {options.map((option) => (
         <Button
           key={option.id}
           variant="outline"
-          className="w-full text-left justify-start h-auto py-3 px-4 whitespace-normal"
-          onClick={() => onSelect(option.id)}
+          className="w-full text-left justify-start h-auto py-3 px-4 whitespace-normal rounded-2xl text-blue-600 border-blue-200 hover:bg-blue-50 shadow-sm transition-all hover:translate-y-[-1px]"
+          onClick={(e) => {
+            e.stopPropagation();
+            onSelect(option.id);
+          }}
           disabled={disabled}
         >
-          {option.text}
+          <div className="text-sm">{option.text}</div>
         </Button>
       ))}
     </div>

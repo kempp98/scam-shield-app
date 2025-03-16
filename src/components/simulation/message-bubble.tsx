@@ -36,22 +36,22 @@ export function MessageBubble({ message, showRedFlags = false }: MessageBubblePr
   };
   
   return (
-    <div className={`flex ${message.isUserMessage ? 'justify-end' : 'justify-start'} mb-4`}>
-      <div key={message.id} className={`max-w-3/4 ${message.isUserMessage ? 'order-1' : 'order-none'}`}>
+    <div className={`flex ${message.isUserMessage ? 'justify-end' : 'justify-start'} mb-2`}>
+      <div className={`max-w-[75%] ${message.isUserMessage ? 'order-1' : 'order-none'}`}>
         <div
-          className={`px-4 py-3 rounded-2xl ${
+          className={`px-4 py-2.5 ${
             message.isUserMessage
-              ? 'bg-primary text-white rounded-br-none'
-              : 'bg-gray-200 text-gray-800 rounded-bl-none'
-          }`}
+              ? 'bg-[#0b93f6] text-white rounded-t-xl rounded-l-xl rounded-br-none'
+              : 'bg-[#e9e9eb] text-black rounded-t-xl rounded-r-xl rounded-bl-none'
+          } shadow-sm`}
         >
-          <div className="text-sm">
+          <div className="text-sm leading-tight">
             {formatMessageText(message.text)}
           </div>
           
           {message.timestamp && (
             <div
-              className={`text-xs mt-1 ${
+              className={`text-[10px] mt-1 ${
                 message.isUserMessage ? 'text-blue-100' : 'text-gray-500'
               }`}
             >
@@ -62,19 +62,19 @@ export function MessageBubble({ message, showRedFlags = false }: MessageBubblePr
         
         {/* Red flags section - only show for non-user messages when enabled */}
         {showRedFlags && !message.isUserMessage && message.redFlags && message.redFlags.length > 0 && (
-          <div className="mt-2 space-y-1">
+          <div className="mt-2 space-y-1.5">
             {message.redFlags.map((flag) => (
               <div key={flag.id}>
                 <Badge 
                   redFlag={true}
-                  className="cursor-pointer text-xs"
+                  className="cursor-pointer text-xs hover:bg-red-100"
                   onClick={() => setShowFlagDetails(showFlagDetails === flag.id ? null : flag.id)}
                 >
                   {flag.text}
                 </Badge>
                 
                 {showFlagDetails === flag.id && (
-                  <div className="mt-1 p-2 bg-red-50 text-red-800 rounded-md border border-red-200 text-xs">
+                  <div className="mt-1.5 p-2.5 bg-red-50 text-red-800 rounded-lg border border-red-200 text-xs shadow-sm">
                     {flag.explanation}
                   </div>
                 )}
