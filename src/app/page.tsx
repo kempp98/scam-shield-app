@@ -11,7 +11,7 @@ export default function Home() {
           Protect Yourself from <span className="text-gradient">Text Message Scams</span>
         </h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-          Learn to identify and avoid text scams through educational content and
+          Learn to identify and avoid text scams through bite sized modules and
           realistic simulations that build your confidence.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -41,7 +41,7 @@ export default function Home() {
                 <CardDescription>Understand common scam techniques</CardDescription>
               </CardHeader>
               <CardContent>
-                <p>Our educational modules break down the most common text scams and teach you how to identify red flags in any message.</p>
+                <p>Our educational modules break down common scam tactics and teach you how to identify red flags to keep yourself safe.</p>
               </CardContent>
             </Card>
 
@@ -52,7 +52,7 @@ export default function Home() {
                 <CardDescription>Risk-free simulation environment</CardDescription>
               </CardHeader>
               <CardContent>
-                <p>Try our realistic simulations to practice responding to suspicious messages without any real-world risk.</p>
+                <p>Try our realistic simulations to practice recognizing scams and building confidence, ensuring you can recognize real-life scams when you face them.</p>
               </CardContent>
             </Card>
 
@@ -63,7 +63,7 @@ export default function Home() {
                 <CardDescription>Become scam-resistant</CardDescription>
               </CardHeader>
               <CardContent>
-                <p>Gain the knowledge and skills to confidently handle suspicious messages and protect your personal information.</p>
+                <p>Gain the knowledge and skills to confidently handle suspicious messages and protect your personal information and finances.</p>
               </CardContent>
             </Card>
           </div>
