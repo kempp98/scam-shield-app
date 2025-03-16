@@ -135,7 +135,7 @@ export function SimulationHub() {
             <select
               className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
               value={filter.category}
-              onChange={(e) => setFilter(prev => ({ ...prev, category: e.target.value as any }))}
+              onChange={(e) => setFilter(prev => ({ ...prev, category: e.target.value as ScenarioCategory | 'all' }))}
             >
               <option value="all">All Categories</option>
               <option value="financial">Financial</option>
@@ -153,7 +153,7 @@ export function SimulationHub() {
             <select
               className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
               value={filter.difficulty}
-              onChange={(e) => setFilter(prev => ({ ...prev, difficulty: e.target.value as any }))}
+              onChange={(e) => setFilter(prev => ({ ...prev, difficulty: e.target.value as DifficultyLevel | 'all' }))}
             >
               <option value="all">All Difficulties</option>
               <option value="beginner">Beginner</option>
@@ -168,7 +168,7 @@ export function SimulationHub() {
             <select
               className="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
               value={filter.completed}
-              onChange={(e) => setFilter(prev => ({ ...prev, completed: e.target.value as any }))}
+              onChange={(e) => setFilter(prev => ({ ...prev, completed: e.target.value as 'all' | 'completed' | 'incomplete' }))}
             >
               <option value="all">All Scenarios</option>
               <option value="completed">Completed</option>

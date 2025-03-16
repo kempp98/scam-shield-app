@@ -58,6 +58,7 @@ export async function saveUserProgress(
  */
 export async function getUserProgress(userId: string): Promise<UserSimulationProgress> {
   // Stub implementation
+  console.log(`Saving progress for user ${userId}`);
   return {
     completedScenarios: {}
   };

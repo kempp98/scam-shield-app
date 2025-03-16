@@ -1,11 +1,10 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState} from 'react';
 import { 
   SimulationScenario, 
   SimulationNode, 
   SimulationState,
-  ResponseOption,
   Message
 } from '@/types/simulation';
 import { getScenarioById } from '@/lib/simulation';
