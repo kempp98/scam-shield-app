@@ -60,28 +60,33 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
     setError(null);
     
     try {
-      const scenario = await getScenarioById(scenarioId);
-      
-      if (!scenario) {
+        // Add more error handling and logging
+        console.log('Loading scenario:', scenarioId);
+        const scenario = await getScenarioById(scenarioId);
+        
+        if (!scenario) {
+        console.error(`Scenario with ID ${scenarioId} not found`);
         throw new Error(`Scenario with ID ${scenarioId} not found`);
-      }
-      
-      const initialNode = scenario.nodes[scenario.initialNodeId];
-      
-      if (!initialNode) {
+        }
+        
+        const initialNode = scenario.nodes[scenario.initialNodeId];
+        
+        if (!initialNode) {
+        console.error(`Initial node ${scenario.initialNodeId} not found in scenario`);
         throw new Error(`Initial node ${scenario.initialNodeId} not found in scenario`);
-      }
-      
-      setCurrentScenario(scenario);
-      setCurrentNode(initialNode);
-      setAllMessages(initialNode.messages);
-      
-      setProgress({
+        }
+        
+        // Set state in a more predictable order
+        setAllMessages(initialNode.messages);
+        setCurrentNode(initialNode);
+        setCurrentScenario(scenario);
+        
+        setProgress({
         scenarioId,
         currentNodeId: scenario.initialNodeId,
         history: [{ nodeId: scenario.initialNodeId }],
         completed: false,
-      });
+        });
       
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An unknown error occurred');

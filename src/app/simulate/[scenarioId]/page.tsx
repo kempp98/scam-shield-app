@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { SimulationProvider } from '@/components/simulation/simulation-context';
 import { SmartphoneSimulator } from '@/components/simulation/smartphone-simulator';
 import { getScenarioById } from '@/lib/simulation';
+import { ClientSimulation } from '@/components/simulation/client-simulation';
 
 interface SimulateScenarioPageProps {
   params: {
@@ -31,6 +32,8 @@ export async function generateMetadata({ params }: SimulateScenarioPageProps) {
 
 export default async function SimulateScenarioPage({ params }: SimulateScenarioPageProps) {
   const { scenarioId } = params;
+  
+  // Check if the scenario exists on the server
   const scenario = await getScenarioById(scenarioId);
   
   if (!scenario) {
@@ -65,9 +68,8 @@ export default async function SimulateScenarioPage({ params }: SimulateScenarioP
           </p>
         </div>
         
-        <SimulationProvider>
-          <SmartphoneSimulator scenarioId={scenarioId} />
-        </SimulationProvider>
+        {/* Client-side wrapper component */}
+        <ClientSimulation scenarioId={scenarioId} />
         
         <div className="mt-10 text-center text-sm text-gray-500">
           <p>
@@ -77,5 +79,13 @@ export default async function SimulateScenarioPage({ params }: SimulateScenarioP
         </div>
       </div>
     </div>
+  );
+}
+
+// Create a separate client component that only renders the simulation
+'use client';
+function ClientSimulation({ scenarioId }: { scenarioId: string }) {
+  return (
+    <ClientSimulation scenarioId={scenarioId} />
   );
 }

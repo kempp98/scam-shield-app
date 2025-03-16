@@ -29,7 +29,13 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
   
   // Start scenario when component mounts
   useEffect(() => {
-    startScenario(scenarioId);
+    // Add a small delay to ensure proper rendering
+    const timer = setTimeout(() => {
+      console.log('Starting scenario:', scenarioId);
+      startScenario(scenarioId);
+    }, 100);
+  
+    return () => clearTimeout(timer);
   }, [scenarioId, startScenario]);
   
   // Scroll to bottom whenever messages change
