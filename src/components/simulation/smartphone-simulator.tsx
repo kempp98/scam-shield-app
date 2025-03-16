@@ -31,17 +31,17 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
   
   const [showRedFlags, setShowRedFlags] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const [scenarioStarted, setScenarioStarted] = useState(false);
   
   // Start scenario when component mounts
   useEffect(() => {
-    // Add a small delay to ensure proper rendering
-    const timer = setTimeout(() => {
+    if (!scenarioStarted) {
       console.log('Starting scenario:', scenarioId);
       startScenario(scenarioId);
-    }, 100);
-  
-    return () => clearTimeout(timer);
-  }, [scenarioId, startScenario]);
+      setScenarioStarted(true);
+    }
+  }, [scenarioId, startScenario, scenarioStarted]);
   
   // Scroll to bottom whenever messages change
   useEffect(() => {
@@ -52,6 +52,11 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
   
   // Generate current time for the phone UI
   const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+  const handleResponseSelection = (responseId: string) => {
+    console.log('Response selected:', responseId);
+    selectResponse(responseId);
+  };
   
   if (isLoading) {
     return (
@@ -156,7 +161,8 @@ export function SmartphoneSimulator({ scenarioId }: SmartphoneSimulatorProps) {
               {currentNode?.responseOptions && !progress.completed && (
                 <ResponseOptions
                   options={currentNode.responseOptions}
-                  onSelect={selectResponse}
+                  onSelect={handleResponseSelection}
+                  disabled={isLoading} // Add this to prevent multiple clicks
                 />
               )}
             </>

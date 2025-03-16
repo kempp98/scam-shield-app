@@ -37,7 +37,7 @@ export function MessageBubble({ message, showRedFlags = false }: MessageBubblePr
   
   return (
     <div className={`flex ${message.isUserMessage ? 'justify-end' : 'justify-start'} mb-4`}>
-      <div className={`max-w-3/4 ${message.isUserMessage ? 'order-1' : 'order-none'}`}>
+      <div key={message.id} className={`max-w-3/4 ${message.isUserMessage ? 'order-1' : 'order-none'}`}>
         <div
           className={`px-4 py-3 rounded-2xl ${
             message.isUserMessage
