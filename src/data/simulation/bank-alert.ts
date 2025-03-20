@@ -30,8 +30,8 @@ const bankAlertScenario: SimulationScenario = {
             },
             {
               id: "suspicious-url",
-              text: "Suspicious URL",
-              explanation: "The URL is not the official bank domain. Banks use their official domains for all communications."
+              text: "Trying to get you to follow a link",
+              explanation: "Scammers try to scare you into clicking their links, so that they can steal your personal and financial information."
             },
             {
               id: "impersonation",
@@ -48,7 +48,7 @@ const bankAlertScenario: SimulationScenario = {
           text: "Click the link and log in to verify your account",
           nextNodeId: "click_link",
           safetyLevel: "risky",
-          explanation: "Never click on links from text messages claiming to be from your bank. These links typically lead to fake websites designed to steal your login credentials."
+          explanation: "Never click on links from text messages claiming to be from your bank. These links typically lead to fake websites designed to steal your login credentials. Instead, open your browser and go directly to the bank's official website."
         },
         {
           id: "response2",
@@ -103,7 +103,7 @@ const bankAlertScenario: SimulationScenario = {
           text: "Close the page immediately and call your bank",
           nextNodeId: "close_and_call",
           safetyLevel: "safe",
-          explanation: "This is a good recovery action if you've already clicked a suspicious link."
+          explanation: "This is a good recovery action if you've already clicked a suspicious link. DO NOT proceed to enter any information."
         }
       ],
       isEndNode: false

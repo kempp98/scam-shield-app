@@ -9,12 +9,12 @@
         {
           "id": "introduction",
           "title": "Introduction to Red Flags",
-          "body": "While scam messages come in many forms, they often share common characteristics or 'red flags' that can help you identify them. By learning to recognize these warning signs, you can protect yourself from most text scams, even those using new or unfamiliar scenarios. This module will teach you the key indicators that should make you suspicious of any message you receive."
+          "body": "While scam messages come in many forms, they often share common characteristics or 'red flags' that can help you identify them. By learning to recognize these warning signs, you can protect yourself from most scams, even those using new or unfamiliar scenarios. This module will teach you the key indicators that should make you suspicious of any message you receive."
         },
         {
           "id": "urgent-action",
           "title": "Urgency and Time Pressure",
-          "body": "One of the most common tactics scammers use is creating a false sense of urgency. They want you to act quickly before you have time to think critically or verify the message. This pressure is designed to override your natural caution.",
+          "body": "One of the most common tactics scammers use is creating a false sense of urgency. They want you to act quickly before you have time to think critically or verify the message. This pressure is designed to override your natural caution with fear of negative consequences.",
           "redFlags": [
             {
               "id": "urgent-deadline",
@@ -46,7 +46,7 @@
             {
               "id": "grammar-spelling",
               "text": "Multiple spelling or grammatical errors",
-              "explanation": "Legitimate companies have professional communications teams that proofread messages."
+              "explanation": "Legitimate companies have professional communications teams that proofread messages to prevent obvious errors."
             },
             {
               "id": "grammar-awkward",
@@ -78,7 +78,7 @@
             {
               "id": "personal-identity",
               "text": "Requests for identity information (SSN, date of birth, full address)",
-              "explanation": "This information can be used for identity theft and isn't requested via text by legitimate sources."
+              "explanation": "This information can be used to steal your identity and isn't requested via text by legitimate sources."
             },
             {
               "id": "personal-credentials",
@@ -116,7 +116,7 @@
           "examples": [
             "https://bank0famerica-secure.com/login",
             "https://amzn-delivery-notify.info/track",
-            "https://bit.ly/3xLr8Kp (hiding actual destination)"
+            "https://bit.ly/3xLr8Kp (shortened URL, hiding actual destination)"
           ]
         },
         {
