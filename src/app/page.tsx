@@ -70,6 +70,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Statistics & Impact Section */}
+<section className="py-16 bg-white">
+  <div className="max-w-6xl mx-auto">
+    <h2 className="text-3xl font-bold text-center mb-6">The Growing Threat of Scams</h2>
+    <p className="text-xl text-gray-600 max-w-3xl mx-auto text-center mb-12">
+      Scam attempts are increasing at an alarming rate, but traditional education methods aren&apos;t keeping pace.
+    </p>
+    
+    <div className="grid md:grid-cols-2 gap-10 mb-12">
+      {/* Stats column */}
+      <div className="bg-gray-50 rounded-lg p-8 shadow-sm">
+        <h3 className="text-2xl font-semibold mb-6 text-primary">By the Numbers</h3>
+        <div className="space-y-6">
+          <div>
+            <p className="text-3xl font-bold">$8.8 billion</p>
+            <p className="text-gray-600">Lost to scams by Americans in 2022 alone, a 30% increase from the previous year</p>
+          </div>
+          <div>
+            <p className="text-3xl font-bold">2.4 million</p>
+            <p className="text-gray-600">Fraud reports filed with the FTC in 2022, with the average person losing $1,000</p>
+          </div>
+          <div>
+            <p className="text-3xl font-bold">70%</p>
+            <p className="text-gray-600">Of Americans report feeling underprepared to identify sophisticated scams</p>
+          </div>
+        </div>
+      </div>
+      
+      {/* Why traditional approaches fail */}
+      <div className="bg-gray-50 rounded-lg p-8 shadow-sm">
+        <h3 className="text-2xl font-semibold mb-6 text-primary">Why Traditional Education Falls Short</h3>
+        <ul className="space-y-4">
+          <li className="flex">
+            <span className="text-danger mr-2">✖</span>
+            <span><strong>Generic warnings</strong> fail to prepare people for increasingly sophisticated, personalized scams</span>
+          </li>
+          <li className="flex">
+            <span className="text-danger mr-2">✖</span>
+            <span><strong>One-time trainings</strong> don&apos;t create lasting behavioral change or adaptable skills</span>
+          </li>
+          <li className="flex">
+            <span className="text-danger mr-2">✖</span>
+            <span><strong>Passive learning</strong> without practice doesn&apos;t develop real-world recognition abilities</span>
+          </li>
+          <li className="flex mt-6">
+            <span className="text-success mr-2">✓</span>
+            <span><strong>Research shows</strong> interactive simulations can improve scam detection ability by up to 40% compared to traditional methods</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div className="bg-primary/5 rounded-lg p-8 text-center">
+      <h3 className="text-xl font-semibold mb-4">A Modern Approach to Scam Protection</h3>
+      <p className="text-gray-700 max-w-3xl mx-auto">
+        ScamSafe&apos;s simulation-based learning doesn&apos;t just tell you about scams—it lets you experience them safely, building the practical skills you need to protect yourself in real-world situations.
+      </p>
+    </div>
+  </div>
+</section>
+
       {/* CTA Section */}
       <section className="py-16 text-center">
         <h2 className="text-3xl font-bold mb-6">Ready to Protect Yourself?</h2>
