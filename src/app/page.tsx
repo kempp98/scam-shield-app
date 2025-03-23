@@ -33,48 +33,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Feature Section */}
-      <section className="py-16 bg-gray-50 -mx-4 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">How ScamSafe Helps You</h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Learn About Scams</CardTitle>
-                <CardDescription>Understand common scam techniques</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p>Our educational modules break down common scam tactics and teach you how to identify red flags to keep yourself safe.</p>
-              </CardContent>
-            </Card>
-
-            {/* Feature 2 */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Practice Safely</CardTitle>
-                <CardDescription>Risk-free simulation environment</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p>Try our realistic simulations to practice recognizing scams and building confidence, ensuring you can recognize real-life scams when you face them.</p>
-              </CardContent>
-            </Card>
-
-            {/* Feature 3 */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Build Confidence</CardTitle>
-                <CardDescription>Become scam-resistant</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p>Gain the knowledge and skills to confidently handle suspicious messages and protect your personal information and finances.</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Statistics & Impact Section */}
 <section className="py-16 bg-white">
   <div className="max-w-6xl mx-auto">
@@ -135,6 +93,49 @@ export default function Home() {
     </div>
   </div>
 </section>
+
+
+      {/* Feature Section */}
+      <section className="py-16 bg-gray-50 -mx-4 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">How ScamSafe Helps You</h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Feature 1 */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Learn About Scams</CardTitle>
+                <CardDescription>Understand common scam techniques</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Our educational modules break down common scam tactics and teach you how to identify red flags to keep yourself safe.</p>
+              </CardContent>
+            </Card>
+
+            {/* Feature 2 */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Practice Safely</CardTitle>
+                <CardDescription>Risk-free simulation environment</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Try our realistic simulations to practice recognizing scams and building confidence, ensuring you can recognize real-life scams when you face them.</p>
+              </CardContent>
+            </Card>
+
+            {/* Feature 3 */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Build Confidence</CardTitle>
+                <CardDescription>Become scam-resistant</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Gain the knowledge and skills to confidently handle suspicious messages and protect your personal information and finances.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-16 text-center">
