@@ -47,16 +47,16 @@ export default function Home() {
         <h3 className="text-2xl font-semibold mb-6 text-primary">By the Numbers</h3>
         <div className="space-y-6">
           <div>
-            <p className="text-3xl font-bold">$8.8 billion</p>
-            <p className="text-gray-600">Lost to scams by Americans in 2022 alone, a 30% increase from the previous year</p>
+            <p className="text-3xl font-bold">$12.4 billion</p>
+            <p className="text-gray-600">Lost to scams by Americans in 2024 alone, a 25% increase from the previous year</p>
           </div>
           <div>
-            <p className="text-3xl font-bold">2.4 million</p>
-            <p className="text-gray-600">Fraud reports filed with the FTC in 2022, with the average person losing $1,000</p>
+            <p className="text-3xl font-bold">2.6 million</p>
+            <p className="text-gray-600">Fraud reports filed with the FTC in 2024, with over 30% of victims losing money to scammers.</p>
           </div>
           <div>
-            <p className="text-3xl font-bold">70%</p>
-            <p className="text-gray-600">Of Americans report feeling underprepared to identify sophisticated scams</p>
+            <p className="text-3xl font-bold">44%</p>
+            <p className="text-gray-600">Of scam reports in 2024 came from people aged 20-29. Consumers of every age need improved scam education to stay safe.</p>
           </div>
         </div>
       </div>
