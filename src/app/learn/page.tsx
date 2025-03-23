@@ -56,7 +56,7 @@ export default function LearnPage() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-6">Educational Modules</h1>
         <p className="text-lg text-gray-600 mb-8">
-          Our educational content will help you learn common scam tactics, learn to spot red flags, and keep yourself save in the digital world.
+          Our educational content will help you learn common scam tactics, learn to spot red flags, and keep yourself safe in the digital world.
         </p>
         
         <ModuleList modules={modules} isLoading={isLoading} />
