@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { getSequenceById } from '@/lib/simulation-v2';
 import { SequenceProvider } from '@/components/simulation/sequence-context';
 import { SequenceSimulator } from '@/components/simulation/sequence-simulator';
+import { CollapsibleInstructions } from '@/components/simulation/collapsible-instructions';
 
 interface SequencePageProps {
   params: {
@@ -58,18 +59,7 @@ export default async function SequencePage({ params }: SequencePageProps) {
           <p className="text-lg text-gray-600">{sequence.description}</p>
         </div>
         
-        <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-8">
-          <h2 className="text-md font-semibold text-blue-800 mb-1">Simulation Instructions</h2>
-          <p className="text-blue-700">
-            In this simulation, you&apos;ll encounter several text message scenarios. For each one, you&apos;ll need to:
-            <br /><br />
-            1. Identify whether the message is legitimate or a scam
-            <br />
-            2. Choose the safest way to respond
-            <br /><br />
-            Complete all the scenarios to test your scam-detection skills!
-          </p>
-        </div>
+        <CollapsibleInstructions />
         
         <SequenceProvider sequenceId={sequenceId}>
           <SequenceSimulator />
