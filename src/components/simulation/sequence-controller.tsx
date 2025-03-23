@@ -1,19 +1,19 @@
 'use client';
 
 import React from 'react';
-import { useSequence } from './sequence-context';
-import { ClientSimulation } from './client-simulation';
+import { useSequence } from '@/components/simulation/sequence-context';
+import { ScenarioSimulator } from '@/components/simulation/scenario-simulator';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 export function SequenceController() {
-  const { 
-    currentScenarioId,
-    scenarioIds,
-    currentSequenceIndex,
-    totalScenariosInSequence,
-    sequenceTitle,
-    handleScenarioComplete,
+  const {
+    currentSequence,
+    currentScenario,
+    completeCurrentScenario,
+    moveToNextScenario,
+    resetSequence,
+    progress,
     isLoading,
     error
   } = useSequence();
@@ -36,7 +36,7 @@ export function SequenceController() {
         <Button 
           variant="outline" 
           className="mt-4"
-          onClick={() => window.location.reload()}
+          onClick={resetSequence}
         >
           Try Again
         </Button>
@@ -44,8 +44,8 @@ export function SequenceController() {
     );
   }
   
-  // If no current scenario, show placeholder or loading
-  if (!currentScenarioId) {
+  // If no current scenario, show placeholder
+  if (!currentScenario) {
     return (
       <div className="text-center py-8">
         <p>No scenarios available in this sequence.</p>
@@ -61,16 +61,16 @@ export function SequenceController() {
           <CardContent className="pt-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="font-semibold text-lg">{sequenceTitle}</h3>
+                <h3 className="font-semibold text-lg">{currentSequence?.title || 'Simulation Sequence'}</h3>
                 <p className="text-gray-500 text-sm">
-                  Scenario {currentSequenceIndex + 1} of {totalScenariosInSequence}
+                  Scenario {progress.currentScenarioIndex + 1} of {progress.totalScenarios}
                 </p>
               </div>
               <div className="bg-gray-200 h-2 w-40 rounded-full overflow-hidden">
                 <div 
                   className="bg-primary h-full" 
                   style={{ 
-                    width: `${((currentSequenceIndex) / totalScenariosInSequence) * 100}%` 
+                    width: `${((progress.currentScenarioIndex + 1) / progress.totalScenarios) * 100}%` 
                   }}
                 ></div>
               </div>
@@ -80,10 +80,10 @@ export function SequenceController() {
       </div>
       
       {/* Current scenario simulation */}
-      <ClientSimulation 
-        scenarioId={currentScenarioId} 
-        onScenarioComplete={handleScenarioComplete}
-        isInSequence={true}
+      <ScenarioSimulator
+        scenario={currentScenario}
+        onComplete={completeCurrentScenario}
+        onContinue={moveToNextScenario}
       />
     </div>
   );
