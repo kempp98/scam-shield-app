@@ -8,11 +8,11 @@ export default function Home() {
       {/* Hero Section */}
       <section className="py-20 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          Protect Yourself from <span className="text-gradient">Text Message Scams</span>
+          Protect Yourself from <span className="text-gradient">Scams</span>
         </h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-          Learn to identify and avoid text scams through bite sized modules and
-          realistic simulations that build your confidence.
+          Learn to identify and avoid scam attempts through bite-sized modules and
+          realistic scam simulations that build your confidence and scam recognition skills.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/learn">
