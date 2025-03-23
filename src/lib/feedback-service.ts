@@ -32,3 +32,28 @@ export async function submitSignupForm(formData: SignupFormData) {
     };
   }
 }
+
+export async function subscribeToNewsletter(email: string) {
+  try {
+    // Add a timestamp to the data
+    const dataWithTimestamp = {
+      email,
+      subscribedAt: serverTimestamp(),
+      source: 'blog_newsletter'
+    };
+    
+    // Add the document to the "newsletterSubscriptions" collection
+    const docRef = await addDoc(collection(db, 'newsletterSubscriptions'), dataWithTimestamp);
+    
+    return {
+      success: true,
+      id: docRef.id
+    };
+  } catch (error) {
+    console.error('Error submitting newsletter subscription:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error'
+    };
+  }
+}

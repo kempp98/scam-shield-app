@@ -1,5 +1,6 @@
 import { getAllPosts } from '@/lib/blog';
 import { BlogCard } from '@/components/blog/blog-card';
+import { NewsletterForm } from '@/components/blog/newsletter-form';
 
 export const metadata = {
   title: 'ScamShield Blog - Stay Informed About Text Scams',
@@ -17,7 +18,7 @@ export default async function BlogPage() {
     <div className="container-padded py-12">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold mb-4">ScamShield Blog</h1>
+          <h1 className="text-4xl font-bold mb-4">ScamSafe Blog</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Stay informed about the latest text scam techniques and learn how to protect 
             yourself and your loved ones with our expert articles.
@@ -48,19 +49,7 @@ export default async function BlogPage() {
           <p className="mb-6 text-gray-700">
             Subscribe to our newsletter to receive the latest scam prevention tips and alerts.
           </p>
-          <div className="max-w-md mx-auto flex gap-2">
-            <input 
-              type="email" 
-              placeholder="Your email address" 
-              className="flex-1 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-            />
-            <button 
-              type="button"
-              className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
-            >
-              Subscribe
-            </button>
-          </div>
+          <NewsletterForm />
         </div>
       </div>
     </div>
