@@ -1,0 +1,84 @@
+{
+    "id": "scenario-scam-banking-001",
+    "type": "text",
+    "category": "banking",
+    "isScam": true,
+    "difficulty": "beginner",
+    "sender": {
+      "name": "CitiBank Alert",
+      "phoneNumber": "+1 (555) 123-4567"
+    },
+    "messages": [
+      {
+        "id": "msg-1",
+        "text": "CitiBank Alert: Your account has been temporarily locked due to suspicious activity. Verify your identity: https://citibank-secure.co/verify",
+        "isUserMessage": false,
+        "timestamp": "10:30 AM"
+      }
+    ],
+    "redFlags": [
+      {
+        "id": "suspicious-sender",
+        "text": "Bank name has incorrect spacing (CitiBank instead of Citibank)",
+        "explanation": "Legitimate banks use their correct name with proper spacing/capitalization."
+      },
+      {
+        "id": "suspicious-url",
+        "text": "The URL is not the official bank domain",
+        "explanation": "Citibank's official website is citibank.com, not citibank-secure.co."
+      },
+      {
+        "id": "urgent-action",
+        "text": "Creates a sense of urgency about account being locked",
+        "explanation": "Scammers use urgent threats to make you act without thinking."
+      }
+    ],
+    "identificationQuestion": {
+      "options": [
+        {
+          "id": "legitimate",
+          "text": "This is a legitimate bank message",
+          "isCorrect": false,
+          "feedback": "This is actually a scam. Banks don't send verification links via text, and the URL isn't Citibank's official domain."
+        },
+        {
+          "id": "scam",
+          "text": "This is a scam message",
+          "isCorrect": true,
+          "feedback": "Correct! This is a scam. The incorrect bank name spacing and suspicious URL are key red flags."
+        }
+      ]
+    },
+    "actionQuestion": {
+      "options": [
+        {
+          "id": "click-link",
+          "text": "Click the link and verify your identity",
+          "isCorrect": false,
+          "safetyImpact": -10,
+          "feedback": "Clicking the link would take you to a phishing site designed to steal your banking credentials."
+        },
+        {
+          "id": "ignore",
+          "text": "Ignore the message",
+          "isCorrect": true,
+          "safetyImpact": 5,
+          "feedback": "Ignoring suspicious messages is generally safe. If you're concerned about your account, contact your bank directly."
+        },
+        {
+          "id": "contact-bank",
+          "text": "Contact your bank through their official app or website",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Excellent choice! Contacting your bank through official channels is the safest response."
+        },
+        {
+          "id": "reply",
+          "text": "Reply asking for more information",
+          "isCorrect": false,
+          "safetyImpact": -5,
+          "feedback": "Replying confirms your number is active and monitored, which can lead to more scam attempts."
+        }
+      ]
+    }
+  }

@@ -1,0 +1,84 @@
+{
+    "id": "scenario-scam-delivery-001",
+    "type": "text",
+    "category": "delivery",
+    "isScam": true,
+    "difficulty": "intermediate",
+    "sender": {
+      "name": "USPS Delivery",
+      "phoneNumber": "+1 (833) 889-2743"
+    },
+    "messages": [
+      {
+        "id": "msg-1",
+        "text": "USPS: Your package #US5621879 is waiting for delivery. However, your address is incomplete. Update your delivery preference: https://usps-tracking.co/redelivery",
+        "isUserMessage": false,
+        "timestamp": "2:14 PM"
+      }
+    ],
+    "redFlags": [
+      {
+        "id": "suspicious-url",
+        "text": "The URL is not the official USPS domain",
+        "explanation": "The official USPS website is usps.com, not usps-tracking.co."
+      },
+      {
+        "id": "vague-details",
+        "text": "Mentions a package without specific order details you recognize",
+        "explanation": "Legitimate delivery notifications usually reference packages you're expecting."
+      },
+      {
+        "id": "unusual-request",
+        "text": "Claims your address is incomplete despite having delivered to you before",
+        "explanation": "USPS would already have your correct address if you've received mail there."
+      }
+    ],
+    "identificationQuestion": {
+      "options": [
+        {
+          "id": "legitimate",
+          "text": "This is a legitimate delivery message",
+          "isCorrect": false,
+          "feedback": "This is actually a scam. The URL is not the official USPS domain, and legitimate delivery services wouldn't ask you to update your address via a text message link."
+        },
+        {
+          "id": "scam",
+          "text": "This is a scam message",
+          "isCorrect": true,
+          "feedback": "Correct! This is a scam. The suspicious URL and unusual request to update your address are key red flags."
+        }
+      ]
+    },
+    "actionQuestion": {
+      "options": [
+        {
+          "id": "click-link",
+          "text": "Click the link to update your delivery address",
+          "isCorrect": false,
+          "safetyImpact": -8,
+          "feedback": "This would lead to a phishing site designed to steal your personal information."
+        },
+        {
+          "id": "ignore",
+          "text": "Ignore the message",
+          "isCorrect": true,
+          "safetyImpact": 7,
+          "feedback": "Good choice. If you're expecting a package, you can check its status directly on the official USPS website."
+        },
+        {
+          "id": "check-official",
+          "text": "Go to the official USPS website to track your packages",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Excellent choice! Using the official USPS website is the safest way to check package status."
+        },
+        {
+          "id": "reply-info",
+          "text": "Reply with your correct address",
+          "isCorrect": false,
+          "safetyImpact": -10,
+          "feedback": "Never reply with personal information to suspicious messages. This would give scammers your address and confirm your number is active."
+        }
+      ]
+    }
+  }

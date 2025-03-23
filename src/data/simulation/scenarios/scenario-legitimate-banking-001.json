@@ -1,0 +1,67 @@
+{
+    "id": "scenario-legitimate-banking-001",
+    "type": "text",
+    "category": "banking",
+    "isScam": false,
+    "difficulty": "beginner",
+    "sender": {
+      "name": "Chase Bank",
+      "phoneNumber": "+1 (800) 935-9935"
+    },
+    "messages": [
+      {
+        "id": "msg-1",
+        "text": "Chase Bank: A new device was used to sign in to your Chase Mobile App. If this was you, no response is needed. If not, call 1-800-935-9935 or visit chase.com/customerservice.",
+        "isUserMessage": false,
+        "timestamp": "3:42 PM"
+      }
+    ],
+    "identificationQuestion": {
+      "options": [
+        {
+          "id": "legitimate",
+          "text": "This is a legitimate bank message",
+          "isCorrect": true,
+          "feedback": "Correct! This is a legitimate message from Chase. It includes the official phone number, doesn't ask you to click any links, and provides a secure way to contact them if needed."
+        },
+        {
+          "id": "scam",
+          "text": "This is a scam message",
+          "isCorrect": false,
+          "feedback": "This is actually a legitimate message from Chase Bank. Notice that it doesn't create urgency, doesn't ask you to click any links, and provides the official Chase phone number and website."
+        }
+      ]
+    },
+    "actionQuestion": {
+      "options": [
+        {
+          "id": "ignore-expected",
+          "text": "Ignore the message since I recently signed in on a new device",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Great choice! Since you recognize the activity as legitimate, no action is needed, as stated in the message."
+        },
+        {
+          "id": "call-official",
+          "text": "Call the official Chase customer service number to verify",
+          "isCorrect": true,
+          "safetyImpact": 8,
+          "feedback": "Good choice! Calling the official number is a safe approach if you're unsure about the activity."
+        },
+        {
+          "id": "respond-text",
+          "text": "Reply 'STOP' to opt out of these alerts",
+          "isCorrect": false,
+          "safetyImpact": -2,
+          "feedback": "This isn't ideal. While it's unlikely to cause harm with a legitimate bank message, security alerts are important for your account safety, and you generally shouldn't reply to banking texts."
+        },
+        {
+          "id": "click-link",
+          "text": "Call the number in the text immediately",
+          "isCorrect": true,
+          "safetyImpact": 5,
+          "feedback": "This is safe since the number provided matches Chase's official customer service number. However, always verify numbers independently when possible."
+        }
+      ]
+    }
+  }
