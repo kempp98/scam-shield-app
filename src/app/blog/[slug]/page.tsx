@@ -1,4 +1,4 @@
-import { getPostBySlug, getRelatedPosts } from '@/lib/blog';
+import { getPostBySlug, getRelatedPosts, getAllPosts } from '@/lib/blog';
 import { BlogDetail } from '@/components/blog/blog-detail';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -8,6 +8,14 @@ interface BlogPostPageProps {
   params: {
     slug: string;
   };
+}
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
