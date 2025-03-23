@@ -20,9 +20,14 @@ export default function Home() {
               Start Learning
             </Button>
           </Link>
+          <Link href="/simulate">
+            <Button variant="secondary" size="lg">
+              Try Our Simulations
+            </Button>
+          </Link>
           <Link href="/signup">
             <Button variant="outline" size="lg">
-              Get Early Access
+              Get Updates on our Launch
             </Button>
           </Link>
         </div>
