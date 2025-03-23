@@ -1,0 +1,84 @@
+{
+    "id": "scenario-scam-prize-001",
+    "type": "text",
+    "category": "prize",
+    "isScam": true,
+    "difficulty": "beginner",
+    "sender": {
+      "name": "Prize Winner",
+      "phoneNumber": "+1 (475) 890-3321"
+    },
+    "messages": [
+      {
+        "id": "msg-1",
+        "text": "CONGRATULATIONS! You've been selected as a winner of our $1000 Amazon gift card raffle! To claim your prize, verify your identity: https://amazon-gifts.co/claim-prize",
+        "isUserMessage": false,
+        "timestamp": "11:27 AM"
+      }
+    ],
+    "redFlags": [
+      {
+        "id": "unexpected-prize",
+        "text": "Notification about winning a contest you don't remember entering",
+        "explanation": "Legitimate prizes are only given for contests you've actually entered."
+      },
+      {
+        "id": "suspicious-url",
+        "text": "The URL is not an official Amazon domain",
+        "explanation": "The real Amazon website is amazon.com, not amazon-gifts.co."
+      },
+      {
+        "id": "verify-identity",
+        "text": "Asking to verify your identity to claim a prize",
+        "explanation": "Legitimate sweepstakes don't typically require identity verification via suspicious links."
+      }
+    ],
+    "identificationQuestion": {
+      "options": [
+        {
+          "id": "legitimate",
+          "text": "This is a legitimate prize notification",
+          "isCorrect": false,
+          "feedback": "This is actually a scam. The domain isn't Amazon's official website, and legitimate contests don't typically notify winners via text message, especially for contests you don't remember entering."
+        },
+        {
+          "id": "scam",
+          "text": "This is a scam message",
+          "isCorrect": true,
+          "feedback": "Correct! This is a prize scam. The suspicious URL and unexpected prize notification are key red flags."
+        }
+      ]
+    },
+    "actionQuestion": {
+      "options": [
+        {
+          "id": "click-link",
+          "text": "Click the link to claim your prize",
+          "isCorrect": false,
+          "safetyImpact": -10,
+          "feedback": "Clicking the link would take you to a phishing site designed to steal your personal and financial information."
+        },
+        {
+          "id": "ignore",
+          "text": "Ignore the message",
+          "isCorrect": true,
+          "safetyImpact": 5,
+          "feedback": "Good choice. Ignoring unexpected prize notifications is generally safe."
+        },
+        {
+          "id": "contact-amazon",
+          "text": "Visit Amazon's official website to check for legitimate promotions",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Excellent! Checking directly with the company through official channels is the safest approach."
+        },
+        {
+          "id": "reply-info",
+          "text": "Reply asking for more details about the prize",
+          "isCorrect": false,
+          "safetyImpact": -5,
+          "feedback": "Replying confirms your number is active and monitored, which can lead to more scam attempts."
+        }
+      ]
+    }
+  }

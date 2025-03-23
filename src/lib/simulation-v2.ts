@@ -14,7 +14,8 @@ const basicTextScamsSequence: SimulationSequence = {
   scenarioIds: [
     'scenario-legitimate-banking-001',
     'scenario-scam-banking-001',
-    'scenario-scam-delivery-001'
+    'scenario-scam-delivery-001',
+    'scenario-scam-prize-001'
   ],
   learnMoreUrl: '/learn/common-scam-types'
 };
@@ -65,6 +66,11 @@ export async function getScenarioById(id: string): Promise<ScenarioData | null> 
       case 'scenario-scam-delivery-001': {
         // Import delivery scam scenario
         const scenarioData = await import('@/data/simulation/scenarios/scenario-scam-delivery-001.json');
+        return scenarioData.default as ScenarioData;
+      }
+      case 'scenario-scam-prize-001': {
+        // Import delivery scam scenario
+        const scenarioData = await import('@/data/simulation/scenarios/scenario-scam-prize-001.json');
         return scenarioData.default as ScenarioData;
       }
       default:
