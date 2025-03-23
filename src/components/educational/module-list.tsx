@@ -89,7 +89,9 @@ export function ModuleList({ modules = [], isLoading = false }: ModuleListProps)
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap items-center gap-2 mb-4">
+              {status.text !== 'Not started' && (
                 <Badge variant={status.color}>{status.text}</Badge>
+              )}
                 <Badge variant="secondary">{module.estimatedTime}</Badge>
               </div>
               
