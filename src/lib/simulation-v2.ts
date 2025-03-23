@@ -50,9 +50,27 @@ export async function getSequenceById(id: string): Promise<SimulationSequence | 
 export async function getScenarioById(id: string): Promise<ScenarioData | null> {
   // In a real implementation, we would dynamically import or fetch from API
   try {
-    // Use dynamic import to load the scenario data
-    const scenarioModule = await import(`@/data/simulation/scenarios/${id}.json`);
-    return scenarioModule.default as ScenarioData;
+    // Using a switch statement to map IDs to imported JSON
+    switch (id) {
+      case 'scenario-legitimate-banking-001': {
+        // Import legitimate banking scenario
+        const scenarioData = await import('@/data/simulation/scenarios/scenario-legitimate-banking-001.json');
+        return scenarioData.default as ScenarioData;
+      }
+      case 'scenario-scam-banking-001': {
+        // Import scam banking scenario
+        const scenarioData = await import('@/data/simulation/scenarios/scenario-scam-banking-001.json');
+        return scenarioData.default as ScenarioData;
+      }
+      case 'scenario-scam-delivery-001': {
+        // Import delivery scam scenario
+        const scenarioData = await import('@/data/simulation/scenarios/scenario-scam-delivery-001.json');
+        return scenarioData.default as ScenarioData;
+      }
+      default:
+        console.error(`Scenario with ID ${id} not found`);
+        return null;
+    }
   } catch (error) {
     console.error(`Failed to load scenario with ID ${id}:`, error);
     return null;

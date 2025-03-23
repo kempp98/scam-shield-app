@@ -1,7 +1,22 @@
 // Types for the enhanced simulation system
 
-// Already existing types we'll reference
-import { DifficultyLevel, SafetyRating, RedFlag, Message } from './simulation';
+// Define the types we need
+export type DifficultyLevel = 'beginner' | 'intermediate' | 'advanced';
+export type SafetyRating = 'safe' | 'partially_safe' | 'risky' | 'dangerous';
+
+export interface RedFlag {
+  id: string;
+  text: string;
+  explanation: string;
+}
+
+export interface Message {
+  id: string;
+  text: string;
+  isUserMessage: boolean;
+  timestamp?: string;
+  redFlags?: RedFlag[];
+}
 
 // Scenario data format for text message simulations
 export interface ScenarioData {

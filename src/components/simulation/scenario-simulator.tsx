@@ -13,8 +13,6 @@ interface ScenarioSimulatorProps {
 
 export function ScenarioSimulator({ scenario, onComplete, onContinue }: ScenarioSimulatorProps) {
   const [step, setStep] = useState<'identification' | 'action' | 'complete'>('identification');
-  const [identificationSelectedId, setIdentificationSelectedId] = useState<string | null>(null);
-  const [actionSelectedId, setActionSelectedId] = useState<string | null>(null);
   const [identificationCorrect, setIdentificationCorrect] = useState<boolean>(false);
   const [actionCorrect, setActionCorrect] = useState<boolean>(false);
   const [safetyImpact, setSafetyImpact] = useState<number>(0);
@@ -26,7 +24,6 @@ export function ScenarioSimulator({ scenario, onComplete, onContinue }: Scenario
     const option = scenario.identificationQuestion.options.find(opt => opt.id === optionId);
     if (!option) return;
     
-    setIdentificationSelectedId(optionId);
     setIdentificationCorrect(option.isCorrect);
     setIdentificationFeedback(option.feedback);
     setStep('action');
@@ -37,7 +34,6 @@ export function ScenarioSimulator({ scenario, onComplete, onContinue }: Scenario
     const option = scenario.actionQuestion.options.find(opt => opt.id === optionId);
     if (!option) return;
     
-    setActionSelectedId(optionId);
     setActionCorrect(option.isCorrect);
     setSafetyImpact(option.safetyImpact);
     setActionFeedback(option.feedback);

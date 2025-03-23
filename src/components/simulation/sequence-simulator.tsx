@@ -102,7 +102,7 @@ export function SequenceSimulator() {
             <div>
               <h3 className="font-medium text-lg mb-2">Your Results</h3>
               <p className="mb-4">
-                You completed the "{currentSequence.title}" simulation sequence!
+                You completed the &quot;{currentSequence?.title || 'Scam Detection'}&quot;simulation sequence!
               </p>
               
               <div className="grid grid-cols-3 gap-4 mb-6">

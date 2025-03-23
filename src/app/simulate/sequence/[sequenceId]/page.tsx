@@ -13,28 +13,31 @@ interface SequencePageProps {
 }
 
 export async function generateMetadata({ params }: SequencePageProps) {
-  const sequence = await getSequenceById(params.sequenceId);
-  
-  if (!sequence) {
+    // Access the sequenceId directly without destructuring
+    const sequenceId = params.sequenceId;
+    const sequence = await getSequenceById(sequenceId);
+    
+    if (!sequence) {
+      return {
+        title: 'Sequence Not Found - ScamShield',
+        description: 'The requested simulation sequence could not be found.'
+      };
+    }
+    
     return {
-      title: 'Sequence Not Found - ScamShield',
-      description: 'The requested simulation sequence could not be found.'
+      title: `${sequence.title} - ScamShield Simulation`,
+      description: sequence.description
     };
   }
-  
-  return {
-    title: `${sequence.title} - ScamShield Simulation`,
-    description: sequence.description
-  };
-}
 
 export default async function SequencePage({ params }: SequencePageProps) {
-  const { sequenceId } = params;
-  const sequence = await getSequenceById(sequenceId);
-  
-  if (!sequence) {
-    notFound();
-  }
+    // Access the sequenceId directly without destructuring
+    const sequenceId = params.sequenceId;
+    const sequence = await getSequenceById(sequenceId);
+    
+    if (!sequence) {
+      notFound();
+    }
   
   return (
     <div className="container-padded py-12">

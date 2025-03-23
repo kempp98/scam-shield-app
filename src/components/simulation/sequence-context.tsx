@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { SimulationSequence, ScenarioData, SequenceState } from '@/types/simulation-v2';
-import { getSequenceById, getScenarioById } from '@/lib/simulation';
+import { getSequenceById, getScenarioById } from '@/lib/simulation-v2';
 
 interface SequenceContextType {
   // Current state
