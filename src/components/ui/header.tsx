@@ -11,6 +11,7 @@ export function Header() {
     { name: 'Home', href: '/' },
     { name: 'Learn', href: '/learn' },
     { name: 'Simulate', href: '/simulate' },
+    { name: 'Blog', href: '/blog' },
   ];
   
   // Right side content with signup button - fixed to remove asChild prop
