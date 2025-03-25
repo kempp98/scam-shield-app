@@ -7,8 +7,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { NewsletterForm } from '@/components/blog/newsletter-form';
 
 export const metadata = {
-  title: 'ScamShield Blog - Stay Informed About Text Scams',
-  description: 'Read our latest articles on text scam prevention, awareness, and protection strategies.',
+  title: 'ScamSafe Blog - Stay Informed About Modern Scams',
+  description: 'Read our latest articles on scam prevention, awareness, and protection strategies.',
 };
 
 export default async function BlogPage() {
@@ -22,9 +22,9 @@ export default async function BlogPage() {
     <div className="container-padded py-12">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold mb-4">ScamShield Blog</h1>
+          <h1 className="text-4xl font-bold mb-4">ScamSafe Blog</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Stay informed about the latest text scam techniques and learn how to protect 
+            Stay informed about the latest scam techniques and learn how to protect 
             yourself and your loved ones with our expert articles.
           </p>
         </div>

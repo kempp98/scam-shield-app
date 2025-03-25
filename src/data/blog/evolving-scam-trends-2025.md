@@ -1,10 +1,10 @@
 ---
 id: evolving-scam-trends-2025
 slug: evolving-scam-trends-2025
-title: Evolving Text Scam Trends to Watch for in 2025
+title: Text Scam Trends to Watch in 2025 - Protect Yourself and Stay Ahead
 description: Stay ahead of scammers with our overview of the latest text message scam techniques and how to protect yourself from these evolving threats.
 coverImage: /images/blog/evolving-scam-trends.jpg
-author: Emma Rodriguez
+author: ScamSafe Team
 date: March 12, 2025
 readTime: 6 min read
 tags:
