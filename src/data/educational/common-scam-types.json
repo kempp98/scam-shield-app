@@ -1,273 +1,282 @@
 {
-    "id": "common-scam-types",
-    "title": "Common Text Scam Types",
-    "description": "Learn about the most prevalent text message scams and how they attempt to manipulate recipients.",
-    "coverImage": "/images/common-scams-cover.jpg",
-    "estimatedTime": "5 minutes",
-    "content": {
-      "sections": [
-        {
-          "id": "introduction",
-          "title": "Introduction to Text Scams",
-          "body": "Text message scams (also known as 'smishing') are an extremely common way that scammers attempt to steal personal information and money. These scams often create a false sense of urgency or curiosity to manipulate you into taking immediate action. Understanding the most common types of these scams will prepare you to recognize them when you encounter them."
-        },
-        {
-          "id": "banking-scams",
-          "title": "Banking and Financial Scams",
-          "body": "Banking scams typically claim to be from your bank or financial institution and alert you to a 'problem' with your account that requires immediate attention. They may claim your account has been locked, that there's been suspicious activity, or that you need to verify a transaction.",
-          "redFlags": [
+  "id": "common-scam-types",
+  "title": "Common Text Scam Types",
+  "description": "Learn about the most prevalent text message scams and how they attempt to manipulate recipients.",
+  "coverImage": "/images/common-scams-cover.jpg",
+  "estimatedTime": "5 minutes",
+  "content": {
+    "sections": [
+      {
+        "id": "introduction",
+        "title": "Introduction to Text Scams",
+        "body": "Text message scams (also known as 'smishing') are an extremely common way that scammers attempt to steal personal information and money. These scams often create a false sense of urgency or curiosity to manipulate you into taking immediate action. Understanding the most common types of these scams will prepare you to recognize them when you encounter them.",
+        "cardType": "basic"
+      },
+      {
+        "id": "banking-scams",
+        "title": "Banking and Financial Scams",
+        "body": "Banking scams typically claim to be from your bank or financial institution and alert you to a 'problem' with your account that requires immediate attention. They may claim your account has been locked, that there's been suspicious activity, or that you need to verify a transaction.",
+        "cardType": "expandable",
+        "interactionData": {
+          "expandableItems": [
             {
               "id": "bank-urgent-action",
-              "text": "Requires urgent action to prevent negative consequences",
-              "explanation": "Real banks give you reasonable time to respond and have established secure channels for communication."
+              "title": "Urgent Action Required",
+              "content": "Real banks give you reasonable time to respond and have established secure channels for communication. Scammers create false urgency to prevent you from thinking critically."
             },
             {
               "id": "bank-generic-greeting",
-              "text": "Uses generic greetings like 'Dear Customer'",
-              "explanation": "Legitimate banks typically address you by your name in communications."
+              "title": "Generic Greetings",
+              "content": "Legitimate banks typically address you by your name in communications. Messages starting with 'Dear Customer' or similar generic greetings are typically suspicious."
             },
             {
               "id": "bank-verification-link",
-              "text": "Includes a link to 'verify your account'",
-              "explanation": "Banks won't ask you to verify account details via text message links."
+              "title": "Verification Links",
+              "content": "Banks won't ask you to verify account details via text message links. Always go directly to your bank's official website or app."
+            }
+          ]
+        }
+      },
+      {
+        "id": "delivery-scams",
+        "title": "Package Delivery Scams",
+        "body": "Package delivery scam messages claim to be from shipping companies like UPS, FedEx, or Amazon and typically state there's an issue with your delivery that needs to be resolved.",
+        "cardType": "multipleChoice",
+        "interactionData": {
+          "question": "Which of the following is a common red flag in package delivery scams?",
+          "options": [
+            {
+              "id": "delivery-option-1",
+              "text": "The message includes an order number that matches your recent purchase",
+              "isCorrect": false,
+              "feedback": "Legitimate delivery notifications will include your actual order details. Scammers typically use vague references to packages."
+            },
+            {
+              "id": "delivery-option-2",
+              "text": "The message asks you to pay a small fee to release your package",
+              "isCorrect": true,
+              "feedback": "Correct! Legitimate delivery companies don't request additional fees via text message. This is a classic scam tactic."
+            },
+            {
+              "id": "delivery-option-3",
+              "text": "The message comes from the official company email domain",
+              "isCorrect": false,
+              "feedback": "While checking the sender is important, scammers might use domain spoofing. The request for a fee is the clearest red flag."
+            },
+            {
+              "id": "delivery-option-4",
+              "text": "The message mentions a specific delivery time window",
+              "isCorrect": false,
+              "feedback": "Providing delivery windows is standard practice for legitimate delivery services."
+            }
+          ]
+        }
+      },
+      {
+        "id": "government-scams",
+        "title": "Government and Tax Scams",
+        "body": "Government scams often claim to be from government agencies like the IRS, Social Security Administration, or other official entities. They typically threaten legal action, claim you're owed money, or state there's a problem with your benefits or tax return.",
+        "cardType": "dragDrop",
+        "interactionData": {
+          "dragItems": [
+            {
+              "id": "gov-item-1",
+              "text": "Message threatens immediate arrest if you don't respond",
+              "category": "scam"
+            },
+            {
+              "id": "gov-item-2",
+              "text": "Message states you're eligible for a tax refund and provides official .gov website",
+              "category": "legitimate"
+            },
+            {
+              "id": "gov-item-3",
+              "text": "Message asks for your SSN and bank account for direct deposit",
+              "category": "scam"
+            },
+            {
+              "id": "gov-item-4",
+              "text": "Message provides information about new tax laws with no action required",
+              "category": "legitimate"
+            },
+            {
+              "id": "gov-item-5",
+              "text": "Message claims your SSN has been suspended due to suspicious activity",
+              "category": "scam"
             }
           ],
-          "examples": [
-            "ALERT: Your [BANK] account has been temporarily suspended due to suspicious activity. Verify your identity now: https://bank-verify.scam/login",
-            "Your recent CHASE transaction of $750 was flagged as suspicious. Confirm or deny this charge: https://chase-secure.scam/verify"
+          "dropZones": [
+            {
+              "id": "scam-zone",
+              "title": "Scam Messages",
+              "acceptsCategory": "scam"
+            },
+            {
+              "id": "legitimate-zone",
+              "title": "Legitimate Messages",
+              "acceptsCategory": "legitimate"
+            }
           ]
+        }
+      },
+      {
+        "id": "prize-scams",
+        "title": "Prize and Giveaway Scams",
+        "body": "Prize scams inform you that you've won something valuable — often a contest you don't remember entering. The prize could be money, a free vacation, a new phone, or even a gift card. These scams exploit the excitement of getting something for free.",
+        "cardType": "basic"
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "What is a common red flag in banking scam text messages?",
+      "options": [
+        {
+          "id": "q1-a",
+          "text": "Including your full account number for reference",
+          "isCorrect": false,
+          "feedback": "Banks typically show only the last few digits of your account for security reasons."
         },
         {
-          "id": "delivery-scams",
-          "title": "Package Delivery Scams",
-          "body": "Package delivery scam messages claim to be from shipping companies like UPS, FedEx, or Amazon and typically state there's an issue with your delivery that needs to be resolved.",
-          "redFlags": [
-            {
-              "id": "delivery-small-fee",
-              "text": "Requests a small fee to release or redeliver your package",
-              "explanation": "Legitimate delivery companies don't request additional fees via text message."
-            },
-            {
-              "id": "delivery-vague-package",
-              "text": "Refers to a package without specific order details",
-              "explanation": "Real shipping notifications include specific order information or tracking numbers you can verify."
-            },
-            {
-              "id": "delivery-urgency",
-              "text": "Creates urgency with phrases like 'final notice'",
-              "explanation": "Delivery companies will attempt multiple deliveries and leave physical notices, not just text messages."
-            }
-          ],
-          "examples": [
-            "FedEx: Your package is pending delivery. A $2.99 fee is required for customs clearance. Pay now: https://fedex-delivery.scam/pay",
-            "USPS Notice: We attempted delivery but no one was available. Schedule redelivery here: https://usps-tracking.scam/redeliver",
-            "Your UPS package cannot be delivered due to incomplete address information. Please confirm your address within 24 hours or you may forfeit your package: https://address-verification.upsx"
-          ]
+          "id": "q1-b",
+          "text": "Requiring urgent action to prevent negative consequences",
+          "isCorrect": true,
+          "feedback": "Correct! Creating a false sense of urgency is a common tactic in banking scams to pressure you into acting without thinking."
         },
         {
-          "id": "government-scams",
-          "title": "Government and Tax Scams",
-          "body": "Government scams often claim to be from government agencies like the IRS, Social Security Administration, or other official entities. They typically threaten legal action, claim you're owed money, or state there's a problem with your benefits or tax return.",
-          "redFlags": [
-            {
-              "id": "gov-threatening",
-              "text": "Creates urgency, using threatening language about legal action or arrest",
-              "explanation": "Government agencies don't threaten citizens via text message, and don't enforce extremely strict deadlines."
-            },
-            {
-              "id": "gov-personal-info",
-              "text": "Asks for sensitive personal information via text",
-              "explanation": "Government agencies already have your information and won't ask for it via text."
-            },
-            {
-              "id": "gov-unrealistic-refund",
-              "text": "Offers an unexpected refund or benefit payment",
-              "explanation": "Government refunds don't require you to click text message links."
-            }
-          ],
-          "examples": [
-            "IRS ALERT: You have an unclaimed tax refund of $724.31. Claim now before it expires in 48 hours: https://irs-refund.scam/claim",
-            "FINAL NOTICE: Your Social Security Number has been suspended due to suspicious activity. Verify your identity: https://ssn-verify.scam/form"
-          ]
+          "id": "q1-c",
+          "text": "Asking you to visit your local branch in person",
+          "isCorrect": false,
+          "feedback": "Legitimate banks might request an in-person visit for certain matters."
         },
         {
-          "id": "prize-scams",
-          "title": "Prize and Giveaway Scams",
-          "body": "Prize scams inform you that you've won something valuable — often a contest you don't remember entering. The prize could be money, a free vacation, a new phone, or even a gift card. These scams exploit the excitement of getting something for free.",
-          "redFlags": [
-            {
-              "id": "prize-random-selection",
-              "text": "Claims you were 'randomly selected' for a major prize",
-              "explanation": "If you didn't enter a contest, you can't win it."
-            },
-            {
-              "id": "prize-urgency",
-              "text": "Creates urgency by using a short deadline",
-              "explanation": "If you had really won something, you wouldn't forfeit it by not responding within 24 hours."
-            },
-            {
-              "id": "prize-fee-required",
-              "text": "Requires a fee to claim your prize",
-              "explanation": "Legitimate prizes NEVER require upfront payment to claim."
-            }
-          ],
-          "examples": [
-            "CONGRATULATIONS! You've been selected to receive a free iPhone 14! Click here to claim: https://free-iphone.scam/claim",
-            "You've won a $500 Amazon Gift Card in our monthly draw! Claim within 24hrs: https://amazon-winner.scam/redeem"
-          ]
+          "id": "q1-d",
+          "text": "Asking you to call the number on the back of your card",
+          "isCorrect": false,
+          "feedback": "Scammers will try to provide you a fake number to call, not the official bank number from a reliable source."
         }
       ]
     },
-    "quiz": [
-      {
-        "id": "q1",
-        "question": "What is a common red flag in banking scam text messages?",
-        "options": [
-          {
-            "id": "q1-a",
-            "text": "Including your full account number for reference",
-            "isCorrect": false,
-            "feedback": "Banks typically show only the last few digits of your account for security reasons."
-          },
-          {
-            "id": "q1-b",
-            "text": "Requiring urgent action to prevent negative consequences",
-            "isCorrect": true,
-            "feedback": "Correct! Creating a false sense of urgency is a common tactic in banking scams to pressure you into acting without thinking."
-          },
-          {
-            "id": "q1-c",
-            "text": "Asking you to visit your local branch in person",
-            "isCorrect": false,
-            "feedback": "Legitimate banks might request an in-person visit for certain matters."
-          },
-          {
-            "id": "q1-d",
-            "text": "Asking you to call the number on the back of your card",
-            "isCorrect": false,
-            "feedback": "Scammers will try to provide you a fake number to call, not the official bank number from a reliable source."
-          }
-        ]
-      },
-      {
-        "id": "q2",
-        "question": "Which of the following is NOT a common type of text message scam?",
-        "options": [
-          {
-            "id": "q2-a",
-            "text": "Package delivery notifications",
-            "isCorrect": false,
-            "feedback": "Package delivery scams are very common, especially with increased online shopping."
-          },
-          {
-            "id": "q2-b",
-            "text": "Banking alerts about suspicious activity",
-            "isCorrect": false,
-            "feedback": "Banking scams are among the most common types of text message scams."
-          },
-          {
-            "id": "q2-c",
-            "text": "Routine appointment reminders from your doctor's office",
-            "isCorrect": true,
-            "feedback": "Correct! While appointment reminders are legitimate messages, the other options are common scam types."
-          },
-          {
-            "id": "q2-d",
-            "text": "Prize or giveaway notifications",
-            "isCorrect": false,
-            "feedback": "Prize and giveaway scams are very common text message scams."
-          }
-        ]
-      },
-      {
-        "id": "q3",
-        "question": "In a package delivery scam, what tactic do scammers often use?",
-        "options": [
-          {
-            "id": "q3-a",
-            "text": "They send you a notice that your package has shipped, with no action required on your end.",
-            "isCorrect": false,
-            "feedback": "Legitimate delivery services will send package updates and shipping notifications."
-          },
-          {
-            "id": "q3-b",
-            "text": "They ask you to rate your delivery experience",
-            "isCorrect": false,
-            "feedback": "Legitimate delivery services may ask for ratings, but this isn't a common scam approach."
-          },
-          {
-            "id": "q3-c",
-            "text": "They request a small fee to release or redeliver your package",
-            "isCorrect": true,
-            "feedback": "Correct! Scammers often request small fees that seem reasonable, making people more likely to pay without suspicion."
-          },
-          {
-            "id": "q3-d",
-            "text": "They inform you that your package has been upgraded to premium shipping",
-            "isCorrect": false,
-            "feedback": "This isn't a common tactic in delivery scams."
-          }
-        ]
-      },
-      {
-        "id": "q4",
-        "question": "What is a key indicator of a government or tax-related scam message?",
-        "options": [
-          {
-            "id": "q4-a",
-            "text": "It mentions your specific tax filing status",
-            "isCorrect": false,
-            "feedback": "Scammers typically don't have access to your specific tax details."
-          },
-          {
-            "id": "q4-b",
-            "text": "It uses threatening language about legal action or arrest",
-            "isCorrect": true,
-            "feedback": "Correct! Government agencies don't threaten citizens via text message. This intimidation tactic is a clear sign of a scam."
-          },
-          {
-            "id": "q4-c",
-            "text": "It directs you to an official .gov website domain",
-            "isCorrect": false,
-            "feedback": "Legitimate government communications would use .gov domains, while scammers typically use lookalike domains (ex: .g0v)."
-          },
-          {
-            "id": "q4-d",
-            "text": "It asks you to mail in physical documents",
-            "isCorrect": false,
-            "feedback": "Government agencies may request physical documents through official channels."
-          }
-        ]
-      },
-      {
-        "id": "q5",
-        "question": "What should you do if you receive a text saying you've won a prize in a contest you don't remember entering?",
-        "options": [
-          {
-            "id": "q5-a",
-            "text": "Pay any required fees to claim your prize quickly",
-            "isCorrect": false,
-            "feedback": "Legitimate prizes never require upfront payment to claim."
-          },
-          {
-            "id": "q5-b",
-            "text": "Call the provided number to verify the prize is real",
-            "isCorrect": false,
-            "feedback": "Calling the scammer's number could lead to further scam attempts or identity theft."
-          },
-          {
-            "id": "q5-c",
-            "text": "Assume it's a scam and delete the message",
-            "isCorrect": true,
-            "feedback": "Correct! If you didn't enter a contest, you can't win it. This is almost certainly a scam and should be deleted."
-          },
-          {
-            "id": "q5-d",
-            "text": "Reply to ask for more details about the prize",
-            "isCorrect": false,
-            "feedback": "Engaging with scammers in any way confirms your number is active and may lead to more scam attempts."
-          }
-        ]
-      }
-    ]
-  }
+    {
+      "id": "q2",
+      "question": "Which of the following is NOT a common type of text message scam?",
+      "options": [
+        {
+          "id": "q2-a",
+          "text": "Package delivery notifications",
+          "isCorrect": false,
+          "feedback": "Package delivery scams are very common, especially with increased online shopping."
+        },
+        {
+          "id": "q2-b",
+          "text": "Banking alerts about suspicious activity",
+          "isCorrect": false,
+          "feedback": "Banking scams are among the most common types of text message scams."
+        },
+        {
+          "id": "q2-c",
+          "text": "Routine appointment reminders from your doctor's office",
+          "isCorrect": true,
+          "feedback": "Correct! While appointment reminders are legitimate messages, the other options are common scam types."
+        },
+        {
+          "id": "q2-d",
+          "text": "Prize or giveaway notifications",
+          "isCorrect": false,
+          "feedback": "Prize and giveaway scams are very common text message scams."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "In a package delivery scam, what tactic do scammers often use?",
+      "options": [
+        {
+          "id": "q3-a",
+          "text": "They send you a notice that your package has shipped, with no action required on your end.",
+          "isCorrect": false,
+          "feedback": "Legitimate delivery services will send package updates and shipping notifications."
+        },
+        {
+          "id": "q3-b",
+          "text": "They ask you to rate your delivery experience",
+          "isCorrect": false,
+          "feedback": "Legitimate delivery services may ask for ratings, but this isn't a common scam approach."
+        },
+        {
+          "id": "q3-c",
+          "text": "They request a small fee to release or redeliver your package",
+          "isCorrect": true,
+          "feedback": "Correct! Scammers often request small fees that seem reasonable, making people more likely to pay without suspicion."
+        },
+        {
+          "id": "q3-d",
+          "text": "They inform you that your package has been upgraded to premium shipping",
+          "isCorrect": false,
+          "feedback": "This isn't a common tactic in delivery scams."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "What is a key indicator of a government or tax-related scam message?",
+      "options": [
+        {
+          "id": "q4-a",
+          "text": "It mentions your specific tax filing status",
+          "isCorrect": false,
+          "feedback": "Scammers typically don't have access to your specific tax details."
+        },
+        {
+          "id": "q4-b",
+          "text": "It uses threatening language about legal action or arrest",
+          "isCorrect": true,
+          "feedback": "Correct! Government agencies don't threaten citizens via text message. This intimidation tactic is a clear sign of a scam."
+        },
+        {
+          "id": "q4-c",
+          "text": "It directs you to an official .gov website domain",
+          "isCorrect": false,
+          "feedback": "Legitimate government communications would use .gov domains, while scammers typically use lookalike domains (ex: .g0v)."
+        },
+        {
+          "id": "q4-d",
+          "text": "It asks you to mail in physical documents",
+          "isCorrect": false,
+          "feedback": "Government agencies may request physical documents through official channels."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "What should you do if you receive a text saying you've won a prize in a contest you don't remember entering?",
+      "options": [
+        {
+          "id": "q5-a",
+          "text": "Pay any required fees to claim your prize quickly",
+          "isCorrect": false,
+          "feedback": "Legitimate prizes never require upfront payment to claim."
+        },
+        {
+          "id": "q5-b",
+          "text": "Call the provided number to verify the prize is real",
+          "isCorrect": false,
+          "feedback": "Calling the scammer's number could lead to further scam attempts or identity theft."
+        },
+        {
+          "id": "q5-c",
+          "text": "Assume it's a scam and delete the message",
+          "isCorrect": true,
+          "feedback": "Correct! If you didn't enter a contest, you can't win it. This is almost certainly a scam and should be deleted."
+        },
+        {
+          "id": "q5-d",
+          "text": "Reply to ask for more details about the prize",
+          "isCorrect": false,
+          "feedback": "Engaging with scammers in any way confirms your number is active and may lead to more scam attempts."
+        }
+      ]
+    }
+  ]
+}
