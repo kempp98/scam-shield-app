@@ -85,40 +85,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Real Stories Section - NEW personalized section */}
-      <section className="py-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl mb-16 -mx-4 px-4">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-semibold text-center mb-8">Real People, Real Protection</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-              <div className="flex items-start mb-4">
-                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg mr-4">
-                  MS
-                </div>
-                <div>
-                  <h3 className="font-medium text-lg">Maria S.</h3>
-                  <p className="text-gray-600 text-sm">Retired Teacher, 67</p>
-                </div>
-              </div>
-              <p className="italic text-gray-700">&quot;I almost lost $3,000 to a phone scammer claiming to be my grandson. After practicing with ScamSafe&apos;s simulations, I recognized the warning signs when it happened in real life.&quot;</p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-              <div className="flex items-start mb-4">
-                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg mr-4">
-                  JT
-                </div>
-                <div>
-                  <h3 className="font-medium text-lg">James T.</h3>
-                  <p className="text-gray-600 text-sm">College Student, 21</p>
-                </div>
-              </div>
-              <p className="italic text-gray-700">&quot;I thought I was too smart to fall for scams until I tried ScamSafe&apos;s simulations. They showed me how sophisticated these scams have become and how to protect myself.&quot;</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Statistics & Impact Section - More conversational */}
       <section className="py-14 mb-16">
