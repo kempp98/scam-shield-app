@@ -31,10 +31,52 @@ export interface ContentSection {
   id: string;
   title: string;
   body: string;
+  cardType: string;
   redFlags?: RedFlag[];
   keyPoints?: KeyPoint[];
   examples?: string[];
   actionSteps?: string[];
+  interactionData?: {
+    // For multiple choice
+    question?: string;
+    options?: Array<{
+      id: string;
+      text: string;
+      isCorrect: boolean;
+      feedback?: string;
+    }>;
+    // For drag and drop
+    dragItems?: Array<{
+      id: string;
+      text: string;
+      category: string;
+    }>;
+    dropZones?: Array<{
+      id: string;
+      title: string;
+      acceptsCategory: string;
+    }>;
+    // For expandable content
+    expandableItems?: Array<{
+      id: string;
+      title: string;
+      content: string;
+    }>;
+    // For flashcards
+    flashcardFront?: string;
+    flashcardBack?: string;
+    // For scenarios
+    scenarioSteps?: Array<{
+      id: string;
+      content: string;
+      choices?: Array<{
+        id: string;
+        text: string;
+        nextStepId: string;
+        feedback?: string;
+      }>;
+    }>;
+  };
 }
 
 export interface ModuleContent {
