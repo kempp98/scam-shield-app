@@ -1,303 +1,583 @@
 {
-    "id": "identifying-red-flags",
-    "title": "Identifying Red Flags in Text Scams",
-    "description": "Learn to spot the warning signs that indicate a text message might be a scam, regardless of the specific scenario.",
-    "coverImage": "/images/red-flags-cover.jpg",
-    "estimatedTime": "15 minutes",
-    "content": {
-      "sections": [
-        {
-          "id": "introduction",
-          "title": "Introduction to Red Flags",
-          "body": "While scam messages come in many forms, they often share common characteristics or 'red flags' that can help you identify them. By learning to recognize these warning signs, you can protect yourself from most scams, even those using new or unfamiliar scenarios. This module will teach you the key indicators that should make you suspicious of any message you receive."
-        },
-        {
-          "id": "urgent-action",
-          "title": "Urgency and Time Pressure",
-          "body": "One of the most common tactics scammers use is creating a false sense of urgency. They want you to act quickly before you have time to think critically or verify the message. This pressure is designed to override your natural caution with fear of negative consequences.",
-          "redFlags": [
+  "id": "identifying-red-flags",
+  "title": "Identifying Red Flags in Text Scams",
+  "description": "Learn to spot the warning signs that indicate a text message might be a scam, regardless of the specific scenario.",
+  "coverImage": "/images/red-flags-cover.jpg",
+  "estimatedTime": "15 minutes",
+  "content": {
+    "sections": [
+      {
+        "id": "introduction",
+        "title": "Introduction to Red Flags",
+        "body": "While scam messages come in many forms, they often share common characteristics or 'red flags' that can help you identify them. By learning to recognize these warning signs, you can protect yourself from most scams, even those using new or unfamiliar scenarios. This module will teach you the key indicators that should make you suspicious of any message you receive.",
+        "cardType": "basic"
+      },
+      {
+        "id": "urgent-action",
+        "title": "Urgency and Time Pressure",
+        "body": "One of the most common tactics scammers use is creating a false sense of urgency. They want you to act quickly before you have time to think critically or verify the message. This pressure is designed to override your natural caution with fear of negative consequences.",
+        "cardType": "multipleChoice",
+        "interactionData": {
+          "question": "Which of these messages shows the most obvious urgency red flag?",
+          "options": [
+            {
+              "id": "urgent-option-1",
+              "text": "Your package will be delivered tomorrow between 2-5pm.",
+              "isCorrect": false,
+              "feedback": "This is a normal delivery notification with a reasonable timeframe."
+            },
+            {
+              "id": "urgent-option-2",
+              "text": "Your Amazon account password will expire in 7 days. Please update it at your convenience.",
+              "isCorrect": false,
+              "feedback": "While this mentions a deadline, 7 days is a reasonable timeframe that doesn't create extreme urgency."
+            },
+            {
+              "id": "urgent-option-3",
+              "text": "URGENT: Your account will be PERMANENTLY DELETED in 1 HOUR if you don't verify now!",
+              "isCorrect": true,
+              "feedback": "Correct! This message uses extreme urgency with an unreasonable 1-hour deadline and threatening permanent consequences to pressure you into immediate action."
+            },
+            {
+              "id": "urgent-option-4",
+              "text": "Your monthly statement is now available. Please review it by the end of the month.",
+              "isCorrect": false,
+              "feedback": "This is a routine notification with a reasonable timeframe."
+            }
+          ]
+        }
+      },
+      {
+        "id": "spot-urgency",
+        "title": "Recognizing Urgency Tactics",
+        "body": "Scammers use specific techniques to create urgency in their messages. Learning to identify these tactics will help you spot scam attempts.",
+        "cardType": "expandable",
+        "interactionData": {
+          "expandableItems": [
             {
               "id": "urgent-deadline",
-              "text": "Extremely short deadlines to respond or take action",
-              "explanation": "Legitimate organizations give reasonable timeframes for important actions."
+              "title": "Extremely Short Deadlines",
+              "content": "Legitimate organizations give reasonable timeframes for important actions, usually days or weeks, not minutes or hours. Messages demanding action within minutes or a few hours are almost always scams."
             },
             {
               "id": "urgent-consequences",
-              "text": "Severe negative consequences for not acting immediately",
-              "explanation": "Real organizations don't threaten immediate severe consequences via text."
+              "title": "Severe Negative Consequences",
+              "content": "Threats about immediate account closure, legal action, arrest, or other serious consequences for not responding immediately are hallmarks of scams. Legitimate organizations follow established processes that include multiple notifications over time."
             },
             {
               "id": "urgent-countdown",
-              "text": "Countdown timers or expiration notices",
-              "explanation": "These create artificial time pressure to force hasty decisions."
+              "title": "Countdown Timers & Expiration Notices",
+              "content": "Including visual countdown timers or emphasizing limited time with phrases like 'final notice' or 'expires in 24 HOURS' creates artificial time pressure. These are designed to force hasty decisions before you can think critically."
+            }
+          ]
+        }
+      },
+      {
+        "id": "poor-communication",
+        "title": "Poor Grammar and Communication",
+        "body": "Many scammers operate internationally or use automated translation tools, resulting in messages with grammatical errors, unusual phrasing, or inconsistent formatting. While legitimate organizations occasionally make mistakes, multiple errors should raise suspicion.",
+        "cardType": "dragDrop",
+        "interactionData": {
+          "dragItems": [
+            {
+              "id": "grammar-item-1",
+              "text": "Your account has been temporarily suspended. Please sign in to restore access.",
+              "category": "legitimate"
+            },
+            {
+              "id": "grammar-item-2",
+              "text": "DEAR CUSTOMAR, We need verify you're account information urgent.",
+              "category": "scam"
+            },
+            {
+              "id": "grammar-item-3",
+              "text": "The your package is waiting for picking up. You must make delivery payment.",
+              "category": "scam"
+            },
+            {
+              "id": "grammar-item-4",
+              "text": "Your monthly statement is ready. Log in to view and manage your account.",
+              "category": "legitimate"
+            },
+            {
+              "id": "grammar-item-5",
+              "text": "wE have Detected SUSPICIOUS activity on youre ACCOUNT",
+              "category": "scam"
             }
           ],
-          "examples": [
-            "URGENT: Your account will be permanently closed in 2 HOURS if you don't verify now!",
-            "FINAL NOTICE: You have 30 MINUTES to respond or face legal consequences",
-            "Your unclaimed prize will expire in 24 HOURS! Act now!"
+          "dropZones": [
+            {
+              "id": "grammar-scam-zone",
+              "title": "Poor Grammar (Likely Scam)",
+              "acceptsCategory": "scam"
+            },
+            {
+              "id": "grammar-legitimate-zone",
+              "title": "Proper Grammar (Possibly Legitimate)",
+              "acceptsCategory": "legitimate"
+            }
           ]
-        },
-        {
-          "id": "poor-communication",
-          "title": "Poor Grammar and Communication",
-          "body": "Many scammers operate internationally or use automated translation tools, resulting in messages with grammatical errors, unusual phrasing, or inconsistent formatting. While legitimate organizations occasionally make mistakes, multiple errors should raise suspicion.",
-          "redFlags": [
+        }
+      },
+      {
+        "id": "grammar-explanation",
+        "title": "Why Grammar Matters",
+        "body": "Understanding why poor grammar and communication are red flags can help you spot scams more effectively.",
+        "cardType": "expandable",
+        "interactionData": {
+          "expandableItems": [
             {
               "id": "grammar-spelling",
-              "text": "Multiple spelling or grammatical errors",
-              "explanation": "Legitimate companies have professional communications teams that proofread messages to prevent obvious errors."
+              "title": "Multiple Spelling or Grammatical Errors",
+              "content": "Legitimate companies have professional communications teams that proofread messages to prevent obvious errors. Multiple spelling mistakes, wrong words, or poor grammar often indicate a scam operation without these quality controls."
             },
             {
               "id": "grammar-awkward",
-              "text": "Awkward phrasing or unusual word choices",
-              "explanation": "Often indicates text has been translated from another language or generated by AI."
+              "title": "Awkward Phrasing or Unusual Word Choices",
+              "content": "Strange sentence structures or word choices often indicate that text has been translated from another language or generated by AI. This is common in international scam operations where English isn't the primary language."
             },
             {
               "id": "grammar-inconsistent",
-              "text": "Inconsistent capitalization, spacing, or formatting",
-              "explanation": "Professional communications maintain consistent formatting and style."
+              "title": "Inconsistent Capitalization and Formatting",
+              "content": "Professional communications maintain consistent formatting and style. Messages with RANDOM capitalization, inconsistent spacing, or mixture of fonts and styling are often scams created without professional design standards."
             }
-          ],
-          "examples": [
-            "DEAR CUSTOMAR, We need verify you're account information urgent.",
-            "The your package is waiting for picking up. You must make delivery payment.",
-            "wE have Detected SUSPICIOUS activity on youre ACCOUNT"
           ]
-        },
-        {
-          "id": "personal-info",
-          "title": "Requests for Personal Information",
-          "body": "Scammers frequently try to collect personal information that can be used for identity theft or to access your accounts. Legitimate organizations generally don't request sensitive information via text message, especially not as an initial contact method.",
-          "redFlags": [
+        }
+      },
+      {
+        "id": "personal-info",
+        "title": "Requests for Personal Information",
+        "body": "Scammers frequently try to collect personal information that can be used for identity theft or to access your accounts. Legitimate organizations generally don't request sensitive information via text message, especially not as an initial contact method.",
+        "cardType": "multipleChoice",
+        "interactionData": {
+          "question": "Which of these requests would be the most dangerous to respond to?",
+          "options": [
+            {
+              "id": "info-option-1",
+              "text": "Please rate your recent customer service experience from 1-5 stars.",
+              "isCorrect": false,
+              "feedback": "This is a common legitimate request that doesn't ask for any sensitive information."
+            },
+            {
+              "id": "info-option-2",
+              "text": "To verify your identity, please reply with your Social Security Number and date of birth.",
+              "isCorrect": true,
+              "feedback": "Correct! This requests highly sensitive personal information that could be used for identity theft. Legitimate organizations never ask for complete SSNs via text."
+            },
+            {
+              "id": "info-option-3",
+              "text": "Click here to see your delivery status and estimated arrival time.",
+              "isCorrect": false,
+              "feedback": "While you should be cautious about clicking links, this doesn't directly request personal information (though the link might lead to a phishing site)."
+            },
+            {
+              "id": "info-option-4",
+              "text": "Reply YES to confirm your appointment for tomorrow at 2:00 PM.",
+              "isCorrect": false,
+              "feedback": "This is asking for a simple confirmation without requesting any sensitive personal information."
+            }
+          ]
+        }
+      },
+      {
+        "id": "sensitive-information-types",
+        "title": "Types of Sensitive Information Scammers Request",
+        "body": "Scammers typically target specific types of information they can use to steal your identity or access your accounts.",
+        "cardType": "expandable",
+        "interactionData": {
+          "expandableItems": [
             {
               "id": "personal-financial",
-              "text": "Requests for financial information (credit card numbers, account numbers, PINs)",
-              "explanation": "Legitimate organizations never ask for complete financial details via text."
+              "title": "Financial Information",
+              "content": "Credit card numbers, account numbers, PINs, CVV codes, and online banking passwords are prime targets. Legitimate organizations never ask for complete financial details via text message."
             },
             {
               "id": "personal-identity",
-              "text": "Requests for identity information (SSN, date of birth, full address)",
-              "explanation": "This information can be used to steal your identity and isn't requested via text by legitimate sources."
+              "title": "Identity Information",
+              "content": "Social Security Numbers, dates of birth, mother's maiden name, and full addresses can be used to steal your identity. Government agencies and financial institutions already have this information and won't ask for it via text."
             },
             {
               "id": "personal-credentials",
-              "text": "Requests for login credentials (usernames, passwords, verification codes)",
-              "explanation": "No legitimate service will ever ask for your password or verification code via text message."
-            }
-          ],
-          "examples": [
-            "To verify your identity, please reply with your Social Security Number and date of birth.",
-            "Confirm your payment method by texting your credit card number and CVV.",
-            "Your account has been locked. Reply with your password to restore access."
-          ]
-        },
-        {
-          "id": "suspicious-links",
-          "title": "Suspicious Links and URLs",
-          "body": "Most text scams include links to fake websites designed to steal information or install malware. These links often have subtle differences from legitimate URLs or use shortened links to hide their true destination.",
-          "redFlags": [
-            {
-              "id": "link-misspelled",
-              "text": "Misspelled domain names that look similar to legitimate sites",
-              "explanation": "Example: 'amaz0n.com' or 'paypa1.com' instead of 'amazon.com' or 'paypal.com'."
+              "title": "Login Credentials",
+              "content": "Usernames, passwords, and verification codes for any account are valuable to scammers. No legitimate service will ever ask for your password or authentication code via text message. These are strictly for your use only."
             },
             {
-              "id": "link-shortened",
-              "text": "Shortened URLs that hide the true destination",
-              "explanation": "Services like bit.ly or tinyurl can hide malicious websites."
+              "id": "personal-medical",
+              "title": "Medical Information",
+              "content": "Health insurance numbers, medical record numbers, and healthcare portal passwords can be used for medical identity theft. Healthcare providers communicate sensitive information through secure patient portals, not via standard text messages."
+            }
+          ]
+        }
+      },
+      {
+        "id": "suspicious-links",
+        "title": "Suspicious Links and URLs",
+        "body": "Most text scams include links to fake websites designed to steal information or install malware. These links often have subtle differences from legitimate URLs or use shortened links to hide their true destination.",
+        "cardType": "multipleChoice",
+        "interactionData": {
+          "question": "Which of these URLs is most likely legitimate?",
+          "options": [
+            {
+              "id": "link-option-1",
+              "text": "https://bank0famerica-secure.com/login",
+              "isCorrect": false,
+              "feedback": "This is suspicious - note the '0' (zero) instead of 'o' in 'bank0famerica' and the addition of '-secure' to make it seem trustworthy. Bank of America's actual domain is bankofamerica.com."
             },
             {
-              "id": "link-unusual-domain",
-              "text": "Unusual domain extensions or subdomains",
-              "explanation": "Legitimate companies use consistent, recognizable domains."
+              "id": "link-option-2",
+              "text": "https://amzn-delivery-notify.info/track",
+              "isCorrect": false,
+              "feedback": "This is suspicious - Amazon doesn't use 'amzn-delivery-notify.info' domain. Their legitimate domains include amazon.com and authorized variants like smile.amazon.com."
+            },
+            {
+              "id": "link-option-3",
+              "text": "https://bit.ly/3xLr8Kp",
+              "isCorrect": false,
+              "feedback": "Shortened URLs like this hide their true destination, making them risky. You can't tell where this link actually leads without clicking it."
+            },
+            {
+              "id": "link-option-4",
+              "text": "https://chase.com/account/login",
+              "isCorrect": true,
+              "feedback": "Correct! This uses the legitimate main domain for Chase Bank (chase.com) with a logical path structure. Always verify you're on the official domain before entering any information."
+            }
+          ]
+        }
+      },
+      {
+        "id": "link-inspection",
+        "title": "How to Safely Inspect Links",
+        "body": "Before clicking any link in a text message, you should inspect it carefully. Here are techniques to evaluate link safety without clicking.",
+        "cardType": "expandable",
+        "interactionData": {
+          "expandableItems": [
+            {
+              "id": "link-domain-check",
+              "title": "Check the Main Domain Name",
+              "content": "Look for the domain name (what comes before .com, .org, etc. and after www. or http://). Legitimate companies use their official, simple domains. For example, Bank of America uses 'bankofamerica.com', not variations like 'bank-of-america.com' or 'bankofamerica-secure.com'."
+            },
+            {
+              "id": "link-look-for-typos",
+              "title": "Look for Typos and Substitutions",
+              "content": "Check for subtle misspellings or character substitutions (like using a zero '0' instead of the letter 'o', or the number '1' instead of the letter 'l'). These are common tactics to create domains that look legitimate at a glance."
+            },
+            {
+              "id": "link-hover",
+              "title": "Hover Without Clicking (on computers)",
+              "content": "On computers, hovering your mouse over a link without clicking will show the destination URL in the browser's status bar or in a tooltip. On mobile, pressing and holding a link (without releasing) often shows a preview of where it leads."
+            },
+            {
+              "id": "link-search-directly",
+              "title": "Search for the Company Directly",
+              "content": "Instead of clicking any link, open your browser and search for the company directly. Click on the official result and navigate to the relevant section. This way, you know you're on the legitimate website."
+            }
+          ]
+        }
+      },
+      {
+        "id": "unexpected-context",
+        "title": "Unexpected or Out-of-Context Messages",
+        "body": "Scammers often send messages that appear to be from companies you don't do business with or about activities you haven't engaged in. Always be suspicious of unexpected messages, especially those claiming to be from organizations you don't recognize or services you don't use.",
+        "cardType": "dragDrop",
+        "interactionData": {
+          "dragItems": [
+            {
+              "id": "context-item-1",
+              "text": "Your Netflix payment of $49.99 has been processed, but you don't have a Netflix account",
+              "category": "suspicious"
+            },
+            {
+              "id": "context-item-2",
+              "text": "Your recent Amazon order #A12345 has shipped, and you did recently order from Amazon",
+              "category": "likely-legitimate"
+            },
+            {
+              "id": "context-item-3",
+              "text": "Your Chase credit card shows a $500 purchase at Best Buy, and you do shop at Best Buy",
+              "category": "verify-independently"
+            },
+            {
+              "id": "context-item-4",
+              "text": "You've won a $1,000 Walmart gift card, but you never entered a contest",
+              "category": "suspicious"
+            },
+            {
+              "id": "context-item-5",
+              "text": "Reminder about your doctor's appointment tomorrow, which you scheduled last week",
+              "category": "likely-legitimate"
+            },
+            {
+              "id": "context-item-6",
+              "text": "AT&T: You're eligible for a $75 refund due to overcharging, but you don't use AT&T",
+              "category": "suspicious"
             }
           ],
-          "examples": [
-            "https://bank0famerica-secure.com/login",
-            "https://amzn-delivery-notify.info/track",
-            "https://bit.ly/3xLr8Kp (shortened URL, hiding actual destination)"
+          "dropZones": [
+            {
+              "id": "context-suspicious-zone",
+              "title": "Suspicious (Likely Scam)",
+              "acceptsCategory": "suspicious"
+            },
+            {
+              "id": "context-verify-zone",
+              "title": "Verify Independently",
+              "acceptsCategory": "verify-independently"
+            },
+            {
+              "id": "context-legitimate-zone",
+              "title": "Likely Legitimate",
+              "acceptsCategory": "likely-legitimate"
+            }
           ]
-        },
-        {
-          "id": "unexpected-context",
-          "title": "Unexpected or Out-of-Context Messages",
-          "body": "Scammers often send messages that appear to be from companies you don't do business with or about activities you haven't engaged in. Always be suspicious of unexpected messages, especially those claiming to be from organizations you don't recognize or services you don't use.",
-          "redFlags": [
+        }
+      },
+      {
+        "id": "context-clues",
+        "title": "Context Clues for Identifying Scams",
+        "body": "Understanding why unexpected messages are suspicious can help you better protect yourself.",
+        "cardType": "expandable",
+        "interactionData": {
+          "expandableItems": [
             {
               "id": "context-unrecognized",
-              "text": "Messages from organizations you don't do business with",
-              "explanation": "If you don't have an account with a company, they shouldn't be texting you."
+              "title": "Messages from Organizations You Don't Use",
+              "content": "If you don't have an account with a company or use their services, be extremely suspicious of any message claiming to be from them. Legitimate businesses only contact existing customers."
             },
             {
               "id": "context-unexpected",
-              "text": "Notifications about purchases, shipments, or activities you don't recognize",
-              "explanation": "Scammers hope you'll panic about an unknown charge or delivery."
+              "title": "Notifications About Unknown Activities",
+              "content": "Messages about orders, shipments, subscriptions, or payments you don't recognize are major red flags. Scammers hope you'll panic about an unknown charge or delivery and react without thinking."
             },
             {
               "id": "context-unsolicited",
-              "text": "Unsolicited offers, prizes, or refunds",
-              "explanation": "Legitimate offers are typically tied to your known activities or accounts."
+              "title": "Unsolicited Offers and Prizes",
+              "content": "Unexpected offers, prizes, or refunds you didn't request are almost always scams. Legitimate offers are typically tied to your known activities or accounts, and companies don't randomly give away large prizes via text message."
+            },
+            {
+              "id": "context-verification",
+              "title": "How to Verify Suspicious Messages",
+              "content": "If you're unsure about a message from a company you do business with, never use the contact information provided in the message. Instead, look up the company's official contact information separately and reach out directly to verify if the message is legitimate."
             }
-          ],
-          "examples": [
-            "Your Netflix payment of $49.99 has been processed. Issues? Click here: [link]",
-            "Your Walmart order #54782 has shipped! Track here: [link]",
-            "AT&T: You're eligible for a $75 refund due to overcharging. Claim now: [link]"
           ]
+        }
+      },
+      {
+        "id": "multiple-red-flags",
+        "title": "Spotting Multiple Red Flags",
+        "body": "The most dangerous scam messages often contain multiple red flags. Learning to identify combinations of warning signs will make you more scam-resistant.",
+        "cardType": "multipleChoice",
+        "interactionData": {
+          "question": "Which message shows the MOST red flags?",
+          "options": [
+            {
+              "id": "combo-option-1",
+              "text": "Your package is scheduled for delivery tomorrow between 2-4pm. No action required.",
+              "isCorrect": false,
+              "feedback": "This message doesn't show red flags - it provides information without requesting action, doesn't create urgency, and doesn't include suspicious links."
+            },
+            {
+              "id": "combo-option-2",
+              "text": "URGENT: Your Bank Account been FROZEN due to suspicious activites! Verify you're identity now: http://bank0famerica-secure.com/verify or call 888-555-1234 in 2 HOURS to avoid permanent closure!",
+              "isCorrect": true,
+              "feedback": "Correct! This contains MULTIPLE red flags: urgency ('URGENT'), short deadline (2 hours), severe consequences (account closure), poor grammar ('activites', 'you're' instead of 'your'), suspicious link (misspelled domain with 'bank0famerica'), and a request for identity verification."
+            },
+            {
+              "id": "combo-option-3",
+              "text": "Amazon order #A12345 has been delivered. Signature was provided by: SMITH",
+              "isCorrect": false,
+              "feedback": "This message doesn't show clear red flags - it's providing delivery confirmation information without requesting action."
+            },
+            {
+              "id": "combo-option-4",
+              "text": "Your credit card payment is due in 3 days. Please log in to your account to make a payment.",
+              "isCorrect": false,
+              "feedback": "This message shows few red flags - the timeframe is reasonable (3 days), and it directs you to log in to your account rather than clicking a provided link."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "Which of the following is a common red flag indicating a text message might be a scam?",
+      "options": [
+        {
+          "id": "q1-a",
+          "text": "The message addresses you by your correct full name",
+          "isCorrect": false,
+          "feedback": "Legitimate messages often use your name. Scams frequently use generic greetings or incorrect names."
+        },
+        {
+          "id": "q1-b",
+          "text": "The message contains multiple spelling and grammatical errors",
+          "isCorrect": true,
+          "feedback": "Correct! Multiple spelling and grammatical errors are a strong indicator of a scam. Legitimate organizations typically have professional communications that are carefully proofread."
+        },
+        {
+          "id": "q1-c",
+          "text": "The message comes from a number saved in your contacts",
+          "isCorrect": false,
+          "feedback": "While scammers can spoof numbers, messages from saved contacts are generally less likely to be scams."
+        },
+        {
+          "id": "q1-d",
+          "text": "The message references a recent legitimate purchase you made",
+          "isCorrect": false,
+          "feedback": "Messages relating to actual activities you've engaged in are more likely to be legitimate."
         }
       ]
     },
-    "quiz": [
-      {
-        "id": "q1",
-        "question": "Which of the following is a common red flag indicating a text message might be a scam?",
-        "options": [
-          {
-            "id": "q1-a",
-            "text": "The message addresses you by your correct full name",
-            "isCorrect": false,
-            "feedback": "Legitimate messages often use your name. Scams frequently use generic greetings or incorrect names."
-          },
-          {
-            "id": "q1-b",
-            "text": "The message contains multiple spelling and grammatical errors",
-            "isCorrect": true,
-            "feedback": "Correct! Multiple spelling and grammatical errors are a strong indicator of a scam. Legitimate organizations typically have professional communications that are carefully proofread."
-          },
-          {
-            "id": "q1-c",
-            "text": "The message comes from a number saved in your contacts",
-            "isCorrect": false,
-            "feedback": "While scammers can spoof numbers, messages from saved contacts are generally less likely to be scams."
-          },
-          {
-            "id": "q1-d",
-            "text": "The message references a recent legitimate purchase you made",
-            "isCorrect": false,
-            "feedback": "Messages relating to actual activities you've engaged in are more likely to be legitimate."
-          }
-        ]
-      },
-      {
-        "id": "q2",
-        "question": "How do scammers typically use urgency in their messages?",
-        "options": [
-          {
-            "id": "q2-a",
-            "text": "They provide reasonable timeframes for you to respond at your convenience",
-            "isCorrect": false,
-            "feedback": "Scammers typically use unreasonable, short timeframes, not reasonable ones."
-          },
-          {
-            "id": "q2-b",
-            "text": "They create artificial time pressure to force hasty decisions",
-            "isCorrect": true,
-            "feedback": "Correct! Scammers want you to act quickly before you have time to think critically or verify the message."
-          },
-          {
-            "id": "q2-c",
-            "text": "They suggest you might want to take action sometime in the next few weeks",
-            "isCorrect": false,
-            "feedback": "Scammers rarely give extended timeframes as this allows too much time for verification."
-          },
-          {
-            "id": "q2-d",
-            "text": "They only mention deadlines for optional promotional offers",
-            "isCorrect": false,
-            "feedback": "Scammers typically use deadlines for critical account issues or legal matters, not just promotional offers."
-          }
-        ]
-      },
-      {
-        "id": "q3",
-        "question": "What is concerning about a text message that includes a shortened URL (like bit.ly or tinyurl)?",
-        "options": [
-          {
-            "id": "q3-a",
-            "text": "Shortened URLs always lead to malware",
-            "isCorrect": false,
-            "feedback": "While shortened URLs can be used maliciously, they're also used legitimately in many contexts."
-          },
-          {
-            "id": "q3-b",
-            "text": "Shortened URLs are only used by foreign scammers",
-            "isCorrect": false,
-            "feedback": "URL shorteners are used globally by both legitimate services and scammers."
-          },
-          {
-            "id": "q3-c",
-            "text": "The true destination of the link is hidden from view",
-            "isCorrect": true,
-            "feedback": "Correct! Shortened URLs hide the actual destination, making it impossible to verify if it's legitimate before clicking."
-          },
-          {
-            "id": "q3-d",
-            "text": "Shortened URLs expire quickly",
-            "isCorrect": false,
-            "feedback": "Most shortened URLs don't have short expiration times."
-          }
-        ]
-      },
-      {
-        "id": "q4",
-        "question": "Which of these requests in a text message is the strongest indicator of a scam?",
-        "options": [
-          {
-            "id": "q4-a",
-            "text": "Asking you to rate your customer service experience",
-            "isCorrect": false,
-            "feedback": "Service ratings are commonly requested by legitimate businesses."
-          },
-          {
-            "id": "q4-b",
-            "text": "Asking you to reply with your account password to verify your identity",
-            "isCorrect": true,
-            "feedback": "Correct! No legitimate service will ever ask for your password via text message. This is a definite scam indicator."
-          },
-          {
-            "id": "q4-c",
-            "text": "Asking you to confirm receipt of a delivery",
-            "isCorrect": false,
-            "feedback": "Delivery confirmations are standard practice for many shipping companies."
-          },
-          {
-            "id": "q4-d",
-            "text": "Asking you to download their official mobile app from an app store",
-            "isCorrect": false,
-            "feedback": "Directing users to download official apps from legitimate app stores is common practice."
-          }
-        ]
-      },
-      {
-        "id": "q5",
-        "question": "If you receive a text about your Amazon order being delayed, but you haven't ordered anything from Amazon recently, what is this an example of?",
-        "options": [
-          {
-            "id": "q5-a",
-            "text": "A suspicious link red flag",
-            "isCorrect": false,
-            "feedback": "While the message might contain a suspicious link, this isn't the primary red flag described."
-          },
-          {
-            "id": "q5-b",
-            "text": "An out-of-context or unexpected message red flag",
-            "isCorrect": true,
-            "feedback": "Correct! Messages about activities you haven't engaged in (like orders you didn't place) are a key red flag of scams."
-          },
-          {
-            "id": "q5-c",
-            "text": "A poor grammar and communication red flag",
-            "isCorrect": false,
-            "feedback": "The scenario doesn't mention grammar issues, though they might also be present."
-          },
-          {
-            "id": "q5-d",
-            "text": "An urgency and time pressure red flag",
-            "isCorrect": false,
-            "feedback": "The scenario doesn't specifically mention urgency tactics, though they might be present as well."
-          }
-        ]
-      }
-    ]
-  }
+    {
+      "id": "q2",
+      "question": "How do scammers typically use urgency in their messages?",
+      "options": [
+        {
+          "id": "q2-a",
+          "text": "They provide reasonable timeframes for you to respond at your convenience",
+          "isCorrect": false,
+          "feedback": "Scammers typically use unreasonable, short timeframes, not reasonable ones."
+        },
+        {
+          "id": "q2-b",
+          "text": "They create artificial time pressure to force hasty decisions",
+          "isCorrect": true,
+          "feedback": "Correct! Scammers want you to act quickly before you have time to think critically or verify the message."
+        },
+        {
+          "id": "q2-c",
+          "text": "They suggest you might want to take action sometime in the next few weeks",
+          "isCorrect": false,
+          "feedback": "Scammers rarely give extended timeframes as this allows too much time for verification."
+        },
+        {
+          "id": "q2-d",
+          "text": "They only mention deadlines for optional promotional offers",
+          "isCorrect": false,
+          "feedback": "Scammers typically use deadlines for critical account issues or legal matters, not just promotional offers."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "What is concerning about a text message that includes a shortened URL (like bit.ly or tinyurl)?",
+      "options": [
+        {
+          "id": "q3-a",
+          "text": "Shortened URLs always lead to malware",
+          "isCorrect": false,
+          "feedback": "While shortened URLs can be used maliciously, they're also used legitimately in many contexts."
+        },
+        {
+          "id": "q3-b",
+          "text": "Shortened URLs are only used by foreign scammers",
+          "isCorrect": false,
+          "feedback": "URL shorteners are used globally by both legitimate services and scammers."
+        },
+        {
+          "id": "q3-c",
+          "text": "The true destination of the link is hidden from view",
+          "isCorrect": true,
+          "feedback": "Correct! Shortened URLs hide the actual destination, making it impossible to verify if it's legitimate before clicking."
+        },
+        {
+          "id": "q3-d",
+          "text": "Shortened URLs expire quickly",
+          "isCorrect": false,
+          "feedback": "Most shortened URLs don't have short expiration times."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "Which of these requests in a text message is the strongest indicator of a scam?",
+      "options": [
+        {
+          "id": "q4-a",
+          "text": "Asking you to rate your customer service experience",
+          "isCorrect": false,
+          "feedback": "Service ratings are commonly requested by legitimate businesses."
+        },
+        {
+          "id": "q4-b",
+          "text": "Asking you to reply with your account password to verify your identity",
+          "isCorrect": true,
+          "feedback": "Correct! No legitimate service will ever ask for your password via text message. This is a definite scam indicator."
+        },
+        {
+          "id": "q4-c",
+          "text": "Asking you to confirm receipt of a delivery",
+          "isCorrect": false,
+          "feedback": "Delivery confirmations are standard practice for many shipping companies."
+        },
+        {
+          "id": "q4-d",
+          "text": "Asking you to download their official mobile app from an app store",
+          "isCorrect": false,
+          "feedback": "Directing users to download official apps from legitimate app stores is common practice."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "If you receive a text about your Amazon order being delayed, but you haven't ordered anything from Amazon recently, what is this an example of?",
+      "options": [
+        {
+          "id": "q5-a",
+          "text": "A suspicious link red flag",
+          "isCorrect": false,
+          "feedback": "While the message might contain a suspicious link, this isn't the primary red flag described."
+        },
+        {
+          "id": "q5-b",
+          "text": "An out-of-context or unexpected message red flag",
+          "isCorrect": true,
+          "feedback": "Correct! Messages about activities you haven't engaged in (like orders you didn't place) are a key red flag of scams."
+        },
+        {
+          "id": "q5-c",
+          "text": "A poor grammar and communication red flag",
+          "isCorrect": false,
+          "feedback": "The scenario doesn't mention grammar issues, though they might also be present."
+        },
+        {
+          "id": "q5-d",
+          "text": "An urgency and time pressure red flag",
+          "isCorrect": false,
+          "feedback": "The scenario doesn't specifically mention urgency tactics, though they might be present as well."
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "What's the best approach when analyzing a suspicious text message?",
+      "options": [
+        {
+          "id": "q6-a",
+          "text": "Focus on only one red flag to determine if it's a scam",
+          "isCorrect": false,
+          "feedback": "Looking for just one red flag might miss other warning signs. Scam messages often contain multiple indicators."
+        },
+        {
+          "id": "q6-b",
+          "text": "Look for a combination of multiple red flags",
+          "isCorrect": true,
+          "feedback": "Correct! The most effective approach is to look for multiple red flags together, as sophisticated scams often combine several deceptive tactics."
+        },
+        {
+          "id": "q6-c",
+          "text": "Only be suspicious if the message is from an unknown number",
+          "isCorrect": false,
+          "feedback": "Scammers can spoof familiar numbers or hack accounts, so even messages from known numbers can be scams."
+        },
+        {
+          "id": "q6-d",
+          "text": "Assume all text messages requesting any action are scams",
+          "isCorrect": false,
+          "feedback": "While caution is good, legitimate organizations do send action requests via text. The key is identifying suspicious elements."
+        }
+      ]
+    }
+  ]
+}

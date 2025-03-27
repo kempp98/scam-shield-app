@@ -1,304 +1,578 @@
 {
-    "id": "safe-response-techniques",
-    "title": "Safe Response Techniques",
-    "description": "Learn what to do when you receive suspicious text messages and how to protect yourself from scams.",
-    "coverImage": "/images/safe-response-cover.jpg",
-    "estimatedTime": "12 minutes",
-    "content": {
-      "sections": [
-        {
-          "id": "introduction",
-          "title": "Introduction to Safe Responses",
-          "body": "Knowing how to respond when you receive a suspicious text message is just as important as being able to identify it as a potential scam. This module will guide you through the appropriate actions to take when faced with suspicious messages, helping you protect your personal information and financial security."
-        },
-        {
-          "id": "dont-engage",
-          "title": "Don't Engage with the Sender",
-          "body": "The safest approach when receiving a suspicious text is to avoid engaging with the sender. Scammers want you to respond in some way—whether by replying, clicking a link, or calling a number—as this confirms your number is active and that you're receptive to their tactics.",
-          "keyPoints": [
+  "id": "safe-response-techniques",
+  "title": "Safe Response Techniques",
+  "description": "Learn what to do when you receive suspicious text messages and how to protect yourself from scams.",
+  "coverImage": "/images/safe-response-cover.jpg",
+  "estimatedTime": "12 minutes",
+  "content": {
+    "sections": [
+      {
+        "id": "introduction",
+        "title": "Introduction to Safe Responses",
+        "body": "Knowing how to respond when you receive a suspicious text message is just as important as being able to identify it as a potential scam. This module will guide you through the appropriate actions to take when faced with suspicious messages, helping you protect your personal information and financial security.",
+        "cardType": "basic"
+      },
+      {
+        "id": "first-steps",
+        "title": "First Steps: Assess the Message",
+        "body": "When you receive a suspicious text message, your initial response is critical. Before taking any action, first assess whether the message shows common scam red flags.",
+        "cardType": "multipleChoice",
+        "interactionData": {
+          "question": "What should be your FIRST response when receiving a suspicious text message?",
+          "options": [
+            {
+              "id": "first-option-1",
+              "text": "Immediately call the number provided in the message",
+              "isCorrect": false,
+              "feedback": "This is risky! The number could connect you directly with scammers who will try to extract information or payments from you."
+            },
+            {
+              "id": "first-option-2",
+              "text": "Reply asking for more information to determine if it's legitimate",
+              "isCorrect": false,
+              "feedback": "Replying confirms your number is active and monitored, which can lead to more scam attempts."
+            },
+            {
+              "id": "first-option-3",
+              "text": "Stay calm and look for red flags without engaging with the sender",
+              "isCorrect": true,
+              "feedback": "Correct! The first step should always be to carefully evaluate the message for red flags without replying, clicking links, or calling numbers in the message."
+            },
+            {
+              "id": "first-option-4",
+              "text": "Forward the message to all your contacts to warn them",
+              "isCorrect": false,
+              "feedback": "While warning others about scams is good, forwarding the actual message could spread harmful links or phone numbers. It's better to describe the scam without sharing the original message."
+            }
+          ]
+        }
+      },
+      {
+        "id": "dont-engage",
+        "title": "Don't Engage with the Sender",
+        "body": "The safest approach when receiving a suspicious text is to avoid engaging with the sender. Scammers want you to respond in some way—whether by replying, clicking a link, or calling a number—as this confirms your number is active and that you're receptive to their tactics.",
+        "cardType": "expandable",
+        "interactionData": {
+          "expandableItems": [
             {
               "id": "dont-reply",
               "title": "Don't Reply to the Message",
-              "description": "Even replying with 'STOP' or 'NO' confirms to scammers that your number is active and monitored. This can lead to more scam attempts."
+              "content": "Even replying with 'STOP', 'NO', or 'REMOVE ME' confirms to scammers that your number is active and monitored. This can lead to more scam attempts and your number being added to 'confirmed active' lists that scammers sell to each other."
             },
             {
               "id": "dont-click",
               "title": "Don't Click on Any Links",
-              "description": "Links in suspicious texts often lead to fake websites designed to steal your information or install malware on your device."
+              "content": "Links in suspicious texts often lead to fake websites designed to steal your information or install malware on your device. Some sophisticated phishing sites look nearly identical to legitimate websites but have subtle differences designed to capture your login credentials."
             },
             {
               "id": "dont-call",
-              "title": "Don't Call Any Provided Numbers",
-              "description": "Phone numbers in scam texts often connect to scammers who will try to extract information or payments from you."
+              "title": "Don't Call Provided Numbers",
+              "content": "Phone numbers in scam texts often connect to call centers staffed by scammers who are trained to sound official and extract information or payments from you. They may use social engineering tactics to gain your trust and convince you to provide sensitive information."
+            },
+            {
+              "id": "dont-download",
+              "title": "Don't Download Attachments",
+              "content": "Attachments in suspicious text messages may contain malware that can infect your device, steal your data, or even encrypt your files for ransom. Never download or open attachments from unknown or suspicious senders."
+            }
+          ]
+        }
+      },
+      {
+        "id": "deletion-blocking",
+        "title": "Delete and Block",
+        "body": "After identifying a message as suspicious, take these immediate actions to protect yourself.",
+        "cardType": "dragDrop",
+        "interactionData": {
+          "dragItems": [
+            {
+              "id": "action-item-1",
+              "text": "Take a screenshot of the message for your records",
+              "category": "do-first"
+            },
+            {
+              "id": "action-item-2",
+              "text": "Reply with 'STOP' to unsubscribe",
+              "category": "never-do"
+            },
+            {
+              "id": "action-item-3",
+              "text": "Block the sender's number",
+              "category": "do-first"
+            },
+            {
+              "id": "action-item-4",
+              "text": "Click the link to see where it leads",
+              "category": "never-do"
+            },
+            {
+              "id": "action-item-5",
+              "text": "Delete the message from your phone",
+              "category": "do-first"
+            },
+            {
+              "id": "action-item-6",
+              "text": "Forward the message to 7726 (SPAM) to report it",
+              "category": "do-first"
+            },
+            {
+              "id": "action-item-7",
+              "text": "Call the number to tell them to stop contacting you",
+              "category": "never-do"
             }
           ],
-          "actionSteps": [
-            "Ignore the message entirely if it's clearly suspicious",
-            "Delete the message to prevent accidentally engaging with it later",
-            "Block the number if your phone allows this function"
+          "dropZones": [
+            {
+              "id": "do-first-zone",
+              "title": "Safe Actions to Take",
+              "acceptsCategory": "do-first"
+            },
+            {
+              "id": "never-do-zone",
+              "title": "Actions to Avoid",
+              "acceptsCategory": "never-do"
+            }
           ]
-        },
-        {
-          "id": "verify-independently",
-          "title": "Verify Through Official Channels",
-          "body": "If you receive a message claiming to be from a company or organization you do business with, and you're unsure if it's legitimate, verify the information through official channels rather than using the contact information provided in the message.",
-          "keyPoints": [
+        }
+      },
+      {
+        "id": "verify-independently",
+        "title": "Verify Through Official Channels",
+        "body": "If you receive a message claiming to be from a company or organization you do business with, and you're unsure if it's legitimate, verify the information through official channels rather than using the contact information provided in the message.",
+        "cardType": "multipleChoice",
+        "interactionData": {
+          "question": "Your bank texts you about suspicious activity on your account. What's the SAFEST way to verify if this alert is legitimate?",
+          "options": [
+            {
+              "id": "verify-option-1",
+              "text": "Reply to the text message asking for details",
+              "isCorrect": false,
+              "feedback": "Replying to potentially fraudulent messages confirms your number is active and engaged, which can lead to more scam attempts."
+            },
+            {
+              "id": "verify-option-2",
+              "text": "Call the phone number provided in the text message",
+              "isCorrect": false,
+              "feedback": "This is risky because scammers often include fake customer service numbers. These can connect you to people posing as bank representatives."
+            },
+            {
+              "id": "verify-option-3",
+              "text": "Click the link in the text to log in and check your account",
+              "isCorrect": false,
+              "feedback": "Clicking links in suspicious texts is dangerous as they often lead to convincing but fake websites designed to steal your login credentials."
+            },
+            {
+              "id": "verify-option-4",
+              "text": "Call the official customer service number on the back of your bank card",
+              "isCorrect": true,
+              "feedback": "Correct! Always contact your bank using official contact information that you've verified independently, like the number on the back of your card or from their official website that you navigate to yourself."
+            }
+          ]
+        }
+      },
+      {
+        "id": "verification-methods",
+        "title": "Safe Verification Methods",
+        "body": "When verifying if a message is legitimate, always use these trusted approaches.",
+        "cardType": "expandable",
+        "interactionData": {
+          "expandableItems": [
             {
               "id": "use-official-contacts",
               "title": "Use Official Contact Information",
-              "description": "Look up the official phone number or website for the organization independently (e.g., from your credit card, a past bill, or by searching online)."
+              "content": "Look up the official phone number or website for the organization independently. Good sources include: the back of your credit/debit card, a recent legitimate bill or statement, the company's mobile app that you've previously installed, or a web search followed by carefully checking you're on the official website."
             },
             {
               "id": "check-account-directly",
               "title": "Log In to Your Account Directly",
-              "description": "Instead of clicking links, open your browser and go directly to the official website, then log in to check for any alerts or messages."
+              "content": "Open your browser or the official mobile app and manually type the website address (don't copy/paste from the message). Log in to your account directly to check for any alerts, messages, or account status. Legitimate account issues will typically be visible when you log in."
             },
             {
               "id": "call-customer-service",
-              "title": "Call Customer Service",
-              "description": "If the message claims there's an urgent issue with an account, call the customer service number on the back of your card or from the official website."
+              "title": "Call Official Customer Service",
+              "content": "When calling customer service, use only numbers you've verified independently. Tell the representative about the message you received and ask them to confirm if it was legitimate. Be aware that some sophisticated scammers may try to intercept calls to legitimate numbers, so verify you're speaking with the actual company."
+            },
+            {
+              "id": "visit-in-person",
+              "title": "Visit in Person When Possible",
+              "content": "For local organizations like your bank or credit union, an in-person visit can be the most secure way to verify suspicious communications. Bring the message with you (as a screenshot) to show a representative and confirm whether it was legitimate."
             }
-          ],
-          "actionSteps": [
-            "Never use the contact information provided in the suspicious message",
-            "Manually type the official website address in your browser",
-            "Call using only official phone numbers you've verified independently"
           ]
-        },
-        {
-          "id": "report-message",
-          "title": "Report the Scam Message",
-          "body": "Reporting scam messages helps protect others and allows authorities to track and act against scammers. There are several ways to report depending on the type of scam and your location.",
-          "keyPoints": [
+        }
+      },
+      {
+        "id": "report-message",
+        "title": "Report the Scam Message",
+        "body": "Reporting scam messages helps protect others and allows authorities to track and act against scammers. There are several ways to report depending on the type of scam and your location.",
+        "cardType": "expandable",
+        "interactionData": {
+          "expandableItems": [
             {
               "id": "report-to-carrier",
               "title": "Report to Your Mobile Carrier",
-              "description": "Forward suspicious texts to 7726 (SPAM), which works with most major carriers in the US. This helps carriers identify and block scam numbers."
+              "content": "Forward suspicious texts to 7726 (SPAM), which works with most major carriers in the US and many international carriers. This reporting method helps carriers identify and block scam numbers across their networks, reducing successful scams for everyone."
             },
             {
               "id": "report-to-ftc",
               "title": "Report to the FTC",
-              "description": "In the US, file a report at ReportFraud.ftc.gov to help law enforcement track and combat scammers."
+              "content": "In the US, file a report at ReportFraud.ftc.gov to help law enforcement track and combat scammers. The FTC uses these reports to identify trends, build cases against scammers, and provide warnings to the public about emerging threats."
             },
             {
               "id": "report-to-company",
               "title": "Report to the Impersonated Company",
-              "description": "Many companies have dedicated email addresses or forms for reporting phishing attempts (e.g., phishing@bankname.com)."
-            }
-          ],
-          "actionSteps": [
-            "Forward the message to 7726 (SPAM)",
-            "Take screenshots of suspicious messages before deleting them",
-            "Include details like the sender's number and the date/time received when filing reports"
-          ]
-        },
-        {
-          "id": "protect-information",
-          "title": "Protect Your Personal Information",
-          "body": "If you suspect you may have already engaged with a scam text by sharing personal information or clicking on a link, take immediate steps to mitigate potential damage.",
-          "keyPoints": [
-            {
-              "id": "change-passwords",
-              "title": "Change Passwords Immediately",
-              "description": "If you entered login credentials on a suspicious site, change your passwords immediately, starting with the most important accounts (banking, email, etc.)."
+              "content": "Many companies have dedicated email addresses or forms for reporting phishing attempts (e.g., phishing@bankname.com or security@companyname.com). These reports help companies take action against scammers using their brand and improve their security measures."
             },
             {
-              "id": "monitor-accounts",
-              "title": "Monitor Your Accounts",
-              "description": "Check your financial accounts regularly for unauthorized transactions and set up alerts for account activity if available."
+              "id": "report-international",
+              "title": "International Reporting Options",
+              "content": "Outside the US, report to your country's consumer protection agency or cyber security center. For example, in the UK report to the National Cyber Security Centre at report@phishing.gov.uk, in Canada use the Canadian Anti-Fraud Centre, and in Australia report to ScamWatch."
+            }
+          ]
+        }
+      },
+      {
+        "id": "protect-information",
+        "title": "Protect Your Personal Information",
+        "body": "If you suspect you may have already engaged with a scam text by sharing personal information or clicking on a link, take immediate steps to mitigate potential damage.",
+        "cardType": "multipleChoice",
+        "interactionData": {
+          "question": "If you accidentally clicked a link in a suspicious text message and entered your login information before realizing it might be a scam, what should you do FIRST?",
+          "options": [
+            {
+              "id": "protect-option-1",
+              "text": "Wait and see if any unauthorized activity occurs on your accounts",
+              "isCorrect": false,
+              "feedback": "This passive approach puts you at significant risk. By the time you notice unauthorized activity, substantial damage could already be done."
             },
             {
-              "id": "credit-freeze",
-              "title": "Consider a Credit Freeze",
-              "description": "If you shared sensitive personal information like your Social Security Number, consider freezing your credit to prevent identity theft."
+              "id": "protect-option-2",
+              "text": "Factory reset your phone to remove any potential malware",
+              "isCorrect": false,
+              "feedback": "While this might help with malware, it doesn't address the immediate risk that your login credentials have been compromised and could be used to access your accounts."
+            },
+            {
+              "id": "protect-option-3",
+              "text": "Change your passwords immediately for the compromised account and any others that use the same password",
+              "isCorrect": true,
+              "feedback": "Correct! Immediately changing passwords is the most critical first step to prevent unauthorized access to your accounts. Start with the compromised account, then change any others using the same or similar passwords."
+            },
+            {
+              "id": "protect-option-4",
+              "text": "Call the company that was impersonated in the scam text",
+              "isCorrect": false,
+              "feedback": "While notifying the company is good, your immediate priority should be securing your accounts by changing passwords before scammers can use your compromised credentials."
+            }
+          ]
+        }
+      },
+      {
+        "id": "recovery-steps",
+        "title": "Recovery After Potential Compromise",
+        "body": "If you've accidentally engaged with a scam, follow these steps to protect yourself from further harm.",
+        "cardType": "dragDrop",
+        "interactionData": {
+          "dragItems": [
+            {
+              "id": "recovery-item-1",
+              "text": "Change passwords for all affected accounts",
+              "category": "immediate"
+            },
+            {
+              "id": "recovery-item-2",
+              "text": "Enable two-factor authentication where available",
+              "category": "immediate"
+            },
+            {
+              "id": "recovery-item-3",
+              "text": "Monitor your accounts for suspicious activity",
+              "category": "ongoing"
+            },
+            {
+              "id": "recovery-item-4",
+              "text": "Contact credit bureaus to freeze your credit if personal info was shared",
+              "category": "immediate"
+            },
+            {
+              "id": "recovery-item-5",
+              "text": "Regularly check your credit report for unauthorized accounts",
+              "category": "ongoing"
+            },
+            {
+              "id": "recovery-item-6",
+              "text": "Run anti-malware software on your device",
+              "category": "immediate"
+            },
+            {
+              "id": "recovery-item-7",
+              "text": "Review privacy settings on all your accounts",
+              "category": "ongoing"
+            },
+            {
+              "id": "recovery-item-8",
+              "text": "Update your devices with the latest security patches",
+              "category": "ongoing"
             }
           ],
-          "actionSteps": [
-            "Use unique, strong passwords for each account",
-            "Enable two-factor authentication where available",
-            "Check your credit report regularly for suspicious activity",
-            "Consider using identity theft protection services if you've been compromised"
+          "dropZones": [
+            {
+              "id": "immediate-zone",
+              "title": "Immediate Actions (First 24 hours)",
+              "acceptsCategory": "immediate"
+            },
+            {
+              "id": "ongoing-zone",
+              "title": "Ongoing Protection Measures",
+              "acceptsCategory": "ongoing"
+            }
           ]
-        },
-        {
-          "id": "stay-informed",
-          "title": "Stay Informed About Current Scams",
-          "body": "Scammers constantly evolve their tactics, so staying informed about current scam techniques is essential for ongoing protection. Knowing about emerging threats can help you identify new scams before falling victim to them.",
-          "keyPoints": [
+        }
+      },
+      {
+        "id": "stay-informed",
+        "title": "Stay Informed About Current Scams",
+        "body": "Scammers constantly evolve their tactics, so staying informed about current scam techniques is essential for ongoing protection. Knowing about emerging threats can help you identify new scams before falling victim to them.",
+        "cardType": "expandable",
+        "interactionData": {
+          "expandableItems": [
             {
               "id": "follow-alerts",
               "title": "Follow Consumer Protection Alerts",
-              "description": "Organizations like the FTC, FBI, and consumer protection agencies regularly publish information about new scams."
+              "content": "Organizations like the FTC, FBI, CISA, and consumer protection agencies regularly publish information about new scams. Sign up for email alerts, follow their social media accounts, or check their websites regularly to stay informed about emerging threats."
             },
             {
               "id": "company-notifications",
-              "title": "Pay Attention to Company Notifications",
-              "description": "Many companies provide information about scams targeting their customers and how their legitimate communications will appear."
+              "title": "Pay Attention to Company Communications",
+              "content": "Many companies provide information about scams targeting their customers and explain how their legitimate communications will appear. Review security updates from your bank, email provider, and other sensitive services to learn what to watch for."
             },
             {
               "id": "community-resources",
               "title": "Use Community Resources",
-              "description": "Forums, social media groups, and community alert systems often share information about local scam activities."
+              "content": "Forums, social media groups, and community alert systems often share information about local scam activities. Neighborhood apps, local police department alerts, and community boards can provide early warnings about scams targeting your specific area."
+            },
+            {
+              "id": "security-news",
+              "title": "Follow Cybersecurity News",
+              "content": "Reputable technology and security news websites report on significant scams and data breaches. Following these sources can alert you to major threats before they become widespread, giving you time to take preventive measures."
             }
-          ],
-          "actionSteps": [
-            "Sign up for scam alerts from consumer protection agencies",
-            "Follow reputable cybersecurity sources for updates on new threats",
-            "Discuss suspicious messages with friends and family to spread awareness"
           ]
+        }
+      },
+      {
+        "id": "helping-others",
+        "title": "Helping Vulnerable Friends and Family",
+        "body": "One of the most effective ways to combat scams is to share your knowledge with others, especially those who may be more vulnerable to scams due to less familiarity with technology or other factors.",
+        "cardType": "multipleChoice",
+        "interactionData": {
+          "question": "What's the MOST effective way to help older family members who are less tech-savvy avoid text scams?",
+          "options": [
+            {
+              "id": "help-option-1",
+              "text": "Take control of their phone and handle all their text messages for them",
+              "isCorrect": false,
+              "feedback": "This approach undermines independence and doesn't build skills. It's better to empower people with knowledge than to take over their communications."
+            },
+            {
+              "id": "help-option-2",
+              "text": "Tell them to never respond to any text messages to be safe",
+              "isCorrect": false,
+              "feedback": "This overly restrictive approach cuts people off from legitimate communications and necessary services that use text messaging."
+            },
+            {
+              "id": "help-option-3",
+              "text": "Use real examples to teach them about red flags and create a simple verification process they can follow",
+              "isCorrect": true,
+              "feedback": "Correct! The most effective approach is education with concrete examples and simple procedures they can follow, like 'When in doubt, don't click or reply – call me or the company directly using their official number.'"
+            },
+            {
+              "id": "help-option-4",
+              "text": "Set up text message blocking on their phone so they only receive messages from saved contacts",
+              "isCorrect": false,
+              "feedback": "While this reduces some risk, it also blocks legitimate messages from businesses, healthcare providers, and services they use. It's better to teach recognition skills."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "What should you do if you receive a suspicious text message claiming to be from your bank?",
+      "options": [
+        {
+          "id": "q1-a",
+          "text": "Reply 'STOP' to opt out of further messages",
+          "isCorrect": false,
+          "feedback": "Replying to suspicious messages confirms your number is active and can lead to more scam attempts."
+        },
+        {
+          "id": "q1-b",
+          "text": "Call the phone number provided in the text message",
+          "isCorrect": false,
+          "feedback": "Never use contact information provided in suspicious messages. Scammers often include fake phone numbers."
+        },
+        {
+          "id": "q1-c",
+          "text": "Find your bank's official phone number and call that instead",
+          "isCorrect": true,
+          "feedback": "Correct! Always verify through official channels by looking up the bank's number independently and calling that number directly."
+        },
+        {
+          "id": "q1-d",
+          "text": "Immediately share your account details to resolve the issue",
+          "isCorrect": false,
+          "feedback": "Never share account details in response to an unexpected message. This is likely a phishing attempt."
         }
       ]
     },
-    "quiz": [
-      {
-        "id": "q1",
-        "question": "What should you do if you receive a suspicious text message claiming to be from your bank?",
-        "options": [
-          {
-            "id": "q1-a",
-            "text": "Reply 'STOP' to opt out of further messages",
-            "isCorrect": false,
-            "feedback": "Replying to suspicious messages confirms your number is active and can lead to more scam attempts."
-          },
-          {
-            "id": "q1-b",
-            "text": "Call the phone number provided in the text message",
-            "isCorrect": false,
-            "feedback": "Never use contact information provided in suspicious messages. Scammers often include fake phone numbers."
-          },
-          {
-            "id": "q1-c",
-            "text": "Find your bank's official phone number and call that instead",
-            "isCorrect": true,
-            "feedback": "Correct! Always verify through official channels by looking up the bank's number independently and calling that number directly."
-          },
-          {
-            "id": "q1-d",
-            "text": "Immediately share your account details to resolve the issue",
-            "isCorrect": false,
-            "feedback": "Never share account details in response to an unexpected message. This is likely a phishing attempt."
-          }
-        ]
-      },
-      {
-        "id": "q2",
-        "question": "What is the best way to report a suspicious text message to help combat scams?",
-        "options": [
-          {
-            "id": "q2-a",
-            "text": "Forward the message to 7726 (SPAM)",
-            "isCorrect": true,
-            "feedback": "Correct! Forwarding suspicious texts to 7726 (SPAM) helps carriers identify and block scam numbers."
-          },
-          {
-            "id": "q2-b",
-            "text": "Post the scammer's phone number on social media",
-            "isCorrect": false,
-            "feedback": "This approach could violate privacy policies and doesn't help official channels track scams effectively."
-          },
-          {
-            "id": "q2-c",
-            "text": "Reply to the message asking them to stop contacting you",
-            "isCorrect": false,
-            "feedback": "Engaging with scammers in any way confirms your number is active and monitored."
-          },
-          {
-            "id": "q2-d",
-            "text": "Do nothing, as reporting doesn't help stop scammers",
-            "isCorrect": false,
-            "feedback": "Reporting scams is crucial as it helps authorities track patterns and take action against scammers."
-          }
-        ]
-      },
-      {
-        "id": "q3",
-        "question": "If you accidentally clicked a link in a suspicious text message, what should you do first?",
-        "options": [
-          {
-            "id": "q3-a",
-            "text": "Ignore it, as no harm can come from simply clicking a link",
-            "isCorrect": false,
-            "feedback": "Clicking links in suspicious messages can lead to malware installation or phishing sites. It shouldn't be ignored."
-          },
-          {
-            "id": "q3-b",
-            "text": "Change your passwords for important accounts immediately",
-            "isCorrect": true,
-            "feedback": "Correct! If you've potentially exposed your information, changing passwords immediately is the first step to protect your accounts."
-          },
-          {
-            "id": "q3-c",
-            "text": "Reply to the message expressing your anger",
-            "isCorrect": false,
-            "feedback": "Never engage with potential scammers, as this confirms your number is active."
-          },
-          {
-            "id": "q3-d",
-            "text": "Factory reset your phone immediately",
-            "isCorrect": false,
-            "feedback": "While this might remove malware, it's an extreme first step. Changing passwords and monitoring accounts is the priority."
-          }
-        ]
-      },
-      {
-        "id": "q4",
-        "question": "What is the best way to verify if a text message claiming to be from a delivery service is legitimate?",
-        "options": [
-          {
-            "id": "q4-a",
-            "text": "Click the tracking link in the message to check if it looks legitimate",
-            "isCorrect": false,
-            "feedback": "Clicking links in suspicious messages is risky and could lead to phishing sites or malware."
-          },
-          {
-            "id": "q4-b",
-            "text": "Reply to the message asking for more details about the package",
-            "isCorrect": false,
-            "feedback": "Engaging with potential scammers confirms your number is active and monitored."
-          },
-          {
-            "id": "q4-c",
-            "text": "Go directly to the delivery company's official website and enter any tracking numbers you actually have",
-            "isCorrect": true,
-            "feedback": "Correct! Always verify through official channels by going directly to the company's website, not through links in messages."
-          },
-          {
-            "id": "q4-d",
-            "text": "Call the number in the message and ask if they're legitimate",
-            "isCorrect": false,
-            "feedback": "Never use contact information provided in suspicious messages. Scammers often include fake phone numbers."
-          }
-        ]
-      },
-      {
-        "id": "q5",
-        "question": "Why is it important to stay informed about current scam techniques?",
-        "options": [
-          {
-            "id": "q5-a",
-            "text": "It's not important as all scams use the same basic techniques",
-            "isCorrect": false,
-            "feedback": "Scammers constantly evolve their tactics, so staying informed about new methods is essential."
-          },
-          {
-            "id": "q5-b",
-            "text": "To be able to scam the scammers back",
-            "isCorrect": false,
-            "feedback": "Attempting to scam scammers is dangerous and could put you at greater risk."
-          },
-          {
-            "id": "q5-c",
-            "text": "To recognize new threats before becoming a victim",
-            "isCorrect": true,
-            "feedback": "Correct! Staying informed helps you identify emerging scam techniques and protect yourself from new types of attacks."
-          },
-          {
-            "id": "q5-d",
-            "text": "Only cybersecurity professionals need to know about current scams",
-            "isCorrect": false,
-            "feedback": "Everyone is a potential target for scammers, so everyone should stay informed about current scam techniques."
-          }
-        ]
-      }
-    ]
-  }
+    {
+      "id": "q2",
+      "question": "What is the best way to report a suspicious text message to help combat scams?",
+      "options": [
+        {
+          "id": "q2-a",
+          "text": "Forward the message to 7726 (SPAM)",
+          "isCorrect": true,
+          "feedback": "Correct! Forwarding suspicious texts to 7726 (SPAM) helps carriers identify and block scam numbers."
+        },
+        {
+          "id": "q2-b",
+          "text": "Post the scammer's phone number on social media",
+          "isCorrect": false,
+          "feedback": "This approach could violate privacy policies and doesn't help official channels track scams effectively."
+        },
+        {
+          "id": "q2-c",
+          "text": "Reply to the message asking them to stop contacting you",
+          "isCorrect": false,
+          "feedback": "Engaging with scammers in any way confirms your number is active and monitored."
+        },
+        {
+          "id": "q2-d",
+          "text": "Do nothing, as reporting doesn't help stop scammers",
+          "isCorrect": false,
+          "feedback": "Reporting scams is crucial as it helps authorities track patterns and take action against scammers."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "If you accidentally clicked a link in a suspicious text message, what should you do first?",
+      "options": [
+        {
+          "id": "q3-a",
+          "text": "Ignore it, as no harm can come from simply clicking a link",
+          "isCorrect": false,
+          "feedback": "Clicking links in suspicious messages can lead to malware installation or phishing sites. It shouldn't be ignored."
+        },
+        {
+          "id": "q3-b",
+          "text": "Change your passwords for important accounts immediately",
+          "isCorrect": true,
+          "feedback": "Correct! If you've potentially exposed your information, changing passwords immediately is the first step to protect your accounts."
+        },
+        {
+          "id": "q3-c",
+          "text": "Reply to the message expressing your anger",
+          "isCorrect": false,
+          "feedback": "Never engage with potential scammers, as this confirms your number is active."
+        },
+        {
+          "id": "q3-d",
+          "text": "Factory reset your phone immediately",
+          "isCorrect": false,
+          "feedback": "While this might remove malware, it's an extreme first step. Changing passwords and monitoring accounts is the priority."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "What is the best way to verify if a text message claiming to be from a delivery service is legitimate?",
+      "options": [
+        {
+          "id": "q4-a",
+          "text": "Click the tracking link in the message to check if it looks legitimate",
+          "isCorrect": false,
+          "feedback": "Clicking links in suspicious messages is risky and could lead to phishing sites or malware."
+        },
+        {
+          "id": "q4-b",
+          "text": "Reply to the message asking for more details about the package",
+          "isCorrect": false,
+          "feedback": "Engaging with potential scammers confirms your number is active and monitored."
+        },
+        {
+          "id": "q4-c",
+          "text": "Go directly to the delivery company's official website and enter any tracking numbers you actually have",
+          "isCorrect": true,
+          "feedback": "Correct! Always verify through official channels by going directly to the company's website, not through links in messages."
+        },
+        {
+          "id": "q4-d",
+          "text": "Call the number in the message and ask if they're legitimate",
+          "isCorrect": false,
+          "feedback": "Never use contact information provided in suspicious messages. Scammers often include fake phone numbers."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "Why is it important to stay informed about current scam techniques?",
+      "options": [
+        {
+          "id": "q5-a",
+          "text": "It's not important as all scams use the same basic techniques",
+          "isCorrect": false,
+          "feedback": "Scammers constantly evolve their tactics, so staying informed about new methods is essential."
+        },
+        {
+          "id": "q5-b",
+          "text": "To be able to scam the scammers back",
+          "isCorrect": false,
+          "feedback": "Attempting to scam scammers is dangerous and could put you at greater risk."
+        },
+        {
+          "id": "q5-c",
+          "text": "To recognize new threats before becoming a victim",
+          "isCorrect": true,
+          "feedback": "Correct! Staying informed helps you identify emerging scam techniques and protect yourself from new types of attacks."
+        },
+        {
+          "id": "q5-d",
+          "text": "Only cybersecurity professionals need to know about current scams",
+          "isCorrect": false,
+          "feedback": "Everyone is a potential target for scammers, so everyone should stay informed about current scam techniques."
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "What's the most effective long-term protection against text message scams?",
+      "options": [
+        {
+          "id": "q6-a",
+          "text": "Blocking all unknown numbers on your phone",
+          "isCorrect": false,
+          "feedback": "This approach blocks legitimate messages too and isn't sustainable as scammers constantly use new numbers."
+        },
+        {
+          "id": "q6-b",
+          "text": "A combination of awareness, caution, and following safe response practices",
+          "isCorrect": true,
+          "feedback": "Correct! The most effective protection comes from building knowledge and safe habits, as no technical solution can block all scams."
+        },
+        {
+          "id": "q6-c",
+          "text": "Installing anti-scam apps on your phone",
+          "isCorrect": false,
+          "feedback": "While security apps can help, they can't detect all scams and create a false sense of security. Education and caution are still essential."
+        },
+        {
+          "id": "q6-d",
+          "text": "Changing your phone number frequently",
+          "isCorrect": false,
+          "feedback": "This disruptive approach doesn't provide lasting protection, as scammers target ranges of numbers rather than specific individuals."
+        }
+      ]
+    }
+  ]
+}
