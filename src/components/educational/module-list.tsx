@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -88,12 +89,26 @@ export function ModuleList({ modules = [], isLoading = false }: ModuleListProps)
               <CardDescription>{module.description}</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-wrap items-center gap-2 mb-4">
+            <div className="flex flex-wrap items-center gap-2 mb-4">
               {status.text !== 'Not started' && (
                 <Badge variant={status.color}>{status.text}</Badge>
               )}
-                <Badge variant="secondary">{module.estimatedTime}</Badge>
+              <div className="flex items-center text-gray-600">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-5 w-5 mr-1 text-primary" 
+                  viewBox="0 0 20 20" 
+                  fill="currentColor"
+                >
+                  <path 
+                    fillRule="evenodd" 
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" 
+                    clipRule="evenodd" 
+                  />
+                </svg>
+                <span className="text-sm">{module.estimatedTime}</span>
               </div>
+            </div>
               
               {progress[module.id]?.inProgress && (
                 <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2">
