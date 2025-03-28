@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
-import Link from 'next/link';
+import React, {useState} from 'react';
 import { Navbar } from './navbar';
 import { Button } from './button';
+import { SignupPopup } from './SignupPopup';
 
 export function Header() {
   // Navigation items
@@ -13,17 +13,19 @@ export function Header() {
     { name: 'Simulate', href: '/simulate' },
     { name: 'Blog', href: '/blog' },
   ];
-  
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   // Right side content with signup button - fixed to remove asChild prop
   const rightContent = (
-    <Link href="/signup">
-      <Button 
-        variant="default" 
-        size="default"
-      >
-        Get Early Access
-      </Button>
-    </Link>
+    <Button 
+      variant="default" 
+      size="default"
+      onClick={() => setIsPopupOpen(true)}
+    >
+      Sign-Up For Updates
+    </Button>
+
   );
 
   return (
@@ -33,6 +35,8 @@ export function Header() {
         rightContent={rightContent}
         sticky={true}
       />
+
+      <SignupPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </header>
   );
 }

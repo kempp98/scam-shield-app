@@ -65,21 +65,21 @@ export default function Home() {
       {/* Hero Section - Warmer and more personal */}
       <section className="py-16 md:py-20 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          Your Shield Against <span className="text-gradient">Everyday Scams</span>
+          Stop Scams <span className="text-gradient">Before</span> They Happen
         </h1>
         <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-8">
-          We&apos;re here to help you protect yourself and your loved ones from scammers with friendly, 
-          practical guidance and safe practice opportunities.
+        Learn to spot sophisticated scams and practice your detection skills in a safe environment. 
+        Build the habits to stay secure online.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/learn">
             <Button variant="default" size="lg" className="font-medium">
-              Start Your Journey
+              Learn About Scams
             </Button>
           </Link>
           <Link href="/simulate">
             <Button variant="secondary" size="lg" className="font-medium">
-              Practice Safely
+              Practice Recognizing Scams
             </Button>
           </Link>
         </div>
@@ -101,7 +101,7 @@ export default function Home() {
               <div className="space-y-6">
                 <div>
                   <p className="text-3xl font-bold text-gray-800">$12.4 billion</p>
-                  <p className="text-gray-700">Lost by everyday people to scammers in 2024—money that could have gone to education, healthcare, or retirement.</p>
+                  <p className="text-gray-700">Lost by everyday people to scammers in 2024—money that could have gone to education, healthcare, or retirement. <i>(FTC, 2024)</i></p>
                 </div>
                 <div>
                   <p className="text-3xl font-bold text-gray-800">2.6 million</p>
@@ -137,52 +137,43 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          
-          <div className="bg-blue-50 rounded-lg p-8 text-center border border-blue-100">
-            <h3 className="text-xl font-semibold mb-4">A Friendly Approach to Protection</h3>
-            <p className="text-gray-700 max-w-3xl mx-auto">
-              ScamSafe doesn&apos;t just tell you about scams—we help you experience them safely. It&apos;s like having a trusted friend guide you through potential dangers so you can recognize them when they really matter.
-            </p>
-          </div>
         </div>
       </section>
 
       {/* How We Help Section - Warmer descriptions */}
       <section className="py-14 bg-white rounded-xl mb-16">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-semibold text-center mb-10">How We Support You</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold text-center mb-10">Build Your Scam Defenses</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Feature 1 - More relatable */}
             <Card className="border border-gray-200 shadow-sm transition-all hover:shadow-md">
               <CardHeader className="pb-2">
-                <CardTitle className="text-xl text-primary">Learn at Your Pace</CardTitle>
-                <CardDescription>Quick, friendly lessons on scam safety</CardDescription>
+                <CardTitle className="text-xl text-primary">Understand Scam Tactics</CardTitle>
+                <CardDescription>Easy lessons to spot red flags</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700">Our bite-sized modules explain common scams in plain language, showing you exactly what to watch for—no technical jargon, just practical guidance you can use right away.</p>
+                <p className="text-gray-700">Quickly learn to identify common scams with clear, practical, bite-sized lessons. </p>
               </CardContent>
             </Card>
 
-            {/* Feature 2 - More relatable */}
             <Card className="border border-gray-200 shadow-sm transition-all hover:shadow-md">
               <CardHeader className="pb-2">
                 <CardTitle className="text-xl text-primary">Practice Without Risk</CardTitle>
-                <CardDescription>Safe environment to build confidence</CardDescription>
+                <CardDescription>Recognize threats through practice.</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700">Try our realistic but completely safe simulations that let you experience scam attempts firsthand—so you&apos;ll recognize them instantly when they happen in your daily life.</p>
+                <p className="text-gray-700">Experience realistic phishing emails, fake login pages, or scam calls in our 100% safe simulation environment. 
+                  Learn to spot tricks firsthand, building the confidence and muscle memory to react safely in real life.</p>
               </CardContent>
             </Card>
 
-            {/* Feature 3 - More relatable */}
             <Card className="border border-gray-200 shadow-sm transition-all hover:shadow-md">
               <CardHeader className="pb-2">
-                <CardTitle className="text-xl text-primary">Join Our Community</CardTitle>
-                <CardDescription>You&apos;re not in this alone</CardDescription>
+                <CardTitle className="text-xl text-primary">Stay Updated & Alert</CardTitle>
+                <CardDescription>Get the latest on new scam tactics</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700">Connect with others learning to protect themselves, share experiences, and gain confidence knowing you have the knowledge to keep yourself and your loved ones safe from scammers.</p>
+                <p className="text-gray-700">Scams evolve constantly. We keep you informed with regular updates, blog posts, and alerts on the newest threats to watch out for.</p>
               </CardContent>
             </Card>
           </div>
@@ -194,7 +185,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-semibold mb-4">Stay Protected</h2>
           <p className="text-lg text-gray-700 mb-8">
-            Join our community and receive friendly updates on the latest scams and how to protect yourself and your loved ones.
+          Sign up for essential scam alerts, safety tips, and platform updates. Plus, be the first to know when we launch new features, including our community!
           </p>
           
           <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -212,7 +203,7 @@ export default function Home() {
                 className="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors font-medium"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Joining...' : 'Join Our Community'}
+                {isSubmitting ? 'Joining...' : 'Sign Me Up'}
               </button>
             </div>
             {submitResult.message && (
