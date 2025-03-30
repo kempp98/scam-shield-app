@@ -20,13 +20,13 @@ export async function generateMetadata({ params }: SequencePageProps) {
     
     if (!sequence) {
       return {
-        title: 'Sequence Not Found - ScamShield',
+        title: 'Sequence Not Found - ScamSafe',
         description: 'The requested simulation sequence could not be found.'
       };
     }
     
     return {
-      title: `${sequence.title} - ScamShield Simulation`,
+      title: `${sequence.title} - ScamSafe Simulation`,
       description: sequence.description
     };
   }

@@ -1,0 +1,84 @@
+{
+    "id": "scenario-pig-butchering-001",
+    "type": "text",
+    "category": "investment",
+    "isScam": true,
+    "difficulty": "beginner",
+    "sender": {
+      "name": "Unknown",
+      "phoneNumber": "+1 (213) 555-7821"
+    },
+    "messages": [
+      {
+        "id": "msg-1",
+        "text": "Hi Jennifer! Our investment group had amazing returns this week. Are you coming to the celebration dinner tonight?",
+        "isUserMessage": false,
+        "timestamp": "2:14 PM"
+      }
+    ],
+    "redFlags": [
+      {
+        "id": "wrong-number",
+        "text": "Message addressed to someone else (Jennifer)",
+        "explanation": "Pig butchering scams often begin with 'wrong number' texts to start conversations naturally."
+      },
+      {
+        "id": "immediate-investment-mention",
+        "text": "Mentions investments in the very first message",
+        "explanation": "Scammers plant the seed about financial opportunities from the start."
+      },
+      {
+        "id": "creates-curiosity",
+        "text": "Message designed to prompt a response about the 'amazing returns'",
+        "explanation": "The message is crafted to make you curious and engage in conversation."
+      }
+    ],
+    "identificationQuestion": {
+      "options": [
+        {
+          "id": "legitimate",
+          "text": "This is a legitimate wrong number text",
+          "isCorrect": false,
+          "feedback": "This is actually the first step in a pig butchering scam. The mention of 'investment group' and 'amazing returns' in a wrong number text is a red flag."
+        },
+        {
+          "id": "scam",
+          "text": "This is the beginning of a scam attempt",
+          "isCorrect": true,
+          "feedback": "Correct! This is a common opening for a pig butchering scam, using a wrong number text that mentions investments to spark your curiosity."
+        }
+      ]
+    },
+    "actionQuestion": {
+      "options": [
+        {
+          "id": "engage-curious",
+          "text": "Reply: 'I think you have the wrong number, but what kind of investments are you into?'",
+          "isCorrect": false,
+          "safetyImpact": -10,
+          "feedback": "This is exactly what scammers want - showing interest in their investments gives them an opening to begin the scam."
+        },
+        {
+          "id": "polite-correction",
+          "text": "Reply: 'Sorry, I think you have the wrong number.'",
+          "isCorrect": false,
+          "safetyImpact": -5,
+          "feedback": "Even polite responses confirm your number is active and that you're willing to engage, which can lead to further scam attempts."
+        },
+        {
+          "id": "ignore",
+          "text": "Ignore the message completely",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Excellent choice! Ignoring suspicious messages from unknown numbers, especially those mentioning investments, is the safest approach."
+        },
+        {
+          "id": "block",
+          "text": "Ignore and block the number",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Perfect response! Blocking prevents future contact attempts and protects you from this potential scammer."
+        }
+      ]
+    }
+  }

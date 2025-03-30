@@ -1,0 +1,90 @@
+{
+    "id": "scenario-pig-butchering-002",
+    "type": "text",
+    "category": "investment",
+    "isScam": true,
+    "difficulty": "intermediate",
+    "sender": {
+      "name": "Michael (Investment Contact)",
+      "phoneNumber": "+1 (415) 555-9234"
+    },
+    "messages": [
+      {
+        "id": "msg-1",
+        "text": "Good morning! Just wanted to share that my crypto mining pool gave me a 12% return this week. Hope your day is going well! ☕",
+        "isUserMessage": false,
+        "timestamp": "9:22 AM"
+      },
+      {
+        "id": "msg-2", 
+        "text": "By the way, how's your work project going? The one you mentioned was stressing you out last week.",
+        "isUserMessage": false,
+        "timestamp": "9:23 AM"
+      }
+    ],
+    "redFlags": [
+      {
+        "id": "unsolicited-investment-info",
+        "text": "Sharing specific investment returns without being asked",
+        "explanation": "Scammers casually mention high returns to create interest in their investment scheme."
+      },
+      {
+        "id": "unrealistic-returns",
+        "text": "Mentions unusually high returns (12% in one week)",
+        "explanation": "Consistent weekly returns of this magnitude are extremely rare and typically unrealistic."
+      },
+      {
+        "id": "personal-connection",
+        "text": "Follows up with personal question to maintain relationship",
+        "explanation": "Pig butchering scammers balance investment talk with personal connection to build trust."
+      }
+    ],
+    "identificationQuestion": {
+      "options": [
+        {
+          "id": "legitimate",
+          "text": "This is a legitimate message from a friend who's into investments",
+          "isCorrect": false,
+          "feedback": "This is actually part of a pig butchering scam. The casual mention of high returns followed by personal questions is a technique to build trust while planting investment ideas."
+        },
+        {
+          "id": "scam",
+          "text": "This is part of a sophisticated scam attempt",
+          "isCorrect": true,
+          "feedback": "Correct! This shows the trust-building phase of a pig butchering scam, where the scammer balances personal conversation with mentions of high-return investments."
+        }
+      ]
+    },
+    "actionQuestion": {
+      "options": [
+        {
+          "id": "ask-investment",
+          "text": "Reply about your work, then ask more about their investment",
+          "isCorrect": false,
+          "safetyImpact": -8,
+          "feedback": "This is exactly what the scammer wants - showing interest in their investment while continuing the personal relationship development."
+        },
+        {
+          "id": "personal-only",
+          "text": "Reply only about your work situation, ignoring the investment mention",
+          "isCorrect": false,
+          "safetyImpact": -5,
+          "feedback": "While safer than asking about investments, continuing personal conversation still keeps the relationship going, which is part of the scammer's strategy."
+        },
+        {
+          "id": "question-legitimacy",
+          "text": "Ask direct questions about the legitimacy of their investment claims",
+          "isCorrect": false,
+          "safetyImpact": -3,
+          "feedback": "Scammers are prepared for skepticism and have convincing responses ready. Engaging at all keeps you in their process."
+        },
+        {
+          "id": "disengage",
+          "text": "Stop responding and block the contact",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Excellent choice! Once you recognize the pattern of casual investment mentions and personal connection building, disengaging completely is the safest response."
+        }
+      ]
+    }
+  }

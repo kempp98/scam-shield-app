@@ -1,0 +1,84 @@
+{
+    "id": "scenario-scam-government-001",
+    "type": "text",
+    "category": "government",
+    "isScam": true,
+    "difficulty": "intermediate",
+    "sender": {
+      "name": "IRS Refund",
+      "phoneNumber": "+1 (202) 555-7644"
+    },
+    "messages": [
+      {
+        "id": "msg-1",
+        "text": "IRS ALERT: You have an unclaimed tax refund of $1,493.28 from 2022. Your refund will expire in 24 HOURS. Claim now: https://irs-gov.refund-claim.com/verify",
+        "isUserMessage": false,
+        "timestamp": "3:42 PM"
+      }
+    ],
+    "redFlags": [
+      {
+        "id": "suspicious-url",
+        "text": "The URL is not the official IRS domain",
+        "explanation": "The IRS official website is irs.gov, not irs-gov.refund-claim.com."
+      },
+      {
+        "id": "urgent-deadline",
+        "text": "Creates artificial urgency with a 24-hour deadline",
+        "explanation": "The IRS doesn't issue short deadlines via text. Tax refunds don't 'expire' within 24 hours."
+      },
+      {
+        "id": "specific-amount",
+        "text": "Mentions a specific refund amount without verification",
+        "explanation": "The IRS won't text you specific refund amounts. They communicate through official mail or their secure online portal."
+      }
+    ],
+    "identificationQuestion": {
+      "options": [
+        {
+          "id": "legitimate",
+          "text": "This is a legitimate IRS message",
+          "isCorrect": false,
+          "feedback": "This is a scam. The IRS never sends text messages about unclaimed refunds or uses non-irs.gov domains. They also don't set 24-hour deadlines for claiming refunds."
+        },
+        {
+          "id": "scam",
+          "text": "This is a scam message",
+          "isCorrect": true,
+          "feedback": "Correct! This is a scam. The IRS never initiates contact via text message about tax refunds. The suspicious URL and artificial urgency are major red flags."
+        }
+      ]
+    },
+    "actionQuestion": {
+      "options": [
+        {
+          "id": "click-link",
+          "text": "Click the link to claim your refund",
+          "isCorrect": false,
+          "safetyImpact": -10,
+          "feedback": "Never click links in suspected scam messages. This would lead to a phishing site designed to steal your personal and financial information."
+        },
+        {
+          "id": "ignore",
+          "text": "Ignore the message",
+          "isCorrect": true,
+          "safetyImpact": 7,
+          "feedback": "Good choice. The IRS doesn't initiate contact through text messages about refunds."
+        },
+        {
+          "id": "check-irs-gov",
+          "text": "Check your refund status directly on the official irs.gov website",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Excellent! Checking directly through the official IRS website is the safest way to verify any refund information."
+        },
+        {
+          "id": "respond-details",
+          "text": "Reply with your personal information to claim the refund",
+          "isCorrect": false,
+          "safetyImpact": -10,
+          "feedback": "Never share personal information in response to unexpected messages. The IRS never requests personal information via text."
+        }
+      ]
+    }
+  }

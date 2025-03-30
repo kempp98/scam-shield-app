@@ -1,0 +1,89 @@
+{
+    "id": "scenario-scam-family-001",
+    "type": "text",
+    "category": "emergency",
+    "isScam": true,
+    "difficulty": "advanced",
+    "sender": {
+      "name": "Unknown",
+      "phoneNumber": "+1 (315) 555-9823"
+    },
+    "messages": [
+      {
+        "id": "msg-1",
+        "text": "Hi Mom, it's me. I got a new phone number. I'm in trouble and need help. I had an accident and need to pay $850 for car repairs right away. Can you send money to this account? I'll pay you back soon. Please don't call my old number, it's not working.",
+        "isUserMessage": false,
+        "timestamp": "8:17 PM"
+      }
+    ],
+    "redFlags": [
+      {
+        "id": "new-number",
+        "text": "Claims to have a new phone number",
+        "explanation": "Scammers often claim to have a new number to explain why they're contacting you from an unknown number."
+      },
+      {
+        "id": "urgent-money-request",
+        "text": "Requests money for an emergency situation",
+        "explanation": "Urgency around financial requests is a classic pressure tactic used by scammers."
+      },
+      {
+        "id": "prevent-verification",
+        "text": "Specifically asks you not to call their old number",
+        "explanation": "Scammers try to prevent you from verifying their identity through normal channels."
+      },
+      {
+        "id": "vague-details",
+        "text": "Provides vague details about the situation",
+        "explanation": "The message lacks specific details that your actual child would know and share."
+      }
+    ],
+    "identificationQuestion": {
+      "options": [
+        {
+          "id": "legitimate",
+          "text": "This is a legitimate message from my child",
+          "isCorrect": false,
+          "feedback": "This is a common scam known as the 'family emergency scam' or 'grandparent scam.' Scammers impersonate family members and claim to be in trouble to trick you into sending money."
+        },
+        {
+          "id": "scam",
+          "text": "This is a scam message",
+          "isCorrect": true,
+          "feedback": "Correct! This is a family emergency scam. The combination of a new phone number, urgent money request, vague details, and discouraging verification are classic signs of this scam."
+        }
+      ]
+    },
+    "actionQuestion": {
+      "options": [
+        {
+          "id": "send-money",
+          "text": "Send the money immediately to help your child",
+          "isCorrect": false,
+          "safetyImpact": -10,
+          "feedback": "Never send money based solely on a text message claiming to be from a family member with a new number. This is almost certainly a scam."
+        },
+        {
+          "id": "verify-identity",
+          "text": "Ask questions only your real child would know the answers to",
+          "isCorrect": true,
+          "safetyImpact": 8,
+          "feedback": "Good approach! Asking personal verification questions that only your actual child would know can help determine if this is legitimate or a scam."
+        },
+        {
+          "id": "call-original",
+          "text": "Call your child's original phone number to verify",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Excellent choice! Despite the message asking you not to, calling your child's known number is the best way to verify if they're actually in trouble."
+        },
+        {
+          "id": "alternative-contact",
+          "text": "Contact your child through another method (social media, email, etc.)",
+          "isCorrect": true,
+          "safetyImpact": 9,
+          "feedback": "Smart thinking! Reaching out through another established communication channel can help verify if this emergency is real."
+        }
+      ]
+    }
+  }

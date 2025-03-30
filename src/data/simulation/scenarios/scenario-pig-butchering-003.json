@@ -1,0 +1,100 @@
+{
+    "id": "scenario-pig-butchering-003",
+    "type": "text",
+    "category": "investment",
+    "isScam": true,
+    "difficulty": "advanced",
+    "sender": {
+      "name": "Sophia (Trading Friend)",
+      "phoneNumber": "+1 (847) 555-3619"
+    },
+    "messages": [
+      {
+        "id": "msg-1",
+        "text": "Hey, I've been meaning to tell you about this trading platform I've been using. It's not available on regular app stores because it's exclusively for professional traders, but my uncle who works in finance got me access. I've made over 30% in just two months!",
+        "isUserMessage": false,
+        "timestamp": "7:38 PM"
+      },
+      {
+        "id": "msg-2", 
+        "text": "I can help you get set up if you're interested. The minimum deposit is only $500 to start. I'm happy to guide you through it step by step! The platform even has AI that helps predict market movements.",
+        "isUserMessage": false,
+        "timestamp": "7:40 PM"
+      }
+    ],
+    "redFlags": [
+      {
+        "id": "exclusive-platform",
+        "text": "Claims the platform is 'exclusive' and not on regular app stores",
+        "explanation": "Legitimate trading platforms are available through official channels, not exclusive invites."
+      },
+      {
+        "id": "unrealistic-returns",
+        "text": "Promises extraordinarily high returns (30% in two months)",
+        "explanation": "These returns far exceed what legitimate investments typically yield consistently."
+      },
+      {
+        "id": "third-party-validation",
+        "text": "References 'uncle in finance' to add credibility",
+        "explanation": "Scammers often mention respected connections to build false legitimacy."
+      },
+      {
+        "id": "advanced-technology",
+        "text": "Claims of AI technology for market prediction",
+        "explanation": "Mentioning sophisticated technology is designed to impress and overcome skepticism."
+      },
+      {
+        "id": "offers-guidance",
+        "text": "Offers to personally guide you through the process",
+        "explanation": "This ensures the scammer maintains control throughout the investment process."
+      }
+    ],
+    "identificationQuestion": {
+      "options": [
+        {
+          "id": "legitimate",
+          "text": "This is a legitimate investment opportunity from a friend",
+          "isCorrect": false,
+          "feedback": "This contains numerous red flags of a pig butchering scam: exclusive platform not on app stores, unrealistic returns, and offers of personal guidance are classic warning signs."
+        },
+        {
+          "id": "scam",
+          "text": "This is a sophisticated investment scam",
+          "isCorrect": true,
+          "feedback": "Correct! This message shows multiple red flags of a pig butchering scam, including the 'exclusive' platform, unrealistic returns, and the offer to personally guide you through investing."
+        }
+      ]
+    },
+    "actionQuestion": {
+      "options": [
+        {
+          "id": "request-info",
+          "text": "Ask for more information about the platform",
+          "isCorrect": false,
+          "safetyImpact": -8,
+          "feedback": "Showing interest gives the scammer exactly what they want - an opportunity to draw you deeper into their fake investment scheme."
+        },
+        {
+          "id": "small-investment",
+          "text": "Say you'll try with a small amount first ($500)",
+          "isCorrect": false,
+          "safetyImpact": -10,
+          "feedback": "Even a 'small' investment is a success for the scammer. They'll likely show you initial 'gains' to encourage larger deposits later."
+        },
+        {
+          "id": "verify-outside",
+          "text": "Say you'll research the platform name independently first",
+          "isCorrect": true,
+          "safetyImpact": 5,
+          "feedback": "Good instinct to verify independently, though be aware the scammer will likely try to convince you the platform is too exclusive to find information about or provide a fake website."
+        },
+        {
+          "id": "decline-report",
+          "text": "Decline the offer, cease communication, and report to authorities",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Excellent choice! Recognizing the numerous red flags and completely disengaging is the safest response. Reporting helps protect others from similar scams."
+        }
+      ]
+    }
+  }
