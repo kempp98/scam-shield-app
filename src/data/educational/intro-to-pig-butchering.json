@@ -1,0 +1,198 @@
+{
+    "id": "intro-to-pig-butchering",
+    "title": "Introduction to Pig Butchering Scams",
+    "description": "Learn what a 'pig butchering' scam is, understand common tactics, and see real-life examples of this scam in action.",
+    "coverImage": "/images/pig-butchering-cover.jpg",
+    "estimatedTime": "8 minutes",
+    "content": {
+        "sections": [
+      {
+        "id": "introduction",
+        "title": "What is a Pig Butchering Scam?",
+        "body": "'Pig Butchering' refers to a class of scams where scammers take advantage of their victims by building trust and developing a relationship over time, before 'slaughtering' their victim, often scamming them out of 10s or 100s of thousands of dollars.",
+        "cardType": "basic"
+      },
+      {
+        "id": "timeline",
+        "title": "The Anatomy of a Pig Butchering Scam",
+        "body": "[Initial Contact with the Victim] -> [Building Trust, Developing Relationship] -> [Investment Opportunity or Request for Financial Help] -> [Guilt and Manipulation to get the victim to pay more money] -> [Scammer disappears, taking the victim's money with them]",
+        "cardType": "basic"
+      },
+      {
+        "id": "early-warning",
+        "title": "Early Warning Signs to Look Out For",
+        "body": "There are several warning signs of a pig butchering scam attempt. Being aware of what to look out for can help you recognize the risks and stay safe online.",
+        "cardType": "expandable",
+        "interactionData": {
+          "expandableItems": [
+            {
+              "id": "rapid-relationship-building",
+              "title": "Rapidly Building Relationship",
+              "content": "Pig Butchering scammers look to develop trust with their victims that they can later exploit. This often leads to compliments, affection, and discussing personal topics early in the conversation."
+            },
+            {
+              "id": "avoiding-real-interactions",
+              "title": "Avoiding Real-Life Interactions",
+              "content": "Scammers adopt fake personas to trick their victims. They will refuse to video call or meet in person, to keep their true identity hidden."
+            },
+            {
+            "id": "moving-conversation",
+            "title": "Pushing to move the Conversation to WhatsApp/Telegram/Signal",
+            "content": "Scammers often want to move the conversation to their preferred messaging app as soon as possible. While legitimate users will move conversations off of the initial platform as well, be particularly aware of pushy behavior and specifically using WhatsApp/Telegram/Signal - preferred apps for scammers."
+            },
+            {
+              "id": "financial-success",
+              "title": "Increasing Mentions of Financial Success/Investment Opportunity",
+              "content": "The most common way that victims are exploited is through investment scams. Be wary of mentions of unrealistic returns, crypto currency, or \"helping you\" start investing."
+            }
+          ]
+        }
+      },
+      {
+        "id": "phase1-initial-contact",
+        "title": "Phase 1: Initial Contact",
+        "body": "Scammers will begin their attacks by contacting victims through methods that allow them to conceal their true identity, while appearing legitimate to win the victim's trust. Common approaches include: matching on dating apps, messaging on social media, sending \"wrong number\" messages.",
+        "cardType": "basic"
+      },
+      {
+        "id": "initial-contact-quiz",
+        "title": "How Do Scammers Make Initial Contact?",
+        "body": "Pig Butchering Initial contact",
+        "cardType": "multipleChoice",
+        "interactionData": {
+          "question": "Which of these is NOT a common initial contact method for pig butchering scammers?",
+          "options": [
+            {
+              "id": "option-1",
+              "text": "Dating apps and social media",
+              "isCorrect": false,
+              "feedback": "Scammers often use dating apps to initiate pig butchering scams, taking advantage of unsuspecting victims looking for love."
+            },
+            {
+              "id": "option-2",
+              "text": "In-person at financial seminars",
+              "isCorrect": true,
+              "feedback": "Correct! Pig butchering relies on anonymity, typically scammers will initiate via online channels where they can hide their identity."
+            },
+            {
+              "id": "option-3",
+              "text": "Wrong number texts ('Sorry, wrong person!')",
+              "isCorrect": false,
+              "feedback": "Wrong number texts are a common way scammers make initial contact, attempting to draw you into further conversation and build your trust."
+            },
+            {
+              "id": "option-4",
+              "text": "Investment forums and groups",
+              "isCorrect": false,
+              "feedback": "These groups are a prime place for scammers to find victims, taking advantage of user's desire to make money on investments."
+            }
+          ]
+        }
+      },
+      {
+        "id": "phase2-building-trust",
+        "title": "Phase 2: Building Trust",
+        "body": "After making initial contact and receiving engagement from the victim, the scammer looks to build trust which they can exploit later on. This is often done by sharing personal details, being overly caring/giving many compliments, and trying to relate with the victim to build empathy.",
+        "cardType": "basic"
+      },
+      {
+        "id": "building-trust-quiz",
+        "title": "How Do Pig Butchering Scammers Build Trust with Victims?",
+        "body": "Pig Butchering Building Trust",
+        "cardType": "multipleChoice",
+        "interactionData": {
+          "question": "Which of these is a common way scammers build trust with their victims?",
+          "options": [
+            {
+              "id": "option-1",
+              "text": "Offering to meet in person for coffee",
+              "isCorrect": false,
+              "feedback": "This is incorrect. Scammers want to hide their true identity and will refuse to have any \"real-life\" interactions."
+            },
+            {
+              "id": "option-2",
+              "text": "Sending you a Venmo payment and asking you to send it back to them",
+              "isCorrect": false,
+              "feedback": "This is a common scam tactic, often referred to as a 'refund scam'. However, this is not a method commonly used to build trust in pig butchering."
+            },
+            {
+              "id": "option-3",
+              "text": "Share personal and relatable details early into your conversation",
+              "isCorrect": true,
+              "feedback": "Correct! Scammers look to exploit empathy and connection by sharing information they think you will relate to."
+            },
+            {
+              "id": "option-4",
+              "text": "Video calling every weekend",
+              "isCorrect": false,
+              "feedback": "While scammers can fake video calls with modern technology, they will often refuse this type of interaction and will not regularly communicate with you in this way."
+            }
+          ]
+        }
+      },
+      {
+        "id": "phase3-exploitation",
+        "title": "Phase 3: Exploitation",
+        "body": "After building trust and developing a relationship with their victim, the scammer will look to take advantage of this trust by presenting \"investment opportunities\", or asking for financial help. The requests to contribute money will grow and grow, until the scammer has extracted potentially the victim's entire life savings.",
+        "cardType": "basic"
+      },
+      {
+        "id": "exploitation-quiz",
+        "title": "How Do Pig Butchering Scammers Exploit Their Victims?",
+        "body": "Drag and drop the options below into the appropriate category. Identify which methods are commonly used in pig butchering scams and which are likely legitimate activity.",
+        "cardType": "dragDrop",
+        "interactionData": {
+          "dragItems": [
+            {
+              "id": "item-1",
+              "text": "I've made so much money with this crypto platform my mentor showed me. You should try!",
+              "category": "scam"
+            },
+            {
+              "id": "item-2",
+              "text": "My car broke down yesterday and I need help getting to work. Can you send me just $1,000 so I can get to work this week and I'll pay you back as soon as I get my next paycheck.",
+              "category": "scam"
+            },
+            {
+              "id": "item-3",
+              "text": "Don't worry about the details, just trust me. This investment is a sure thing if you act fast.",
+              "category": "scam"
+            },
+            {
+              "id": "item-4",
+              "text": "Hey, it was nice chatting on here. If you're comfortable, maybe we could text or grab coffee next week?",
+              "category": "legitimate"
+            },
+            {
+              "id": "item-5",
+              "text": "Don't you trust me after everything? If we're going to build a future, you need to invest this with me.",
+              "category": "scam"
+            },
+            {
+            "id": "item-6",
+            "text": "Just start small, maybe $500? Once you see the profits, you'll want to put in more. It's practically guaranteed.",
+            "category": "scam"
+            },
+            {
+            "id": "item-7",
+            "text": "I'm trying to save more for retirement. Thinking about increasing my 401k contribution or maybe looking into some ETFs.",
+            "category": "legitimate"
+            }
+          ],
+          "dropZones": [
+            {
+              "id": "scam-zone",
+              "title": "Pig Butchering Tactic",
+              "acceptsCategory": "scam"
+            },
+            {
+              "id": "legitimate-zone",
+              "title": "Legitimate Messages",
+              "acceptsCategory": "legitimate"
+            }
+          ]
+        }
+      }
+    ]
+    }
+}
