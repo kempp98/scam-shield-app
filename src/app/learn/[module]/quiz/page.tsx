@@ -25,5 +25,5 @@ export default async function QuizPage({ params }) {
 
 // Simplified metadata
 export const metadata = {
-  title: 'Quiz - ScamShield',
+  title: 'Quiz - ScamSafe',
 };

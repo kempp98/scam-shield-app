@@ -18,7 +18,7 @@ export function BlogCard({ post }: BlogCardProps) {
           <div className="relative h-48 w-full overflow-hidden">
             <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
               {/* Placeholder if image fails to load */}
-              <span className="text-gray-400">ScamShield Blog</span>
+              <span className="text-gray-400">ScamSafe Blog</span>
             </div>
             <Image 
               src={post.coverImage}
