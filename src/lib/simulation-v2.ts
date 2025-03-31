@@ -15,14 +15,46 @@ const basicTextScamsSequence: SimulationSequence = {
     'scenario-legitimate-banking-001',
     'scenario-scam-banking-001',
     'scenario-scam-delivery-001',
-    'scenario-scam-prize-001'
+    'scenario-legitimate-verification-001',
+    'scenario-scam-prize-001',
+    'scenario-legitimate-appointment-001',
+    'scenario-scam-prize-001',
+    'scenario-legitimate-delivery-001',
+    'scenario-scam-tech-support-001',
+    'scenario-scam-family-001'
   ],
-  learnMoreUrl: '/learn/common-scam-types'
+  learnMoreUrl: '/learn/common-scam-types',
+  learningOutcomes: [
+    "How to identify legitimate vs. scam messages",
+    "Safe ways to respond to suspicious texts",
+    "Common red flags in text message scams"
+  ]
 };
+
+const introPigButchering: SimulationSequence = {
+    id: 'pig-butchering-intro',
+    title: 'Pig Butchering Texts',
+    description: 'Scenarios to help you learn to recognize and prevent pig butchering scams.',
+    difficulty: 'beginner',
+    category: 'educational',
+    scenarioIds: [
+      'scenario-pig-butchering-001',
+      'scenario-pig-butchering-002',  
+      'scenario-pig-butchering-003' 
+    ],
+    learnMoreUrl: '/learn/pig-butchering-intro',
+    learningOutcomes: [
+      "How to recognize the early signs of a pig butchering scam",
+      "Tactics used during the trust-building phase",
+      "Safe responses when approached with suspicious investment opportunities",
+      "Red flags in exclusive investment platform offers"
+    ]
+}
 
 // Store all sequences
 const sequences: Record<string, SimulationSequence> = {
-  'basic-text-scams': basicTextScamsSequence
+  'basic-text-scams': basicTextScamsSequence,
+  'pig-butchering-intro': introPigButchering
 };
 
 // Function to get all sequence summaries
@@ -47,36 +79,25 @@ export async function getSequenceById(id: string): Promise<SimulationSequence | 
   return sequence || null;
 }
 
+const scenarioCache: Record<string, ScenarioData> = {};
+
 // Function to get a scenario by ID
 export async function getScenarioById(id: string): Promise<ScenarioData | null> {
-  // In a real implementation, we would dynamically import or fetch from API
   try {
-    // Using a switch statement to map IDs to imported JSON
-    switch (id) {
-      case 'scenario-legitimate-banking-001': {
-        // Import legitimate banking scenario
-        const scenarioData = await import('@/data/simulation/scenarios/scenario-legitimate-banking-001.json');
-        return scenarioData.default as ScenarioData;
-      }
-      case 'scenario-scam-banking-001': {
-        // Import scam banking scenario
-        const scenarioData = await import('@/data/simulation/scenarios/scenario-scam-banking-001.json');
-        return scenarioData.default as ScenarioData;
-      }
-      case 'scenario-scam-delivery-001': {
-        // Import delivery scam scenario
-        const scenarioData = await import('@/data/simulation/scenarios/scenario-scam-delivery-001.json');
-        return scenarioData.default as ScenarioData;
-      }
-      case 'scenario-scam-prize-001': {
-        // Import delivery scam scenario
-        const scenarioData = await import('@/data/simulation/scenarios/scenario-scam-prize-001.json');
-        return scenarioData.default as ScenarioData;
-      }
-      default:
-        console.error(`Scenario with ID ${id} not found`);
-        return null;
+    // Check cache first for better performance
+    if (scenarioCache[id]) {
+      return scenarioCache[id];
     }
+
+    // Use dynamic import based on scenario ID
+    // This approach allows us to add new scenarios without modifying this code
+    const scenarioModule = await import(`@/data/simulation/scenarios/${id}.json`);
+    const scenarioData = scenarioModule.default as ScenarioData;
+    
+    // Cache the result for future requests
+    scenarioCache[id] = scenarioData;
+    
+    return scenarioData;
   } catch (error) {
     console.error(`Failed to load scenario with ID ${id}:`, error);
     return null;

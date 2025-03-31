@@ -27,5 +27,5 @@ export default async function ModulePage({ params }) {
 
 // Metadata is causing type issues so we'll use a simple title
 export const metadata = {
-  title: 'Module Detail - ScamShield',
+  title: 'Module Detail - ScamSafe',
 };

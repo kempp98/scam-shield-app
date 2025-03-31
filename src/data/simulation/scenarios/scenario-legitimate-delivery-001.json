@@ -1,0 +1,67 @@
+{
+    "id": "scenario-legitimate-delivery-001",
+    "type": "text",
+    "category": "delivery",
+    "isScam": false,
+    "difficulty": "beginner",
+    "sender": {
+      "name": "Amazon",
+      "phoneNumber": "+1 (888) 280-4331"
+    },
+    "messages": [
+      {
+        "id": "msg-1",
+        "text": "Amazon: Your package (Order #113-7298036-2501824) has been delivered. It was handed directly to a resident. For more information, visit amazon.com/help",
+        "isUserMessage": false,
+        "timestamp": "4:15 PM"
+      }
+    ],
+    "identificationQuestion": {
+      "options": [
+        {
+          "id": "legitimate",
+          "text": "This is a legitimate delivery message",
+          "isCorrect": true,
+          "feedback": "Correct! This is a legitimate message from Amazon. It includes a specific order number, doesn't ask you to click any links, and directs you to the official Amazon website if you need more information."
+        },
+        {
+          "id": "scam",
+          "text": "This is a scam message",
+          "isCorrect": false,
+          "feedback": "This is actually a legitimate delivery notification from Amazon. Notice that it includes a specific order number, doesn't create urgency, doesn't ask you to click any links, and references the official Amazon website."
+        }
+      ]
+    },
+    "actionQuestion": {
+      "options": [
+        {
+          "id": "confirm-package",
+          "text": "Check if your package is actually at your door",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Perfect! Verifying that you received the package is the best response to a delivery notification."
+        },
+        {
+          "id": "check-order",
+          "text": "Log into your Amazon account to verify the order number",
+          "isCorrect": true,
+          "safetyImpact": 8,
+          "feedback": "Good choice! Checking your order through the official Amazon website or app is a secure way to verify the delivery."
+        },
+        {
+          "id": "ignore",
+          "text": "Ignore the message",
+          "isCorrect": true,
+          "safetyImpact": 5,
+          "feedback": "This is acceptable. Since the message doesn't ask you to take any action, ignoring it is safe, especially if you've already received the package."
+        },
+        {
+          "id": "reply",
+          "text": "Reply to the message to confirm receipt",
+          "isCorrect": false,
+          "safetyImpact": -2,
+          "feedback": "This isn't recommended. Even with legitimate delivery notifications, you typically don't need to reply, and companies usually send these from numbers that don't accept replies."
+        }
+      ]
+    }
+  }

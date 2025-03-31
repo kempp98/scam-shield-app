@@ -16,13 +16,13 @@ export async function generateMetadata({ params }: SimulateScenarioPageProps) {
   
   if (!scenario) {
     return {
-      title: 'Scenario Not Found - ScamShield',
+      title: 'Scenario Not Found - ScamSafe',
       description: 'The requested simulation scenario could not be found.'
     };
   }
   
   return {
-    title: `${scenario.title} - ScamShield Simulation`,
+    title: `${scenario.title} - ScamSafe Simulation`,
     description: scenario.description
   };
 }

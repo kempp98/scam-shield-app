@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   }
   
   return {
-    title: `${post.title} - ScamShield Blog`,
+    title: `${post.title} - ScamSafe Blog`,
     description: post.description,
   };
 }

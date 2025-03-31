@@ -1,0 +1,89 @@
+{
+    "id": "scenario-scam-tech-support-001",
+    "type": "text",
+    "category": "tech",
+    "isScam": true,
+    "difficulty": "intermediate",
+    "sender": {
+      "name": "Apple Support",
+      "phoneNumber": "+1 (332) 255-3394"
+    },
+    "messages": [
+      {
+        "id": "msg-1",
+        "text": "APPLE ALERT: Your iCloud account has been compromised from Chicago, IL. All Apple services have been suspended. Contact Apple Support IMMEDIATELY: +1 (888) 556-0142",
+        "isUserMessage": false,
+        "timestamp": "7:19 AM"
+      }
+    ],
+    "redFlags": [
+      {
+        "id": "extreme-urgency",
+        "text": "Creates extreme urgency with words like 'IMMEDIATELY'",
+        "explanation": "Legitimate companies don't use all-caps urgency in security notifications."
+      },
+      {
+        "id": "service-suspension",
+        "text": "Claims all Apple services have been suspended",
+        "explanation": "Apple doesn't suspend all services based on a security concern without giving you options to verify through official channels."
+      },
+      {
+        "id": "suspicious-phone",
+        "text": "Provides a phone number different from the sender's number",
+        "explanation": "The message comes from one number but asks you to call a different number, which is suspicious."
+      },
+      {
+        "id": "call-request",
+        "text": "Asks you to call instead of using official Apple security protocols",
+        "explanation": "Apple has established security verification methods and wouldn't ask you to call an unverified number."
+      }
+    ],
+    "identificationQuestion": {
+      "options": [
+        {
+          "id": "legitimate",
+          "text": "This is a legitimate Apple security alert",
+          "isCorrect": false,
+          "feedback": "This is actually a tech support scam. Apple doesn't send text messages with this level of urgency or ask you to call an unverified phone number for security issues."
+        },
+        {
+          "id": "scam",
+          "text": "This is a scam message",
+          "isCorrect": true,
+          "feedback": "Correct! This is a tech support scam. The extreme urgency, claim about suspended services, and request to call an unverified number are all red flags."
+        }
+      ]
+    },
+    "actionQuestion": {
+      "options": [
+        {
+          "id": "call-number",
+          "text": "Call the provided number immediately",
+          "isCorrect": false,
+          "safetyImpact": -10,
+          "feedback": "Never call unknown numbers provided in suspicious messages. Scammers will answer pretending to be Apple support and attempt to get your personal information or payment."
+        },
+        {
+          "id": "ignore",
+          "text": "Ignore the message",
+          "isCorrect": true,
+          "safetyImpact": 7,
+          "feedback": "Good choice. This is almost certainly a scam, so ignoring it is a safe approach."
+        },
+        {
+          "id": "check-account",
+          "text": "Check your Apple ID account directly through settings on your device",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Excellent! Checking your account status directly through your device settings or the official Apple website is the safest way to verify if there's actually an issue."
+        },
+        {
+          "id": "contact-official",
+          "text": "Contact Apple through their official website or support app",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Perfect approach! Using Apple's official support channels ensures you're talking to the real Apple and not scammers."
+        }
+      ]
+    }
+  }

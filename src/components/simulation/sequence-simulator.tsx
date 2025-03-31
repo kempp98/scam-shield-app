@@ -127,9 +127,19 @@ export function SequenceSimulator() {
               <div className="bg-blue-50 p-4 rounded-lg">
                 <h4 className="font-medium text-blue-800 mb-1">What you learned:</h4>
                 <ul className="list-disc pl-5 text-blue-700 space-y-1">
-                  <li>How to identify legitimate vs. scam messages</li>
-                  <li>Safe ways to respond to suspicious texts</li>
-                  <li>Common red flags in text message scams</li>
+                {currentSequence?.learningOutcomes ? (
+                    // Use custom learning outcomes if available
+                    currentSequence.learningOutcomes.map((outcome, index) => (
+                      <li key={index}>{outcome}</li>
+                    ))
+                  ) : (
+                    // Fallback to default learning outcomes if none provided
+                    <>
+                      <li>How to identify legitimate vs. scam messages</li>
+                      <li>Safe ways to respond to suspicious texts</li>
+                      <li>Common red flags in text message scams</li>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>

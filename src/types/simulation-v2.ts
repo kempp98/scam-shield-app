@@ -60,7 +60,9 @@ export interface SimulationSequence {
   category: string;
   learnMoreUrl?: string;
   thumbnailImage?: string;
+  learningOutcomes?: string[];
 }
+
 
 // This tracks a user's progress in a sequence
 export interface SequenceState {

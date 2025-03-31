@@ -1,0 +1,67 @@
+{
+    "id": "scenario-legitimate-appointment-001",
+    "type": "text",
+    "category": "appointment",
+    "isScam": false,
+    "difficulty": "beginner",
+    "sender": {
+      "name": "Dental Reminder",
+      "phoneNumber": "+1 (555) 437-2100"
+    },
+    "messages": [
+      {
+        "id": "msg-1",
+        "text": "REMINDER: You have an appointment with Dr. Martinez at City Dental tomorrow at 2:30 PM. Reply Y to confirm or call (555) 437-2100 to reschedule.",
+        "isUserMessage": false,
+        "timestamp": "1:00 PM"
+      }
+    ],
+    "identificationQuestion": {
+      "options": [
+        {
+          "id": "legitimate",
+          "text": "This is a legitimate appointment reminder",
+          "isCorrect": true,
+          "feedback": "Correct! This is a legitimate appointment reminder. It contains specific details about your appointment, uses a standard reminder format, and provides a clear way to confirm or reschedule."
+        },
+        {
+          "id": "scam",
+          "text": "This is a scam message",
+          "isCorrect": false,
+          "feedback": "This is actually a legitimate appointment reminder. It contains specific details about a scheduled appointment, doesn't ask for any personal information, and provides an expected way to confirm or reschedule."
+        }
+      ]
+    },
+    "actionQuestion": {
+      "options": [
+        {
+          "id": "confirm",
+          "text": "Reply Y to confirm if you plan to attend",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Good choice! If you recognize the appointment and plan to attend, confirming helps both you and the dental office."
+        },
+        {
+          "id": "call-reschedule",
+          "text": "Call the provided number if you need to reschedule",
+          "isCorrect": true,
+          "safetyImpact": 8,
+          "feedback": "This is appropriate if you can't make the appointment. Using the provided number to reschedule is the courteous thing to do."
+        },
+        {
+          "id": "verify-first",
+          "text": "Call the dental office directly using a number you've verified",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Excellent! While this is likely legitimate, verifying with a known number for the dental office is the most cautious approach."
+        },
+        {
+          "id": "ignore",
+          "text": "Ignore the message completely",
+          "isCorrect": false,
+          "safetyImpact": -5,
+          "feedback": "This isn't ideal. If you have an actual appointment, ignoring the reminder could result in a missed appointment or cancellation fees."
+        }
+      ]
+    }
+  }

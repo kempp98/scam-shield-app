@@ -1,0 +1,67 @@
+{
+    "id": "scenario-legitimate-verification-001",
+    "type": "text",
+    "category": "account",
+    "isScam": false,
+    "difficulty": "intermediate",
+    "sender": {
+      "name": "Google",
+      "phoneNumber": "+1 (940) 80-68737"
+    },
+    "messages": [
+      {
+        "id": "msg-1",
+        "text": "G-743129 is your Google verification code. Don't share this code with anyone. If you did not request this code, ignore it.",
+        "isUserMessage": false,
+        "timestamp": "9:23 AM"
+      }
+    ],
+    "identificationQuestion": {
+      "options": [
+        {
+          "id": "legitimate",
+          "text": "This is a legitimate verification code",
+          "isCorrect": true,
+          "feedback": "Correct! This is a legitimate verification code from Google. It follows their standard format, doesn't ask you to click any links, and clearly states to ignore it if you didn't request it."
+        },
+        {
+          "id": "scam",
+          "text": "This is a scam message",
+          "isCorrect": false,
+          "feedback": "This is actually a legitimate verification code from Google. It follows their standard format and includes important security advice about not sharing the code and ignoring it if you didn't request it."
+        }
+      ]
+    },
+    "actionQuestion": {
+      "options": [
+        {
+          "id": "use-if-requested",
+          "text": "Use the code if you just requested a verification code from Google",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Perfect! If you initiated a sign-in or password reset, using the code is appropriate."
+        },
+        {
+          "id": "ignore-not-requested",
+          "text": "Ignore the code if you didn't request it",
+          "isCorrect": true,
+          "safetyImpact": 10,
+          "feedback": "Excellent! If you didn't request a code, ignoring it is exactly what you should do, as the message advises."
+        },
+        {
+          "id": "change-password",
+          "text": "Change your Google password immediately if you didn't request this code",
+          "isCorrect": true,
+          "safetyImpact": 8,
+          "feedback": "Good thinking! If you received an unrequested verification code, someone might be trying to access your account, so changing your password is a prudent security measure."
+        },
+        {
+          "id": "share-code",
+          "text": "Share the code with the person who needs it",
+          "isCorrect": false,
+          "safetyImpact": -10,
+          "feedback": "Never share verification codes with anyone! The message explicitly warns against this. Sharing codes allows others to access your accounts."
+        }
+      ]
+    }
+  }
