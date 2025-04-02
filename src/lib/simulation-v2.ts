@@ -31,7 +31,7 @@ const basicTextScamsSequence: SimulationSequence = {
   ]
 };
 
-const introPigButchering: SimulationSequence = {
+/*const introPigButchering: SimulationSequence = {
     id: 'pig-butchering-intro',
     title: 'Pig Butchering Texts',
     description: 'Scenarios to help you learn to recognize and prevent pig butchering scams.',
@@ -49,12 +49,12 @@ const introPigButchering: SimulationSequence = {
       "Safe responses when approached with suspicious investment opportunities",
       "Red flags in exclusive investment platform offers"
     ]
-}
+}*/
 
 // Store all sequences
 const sequences: Record<string, SimulationSequence> = {
-  'basic-text-scams': basicTextScamsSequence,
-  'pig-butchering-intro': introPigButchering
+  'basic-text-scams': basicTextScamsSequence
+  //'pig-butchering-intro': introPigButchering
 };
 
 // Function to get all sequence summaries
