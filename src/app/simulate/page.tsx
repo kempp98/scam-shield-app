@@ -1,8 +1,8 @@
 // src/app/simulate/page.tsx
 import React from 'react';
 import { Metadata } from 'next';
-import { SequenceHub } from '@/components/simulation/sequence-hub';
 import { HowItWorks } from '@/components/simulation/how-it-works';
+import { SequenceHub } from '@/components/simulation/sequence-hub';
 
 export const metadata: Metadata = {
   title: 'ScamSafe - Practice with Realistic Scam Simulations',
