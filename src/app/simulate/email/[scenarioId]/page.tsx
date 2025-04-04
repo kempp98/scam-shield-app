@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { mockEmailScenarios } from '@/data/simulation/email-scenarios';
 import { ClientEmailSimulator } from '@/components/simulation/client-email-simulator';
+import { CollapsibleInstructions } from '@/components/simulation/collapsible-instructions';
 
 interface EmailSimulationPageProps {
   params: {
@@ -54,25 +55,7 @@ export default function EmailSimulationPage({ params }: EmailSimulationPageProps
           </Link>
         </div>
         
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Email Simulation: {scenario.sender.name}</h1>
-          <p className="text-lg text-gray-600">
-            Practice identifying and responding to {scenario.isScam ? 'scam' : 'legitimate'} emails safely.
-          </p>
-        </div>
-        
-        <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-8">
-          <h2 className="text-md font-semibold text-blue-800 mb-1">Simulation Instructions</h2>
-          <p className="text-blue-700">
-            In this simulation, you will interact with an email interface. Your goal is to:
-            <br />
-            1. Determine whether the email is legitimate or a scam
-            <br />
-            2. Choose the appropriate response action to take
-            <br />
-            Take your time to analyze the email carefully before making your decisions.
-          </p>
-        </div>
+        <CollapsibleInstructions />
         
         <ClientEmailSimulator scenarioId={scenarioId} />
         

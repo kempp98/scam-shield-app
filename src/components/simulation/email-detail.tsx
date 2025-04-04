@@ -1,23 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useEmailSimulation } from './email-simulation-context';
 import { EmailMessage } from '@/types/email-simulation';
-import { RedFlag } from '@/types/simulation-v2';
-import { Badge } from '@/components/ui/badge';
 
 export function EmailDetail() {
   const {
     inboxState,
-    goToStep,
-    showRedFlags,
-    toggleRedFlags
+    goToStep
   } = useEmailSimulation();
   
   const { emails, selectedEmailId } = inboxState;
   const selectedEmail = emails.find(email => email.id === selectedEmailId);
-  
-  const [showingRedFlag, setShowingRedFlag] = useState<string | null>(null);
+
   
   // If no email is selected, display a placeholder
   if (!selectedEmail) {
@@ -38,42 +33,14 @@ export function EmailDetail() {
   const formatSender = (email: EmailMessage) => {
     return `${email.from.name} <${email.from.email}>`;
   };
+
   
-  // Handle red flag click
-  const handleRedFlagClick = (flagId: string) => {
-    setShowingRedFlag(showingRedFlag === flagId ? null : flagId);
-  };
   
-  // Render a red flag component
-  const renderRedFlag = (flag: RedFlag) => {
-    return (
-      <div key={flag.id} className="mb-2">
-        <Badge 
-          redFlag={true}
-          className="cursor-pointer"
-          onClick={() => handleRedFlagClick(flag.id)}
-        >
-          {flag.text}
-        </Badge>
-        
-        {showingRedFlag === flag.id && (
-          <div className="mt-1 p-2 bg-red-50 text-red-800 rounded-md border border-red-200 text-xs">
-            {flag.explanation}
-          </div>
-        )}
-      </div>
-    );
-  };
-  
-  // Actions for the email
-  const handleIdentify = () => {
-    goToStep('identification');
-  };
-  
+ 
   return (
-    <div className="flex flex-col h-full border rounded-md overflow-hidden bg-white">
+    <div className="flex flex-col border rounded-md overflow-hidden bg-white h-full">
       {/* Email header */}
-      <div className="bg-gray-100 p-3 border-b flex items-center justify-between">
+      <div className="bg-gray-100 p-3 border-b flex items-center justify-between flex-shrink-0">
         <div className="flex items-center gap-2">
           <button 
             className="p-1 hover:bg-gray-200 rounded"
@@ -97,24 +64,10 @@ export function EmailDetail() {
             </button>
           </div>
         </div>
-        <div className="flex items-center gap-2">
-          <button
-            className="px-3 py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded-md"
-            onClick={handleIdentify}
-          >
-            Identify This Email
-          </button>
-          <button
-            className="px-3 py-1 text-xs bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md"
-            onClick={toggleRedFlags}
-          >
-            {showRedFlags ? 'Hide Red Flags' : 'Show Red Flags'}
-          </button>
-        </div>
       </div>
       
       {/* Email content */}
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 overflow-y-auto">
         {/* Email subject */}
         <div className="p-4 border-b">
           <h1 className="text-xl font-medium">{selectedEmail.subject}</h1>
@@ -144,15 +97,6 @@ export function EmailDetail() {
         </div>
       </div>
       
-      {/* Red flags section - only show when enabled */}
-      {showRedFlags && selectedEmail.redFlags && selectedEmail.redFlags.length > 0 && (
-        <div className="border-t p-3 bg-gray-50">
-          <h3 className="text-sm font-medium text-red-600 mb-2">Red Flags in This Email:</h3>
-          <div className="space-y-1">
-            {selectedEmail.redFlags.map(flag => renderRedFlag(flag))}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

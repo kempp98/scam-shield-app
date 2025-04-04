@@ -24,9 +24,9 @@ export function EmailInbox() {
   };
   
   return (
-    <div className="flex flex-col h-full border rounded-md overflow-hidden bg-white">
+    <div className="flex flex-col border rounded-md overflow-hidden bg-white h-full">
       {/* Inbox header */}
-      <div className="bg-gray-100 p-3 border-b flex items-center justify-between">
+      <div className="bg-gray-100 p-3 border-b flex items-center justify-between flex-shrink-0">
         <h2 className="font-medium">Inbox</h2>
         <div className="flex items-center gap-2">
           <button className="p-1 hover:bg-gray-200 rounded">
@@ -48,7 +48,7 @@ export function EmailInbox() {
       </div>
       
       {/* Email list */}
-      <div className="flex-1 overflow-auto divide-y divide-gray-200">
+      <div className="flex-1 overflow-y-auto divide-y divide-gray-200">
         {emails.map((email) => (
           <button
             key={email.id}
@@ -89,7 +89,7 @@ export function EmailInbox() {
       </div>
       
       {/* Status bar */}
-      <div className="bg-gray-100 p-2 border-t text-xs text-gray-500 flex justify-between">
+      <div className="bg-gray-100 p-2 border-t text-xs text-gray-500 flex justify-between flex-shrink-0">
         <span>{emails.length} messages</span>
         <span>Scenario: {currentScenario?.id || 'None'}</span>
       </div>

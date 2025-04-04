@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { getScenarioSummaries } from '@/lib/simulation';
+import { getSequenceSummaries } from '@/lib/simulation-v2';
 import { getEmailScenarioSummaries } from '@/lib/email-simulation';
 
 // Define proper types for our scenario data
@@ -33,7 +33,7 @@ export function EnhancedSimulationHub() {
       try {
         // Load both text and email scenarios
         const [textData, emailData] = await Promise.all([
-          getScenarioSummaries(),
+          getSequenceSummaries(),
           getEmailScenarioSummaries()
         ]);
         
@@ -177,7 +177,7 @@ export function EnhancedSimulationHub() {
             </CardContent>
             
             <CardFooter>
-              <Link href={`/simulate/${scenario.id}`} className="w-full">
+              <Link href={`/simulate/sequence/${scenario.id}`} className="w-full">
                 <Button className="w-full">
                   {scenario.completed ? 'Try Again' : 'Start Scenario'}
                 </Button>

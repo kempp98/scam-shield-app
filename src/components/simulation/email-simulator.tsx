@@ -6,6 +6,8 @@ import { EmailSidebar } from './email-sidebar';
 import { EmailInbox } from './email-inbox';
 import { EmailDetail } from './email-detail';
 import { EmailQuestions } from './email-questions';
+import { EmailRedFlags } from './email-red-flags';
+import { EmailActionButtons } from './email-action-buttons';
 
 interface EmailSimulatorProps {
   scenarioId: string;
@@ -19,8 +21,6 @@ export function EmailSimulator({ scenarioId }: EmailSimulatorProps) {
     resetScenario,
     startScenario
   } = useEmailSimulation();
-  
-  const { step } = inboxState;
   
   // Use the scenarioId to start the scenario when component mounts
   useEffect(() => {
@@ -53,34 +53,60 @@ export function EmailSimulator({ scenarioId }: EmailSimulatorProps) {
     );
   }
   
-  // Render the questions interface when in question mode
-  if (step === 'identification' || step === 'action' || step === 'complete') {
-    return (
-      <div className="w-full pt-6">
-        <EmailQuestions />
-      </div>
-    );
-  }
+  // Determine if we're showing questions
+  const showingQuestions = inboxState.step === 'identification' || inboxState.step === 'action' || inboxState.step === 'complete';
   
-  // Render email interface
   return (
-    <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4 w-full">
-      {/* Email client sidebar - hidden on mobile for space */}
-      <div className="w-full md:w-1/5 hidden md:block">
-        <EmailSidebar />
-      </div>
+    <div className="w-full space-y-4">
       
-      {/* Main email interface */}
-      <div className="flex flex-col md:flex-row w-full md:w-4/5 space-y-4 md:space-y-0 md:space-x-4">
-        {/* Email list - full width on mobile, partial on desktop */}
-        <div className={`w-full ${step === 'reading' ? 'hidden md:block' : ''} md:w-2/5 h-[600px]`}>
-          <EmailInbox />
+      {/* Main content area */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        {/* Email interface with shared backdrop */}
+        <div className="lg:col-span-9">
+          <div className="bg-gray-100 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+            <div className="flex flex-col md:flex-row w-full space-y-4 md:space-y-0 h-[600px]">
+              {/* Email client sidebar */}
+              <div className="w-full md:w-1/5 bg-white border-r border-gray-200 h-full overflow-y-auto">
+                <EmailSidebar />
+              </div>
+              
+              {/* Email content */}
+              <div className="flex flex-col md:flex-row w-full md:w-4/5 h-full">
+                {/* Email list */}
+                <div className={`w-full ${inboxState.step === 'reading' ? 'hidden md:block' : ''} md:w-2/5 border-r border-gray-200 bg-white h-full overflow-y-auto`}>
+                  <EmailInbox />
+                </div>
+                
+                {/* Email detail */}
+                <div className={`w-full ${inboxState.step !== 'reading' ? 'hidden md:block' : ''} md:w-3/5 bg-white h-full overflow-y-auto`}>
+                  <EmailDetail />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         
-        {/* Email detail - only show when an email is selected */}
-        <div className={`w-full ${step !== 'reading' ? 'hidden md:block' : ''} md:w-3/5 h-[600px]`}>
-          <EmailDetail />
-        </div>
+        {/* Questions panel - only shown when in question mode */}
+        {showingQuestions && (
+          <div className="lg:col-span-3">
+             {inboxState.selectedEmailId && (
+                <EmailActionButtons />
+              )}
+              
+              {/* Questions panel - only shown when in analysis modes */}
+              {showingQuestions && (
+                <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <EmailQuestions />
+                </div>
+              )}
+            <EmailRedFlags />
+          </div>
+        )}
+      </div>
+      
+      {/* Footer reminder */}
+      <div className="text-center text-sm text-gray-500 mt-4">
+        Remember: This is a safe simulation environment. In real life, be cautious with emails from unknown senders and never share sensitive information through email.
       </div>
     </div>
   );

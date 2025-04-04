@@ -2,7 +2,8 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { HowItWorks } from '@/components/simulation/how-it-works';
-import { SequenceHub } from '@/components/simulation/sequence-hub';
+//import { SequenceHub } from '@/components/simulation/sequence-hub';
+import { EnhancedSimulationHub } from '@/components/simulation/enhanced-simulation-hub';
 
 export const metadata: Metadata = {
   title: 'ScamSafe - Practice with Realistic Scam Simulations',
@@ -22,7 +23,7 @@ export default function SimulatePage() {
         
         <HowItWorks />
         
-        <SequenceHub />
+        <EnhancedSimulationHub />
       </div>
     </div>
   );
