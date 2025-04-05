@@ -15,8 +15,7 @@ export function EmailQuestions() {
     actionCorrect,
     identificationFeedback,
     actionFeedback,
-    resetScenario,
-    goToStep
+    resetScenario
   } = useEmailSimulation();
   
   const { step } = inboxState;
@@ -110,13 +109,6 @@ export function EmailQuestions() {
             Try Again
           </Button>
           
-          <Button 
-            variant="default" 
-            size="sm"
-            onClick={() => goToStep('inbox')}
-          >
-            Back to Inbox
-          </Button>
         </div>
       </div>
     );
