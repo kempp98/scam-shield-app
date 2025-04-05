@@ -58,13 +58,7 @@ export default function EmailSimulationPage({ params }: EmailSimulationPageProps
         <CollapsibleInstructions />
         
         <ClientEmailSimulator scenarioId={scenarioId} />
-        
-        <div className="mt-10 text-center text-sm text-gray-500">
-          <p>
-            Remember: This is a safe simulation environment. In real life, be cautious 
-            with emails from unknown senders and never share sensitive information through email.
-          </p>
-        </div>
+
       </div>
     </div>
   );

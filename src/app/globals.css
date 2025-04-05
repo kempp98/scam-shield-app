@@ -248,3 +248,28 @@
 .shield-pulse {
   animation: pulse-subtle 2s ease-in-out infinite;
 }
+
+.potentially-suspicious {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.potentially-suspicious:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-bottom: 1px dashed #ef4444;
+}
+
+.potentially-suspicious.highlight-active {
+  background-color: rgba(239, 68, 68, 0.2);
+  border-bottom: 2px solid #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+  font-weight: 500;
+  animation: pulse-highlight 1.5s infinite;
+}
+
+@keyframes pulse-highlight {
+  0% { background-color: rgba(239, 68, 68, 0.1); }
+  50% { background-color: rgba(239, 68, 68, 0.3); }
+  100% { background-color: rgba(239, 68, 68, 0.1); }
+}

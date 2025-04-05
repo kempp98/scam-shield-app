@@ -26,7 +26,7 @@ export function CollapsibleInstructions() {
       {isExpanded && (
         <div className="mt-2 p-4 bg-blue-50 border border-blue-200 rounded-md animate-slideDown">
           <p className="text-blue-700">
-            In this simulation, you&apos;ll encounter several text message scenarios. For each one, you&apos;ll need to:
+            In this simulation, you&apos;ll encounter several message scenarios. For each one, you&apos;ll need to:
             <br /><br />
             1. Identify whether the message is legitimate or a scam
             <br />

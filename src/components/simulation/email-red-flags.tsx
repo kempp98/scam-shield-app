@@ -3,13 +3,14 @@
 
 import React, { useState } from 'react';
 import { useEmailSimulation } from './email-simulation-context';
-import { RedFlag } from '@/types/simulation-v2';
 import { Badge } from '@/components/ui/badge';
 
 export function EmailRedFlags() {
   const {
     inboxState,
-    showRedFlags
+    showRedFlags,
+    activeRedFlagId,
+    highlightRedFlag
   } = useEmailSimulation();
   
   const { emails, selectedEmailId } = inboxState;
@@ -24,35 +25,31 @@ export function EmailRedFlags() {
   
   // Handle red flag click
   const handleRedFlagClick = (flagId: string) => {
+    highlightRedFlag(flagId);
     setShowingRedFlag(showingRedFlag === flagId ? null : flagId);
   };
   
-  // Render a red flag component
-  const renderRedFlag = (flag: RedFlag) => {
-    return (
-      <div key={flag.id} className="mb-2">
-        <Badge 
-          redFlag={true}
-          className="cursor-pointer"
-          onClick={() => handleRedFlagClick(flag.id)}
-        >
-          {flag.text}
-        </Badge>
-        
-        {showingRedFlag === flag.id && (
-          <div className="mt-1 p-2 bg-red-50 text-red-800 rounded-md border border-red-200 text-xs">
-            {flag.explanation}
-          </div>
-        )}
-      </div>
-    );
-  };
-  
   return (
-    <div className="mt-4 bg-white border border-gray-200 rounded-lg shadow-sm p-4">
+    <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
       <h3 className="text-sm font-medium text-red-600 mb-2">Red Flags in This Email:</h3>
       <div className="space-y-1">
-        {selectedEmail.redFlags.map(flag => renderRedFlag(flag))}
+        {selectedEmail.redFlags.map(flag => (
+          <div key={flag.id} className="mb-2">
+            <Badge 
+              redFlag={true}
+              className={`cursor-pointer ${activeRedFlagId === flag.id ? 'bg-red-200 border-red-500' : ''}`}
+              onClick={() => handleRedFlagClick(flag.id)}
+            >
+              {flag.text}
+            </Badge>
+            
+            {showingRedFlag === flag.id && (
+              <div className="mt-1 p-2 bg-red-50 text-red-800 rounded-md border border-red-200 text-xs">
+                {flag.explanation}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );

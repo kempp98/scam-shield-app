@@ -11,6 +11,7 @@ interface EmailSimulationContextType {
   isLoading: boolean;
   error: string | null;
   showRedFlags: boolean;
+  activeRedFlagId: string | null;
   
   // Actions
   startScenario: (scenarioId: string) => Promise<void>;
@@ -20,6 +21,8 @@ interface EmailSimulationContextType {
   completeAction: (optionId: string) => void;
   resetScenario: () => void;
   toggleRedFlags: () => void;
+  highlightRedFlag: (redFlagId: string) => void;
+  proceedToAction: () => void;
   
   // Results
   identificationCorrect: boolean | null;
@@ -53,6 +56,8 @@ export function EmailSimulationProvider({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [showRedFlags, setShowRedFlags] = useState<boolean>(false);
+  const [activeRedFlagId, setActiveRedFlagId] = useState<string | null>(null);
+
   
   // User interaction states
   const [inboxState, setInboxState] = useState<EmailInboxState>({
@@ -68,6 +73,10 @@ export function EmailSimulationProvider({
   const [safetyImpact, setSafetyImpact] = useState<number | null>(null);
   const [identificationFeedback, setIdentificationFeedback] = useState<string | null>(null);
   const [actionFeedback, setActionFeedback] = useState<string | null>(null);
+
+  const highlightRedFlag = useCallback((redFlagId: string) => {
+    setActiveRedFlagId(prevId => prevId === redFlagId ? null : redFlagId);
+  }, []);
   
   // Load a scenario by ID
   const startScenario = useCallback(async (scenarioId: string) => {
@@ -128,6 +137,7 @@ export function EmailSimulationProvider({
           : email
       )
     }));
+    setActiveRedFlagId(null);
   }, []);
   
   // Go to a specific step in the simulation
@@ -153,10 +163,17 @@ export function EmailSimulationProvider({
       // Move to action question
       setInboxState(prev => ({
         ...prev,
-        step: 'action'
+        step: 'feedback'
       }));
     }
   }, [currentScenario]);
+
+  const proceedToAction = useCallback(() => {
+    setInboxState(prev => ({
+      ...prev,
+      step: 'action'
+    }));
+  },[]);
   
   // Handle action question answer
   const completeAction = useCallback((optionId: string) => {
@@ -199,6 +216,7 @@ export function EmailSimulationProvider({
     setIdentificationFeedback(null);
     setActionFeedback(null);
     setShowRedFlags(false);
+    setActiveRedFlagId(null);
     
     // Start over
     startScenario(scenarioId);
@@ -207,6 +225,9 @@ export function EmailSimulationProvider({
   // Toggle red flags visibility
   const toggleRedFlags = useCallback(() => {
     setShowRedFlags(prev => !prev);
+    if (showRedFlags) {
+      setActiveRedFlagId(null);
+    }
   }, []);
   
   const value = {
@@ -215,6 +236,7 @@ export function EmailSimulationProvider({
     isLoading,
     error,
     showRedFlags,
+    activeRedFlagId,
     startScenario,
     selectEmail,
     goToStep,
@@ -222,6 +244,8 @@ export function EmailSimulationProvider({
     completeAction,
     resetScenario,
     toggleRedFlags,
+    highlightRedFlag,
+    proceedToAction,
     identificationCorrect,
     actionCorrect,
     safetyImpact,

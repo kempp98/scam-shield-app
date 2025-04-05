@@ -1,6 +1,14 @@
 // Types for email simulation
-import { DifficultyLevel, RedFlag } from './simulation-v2';
+import { DifficultyLevel } from './simulation-v2';
 
+
+export interface EmailRedFlag {
+  id: string;
+  text: string;
+  explanation: string;
+  highlightText?: string;
+  highlightPosition?: 'subject' | 'sender' | 'body';
+}
 export interface EmailMessage {
   id: string;
   subject: string;
@@ -28,7 +36,7 @@ export interface EmailMessage {
   isStarred?: boolean;
   isImportant?: boolean;
   folder?: string;
-  redFlags?: RedFlag[];
+  redFlags: EmailRedFlag[];
 }
 
 export interface EmailAttachment {
@@ -51,7 +59,7 @@ export interface EmailScenarioData {
     email: string;
   };
   emails: EmailMessage[];
-  redFlags?: RedFlag[];
+  redFlags?: EmailRedFlag[];
   identificationQuestion: {
     options: {
       id: string;
@@ -76,8 +84,9 @@ export interface EmailInboxState {
   emails: EmailMessage[];
   selectedEmailId: string | null;
   activeFolder: string;
-  step: 'inbox' | 'reading' | 'identification' | 'action' | 'complete';
+  step: 'inbox' | 'reading' | 'identification' | 'feedback' | 'action' | 'complete';
 }
+
 
 // Email sequence state
 export interface EmailSequenceState {

@@ -48,46 +48,28 @@ export const phishingEmailScenario: EmailScenarioData = {
         {
           id: "suspicious-sender-email",
           text: "Email address misspells 'PayPal' as 'Paypa1'",
-          explanation: "Scammers often use lookalike domains with slight misspellings, substituting numbers for letters (notice the '1' instead of 'l' in 'paypa1')."
+          explanation: "Scammers often use lookalike domains with slight misspellings, substituting numbers for letters (notice the '1' instead of 'l' in 'paypa1').",
+          highlightText: "security-services@paypa1-support.com" // Add this
         },
         {
           id: "urgency-tactic",
           text: "Creates urgency with 24-hour time limit",
-          explanation: "Creating artificial urgency is a common tactic to pressure you into acting without careful consideration."
+          explanation: "Creating artificial urgency is a common tactic to pressure you into acting without careful consideration.",
+          highlightText: "within 24 hours" // Add this
         },
         {
           id: "generic-greeting",
           text: "Generic greeting that doesn't include your name",
-          explanation: "Legitimate PayPal emails typically address you by name, not as 'Valued Customer'."
+          explanation: "Legitimate PayPal emails typically address you by name, not as 'Valued Customer'.",
+          highlightText: "Dear Valued Customer" // Add this
         },
         {
           id: "suspicious-link",
           text: "Requests you to click a button to verify information",
-          explanation: "Legitimate services rarely ask you to verify account information via email links. Instead, they ask you to log in directly to their website."
+          explanation: "Legitimate services rarely ask you to verify account information via email links. Instead, they ask you to log in directly to their website.",
+          highlightText: "Verify My Account" // Add this
         }
       ]
-    }
-  ],
-  redFlags: [
-    {
-      id: "suspicious-sender-email",
-      text: "Email address misspells 'PayPal' as 'Paypa1'",
-      explanation: "Scammers often use lookalike domains with slight misspellings, substituting numbers for letters (notice the '1' instead of 'l' in 'paypa1')."
-    },
-    {
-      id: "urgency-tactic",
-      text: "Creates urgency with 24-hour time limit",
-      explanation: "Creating artificial urgency is a common tactic to pressure you into acting without careful consideration."
-    },
-    {
-      id: "generic-greeting",
-      text: "Generic greeting that doesn't include your name",
-      explanation: "Legitimate PayPal emails typically address you by name, not as 'Valued Customer'."
-    },
-    {
-      id: "suspicious-link",
-      text: "Requests you to click a button to verify information",
-      explanation: "Legitimate services rarely ask you to verify account information via email links. Instead, they ask you to log in directly to their website."
     }
   ],
   identificationQuestion: {
@@ -142,100 +124,6 @@ export const phishingEmailScenario: EmailScenarioData = {
         isCorrect: true,
         safetyImpact: 10,
         feedback: "Excellent! Reporting phishing attempts helps protect others and improves detection systems."
-      }
-    ]
-  }
-};
-
-// Sample legitimate email scenario
-export const legitimateEmailScenario: EmailScenarioData = {
-  id: "scenario-email-legitimate-001",
-  type: "email",
-  category: "banking",
-  isScam: false,
-  difficulty: "beginner",
-  sender: {
-    name: "Chase Bank",
-    email: "no-reply@chase.com"
-  },
-  emails: [
-    {
-      id: "email-1",
-      subject: "Your Chase statement is ready",
-      from: {
-        name: "Chase Bank",
-        email: "no-reply@chase.com"
-      },
-      to: {
-        name: "John Smith",
-        email: "jsmith@example.com"
-      },
-      date: "Today, 7:15 AM",
-      body: `<div style="font-family: Arial, sans-serif;">
-        <img src="/images/chase-logo.png" alt="Chase" style="max-width: 100px; margin-bottom: 20px;" />
-        <p>Hello John Smith,</p>
-        <p>Your Chase credit card statement is ready to view online.</p>
-        <p><strong>Account:</strong> Credit Card ending in 1234<br>
-        <strong>Statement Period:</strong> March 5 - April 4, 2025<br>
-        <strong>Balance:</strong> $432.17</p>
-        <p>To view your statement, please sign in to <a href="https://chase.com">chase.com</a> or use the Chase Mobile app.</p>
-        <p>If you have any questions, please call the number on the back of your card.</p>
-        <p>Thank you for being a Chase customer.</p>
-        <p>This is an automated email. Please do not reply.</p>
-        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
-        <p style="font-size: 11px; color: #666;">For your security, we'll never ask for your personal information in an email.</p>
-        <p style="font-size: 11px; color: #666;">© 2025 JPMorgan Chase & Co.</p>
-      </div>`,
-      hasAttachments: false,
-      isRead: false,
-      folder: "inbox"
-    }
-  ],
-  identificationQuestion: {
-    options: [
-      {
-        id: "legitimate",
-        text: "This is a legitimate email from Chase Bank",
-        isCorrect: true,
-        feedback: "Correct! This appears to be a legitimate email from Chase. The email address is from the official chase.com domain, it addresses you by name, doesn't ask you to click suspicious links, and doesn't create false urgency."
-      },
-      {
-        id: "scam",
-        text: "This is a phishing email attempting to steal my information",
-        isCorrect: false,
-        feedback: "This is actually a legitimate email notification. Notice that it comes from the actual chase.com domain, addresses you by name, doesn't create false urgency, and directs you to sign in to the official website rather than clicking a link in the email."
-      }
-    ]
-  },
-  actionQuestion: {
-    options: [
-      {
-        id: "login-official",
-        text: "Manually go to chase.com or open the Chase app to view your statement",
-        isCorrect: true,
-        safetyImpact: 10,
-        feedback: "Excellent choice! Going directly to the official website or app is the safest way to view your account information."
-      },
-      {
-        id: "ignore",
-        text: "Ignore the email if you don't want to check your statement now",
-        isCorrect: true,
-        safetyImpact: 8,
-        feedback: "This is fine. The email is simply a notification, and there's no urgent action required."
-      },
-      {
-        id: "click-link",
-        text: "Click the link in the email to go to Chase's website",
-        isCorrect: false,
-        safetyImpact: 2,
-        feedback: "While this email appears legitimate, it's still safer to manually type the URL or use the app rather than clicking links in emails, even from trusted sources."
-      },
-      {
-        id: "reply",
-        text: "Reply to the email with questions about your statement",
-        isCorrect: false,
-        safetyImpact: -2,
-        feedback: "The email states it's automated and not to reply. For questions about your account, you should contact customer service through official channels."
       }
     ]
   }
@@ -411,9 +299,7 @@ export const jobScamEmailScenario: EmailScenarioData = {
 
 // Export all scenarios
 export const mockEmailScenarios = [
-  phishingEmailScenario,
-  legitimateEmailScenario,
-  jobScamEmailScenario
+  phishingEmailScenario
 ];
 
 // Default export for simple importing

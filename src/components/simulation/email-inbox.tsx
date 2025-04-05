@@ -8,7 +8,7 @@ export function EmailInbox() {
   const {
     inboxState,
     selectEmail,
-    currentScenario
+    // currentScenario
   } = useEmailSimulation();
   
   const { emails, selectedEmailId} = inboxState;
@@ -91,7 +91,6 @@ export function EmailInbox() {
       {/* Status bar */}
       <div className="bg-gray-100 p-2 border-t text-xs text-gray-500 flex justify-between flex-shrink-0">
         <span>{emails.length} messages</span>
-        <span>Scenario: {currentScenario?.id || 'None'}</span>
       </div>
     </div>
   );

@@ -3,10 +3,13 @@
 import React from 'react';
 import { useEmailSimulation } from './email-simulation-context';
 import { EmailMessage } from '@/types/email-simulation';
+import { EmailBodyWithHighlights } from './email-body-with-highlights';
 
 export function EmailDetail() {
   const {
     inboxState,
+    activeRedFlagId, 
+    highlightRedFlag,
     goToStep
   } = useEmailSimulation();
   
@@ -93,10 +96,18 @@ export function EmailDetail() {
         
         {/* Email body */}
         <div className="p-4">
-          <div dangerouslySetInnerHTML={{ __html: selectedEmail.body }} />
+          {selectedEmail.redFlags && selectedEmail.redFlags.length > 0 ? (
+            <EmailBodyWithHighlights
+              htmlContent={selectedEmail.body}
+              redFlags={selectedEmail.redFlags}
+              activeRedFlagId={activeRedFlagId}
+              onHighlightClick={highlightRedFlag}
+            />
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: selectedEmail.body }} />
+          )}
         </div>
       </div>
-      
     </div>
   );
 }

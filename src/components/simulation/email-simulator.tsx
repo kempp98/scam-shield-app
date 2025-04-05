@@ -8,6 +8,7 @@ import { EmailDetail } from './email-detail';
 import { EmailQuestions } from './email-questions';
 import { EmailRedFlags } from './email-red-flags';
 import { EmailActionButtons } from './email-action-buttons';
+import { EmailFeedback } from './email-feedback';
 
 interface EmailSimulatorProps {
   scenarioId: string;
@@ -53,7 +54,8 @@ export function EmailSimulator({ scenarioId }: EmailSimulatorProps) {
     );
   }
   
-  // Determine if we're showing questions
+  // Determine if we're showing questions or feedback
+  const showingFeedback = inboxState.step === 'feedback';
   const showingQuestions = inboxState.step === 'identification' || inboxState.step === 'action' || inboxState.step === 'complete';
   
   return (
@@ -78,7 +80,8 @@ export function EmailSimulator({ scenarioId }: EmailSimulatorProps) {
                 </div>
                 
                 {/* Email detail */}
-                <div className={`w-full ${inboxState.step !== 'reading' ? 'hidden md:block' : ''} md:w-3/5 bg-white h-full overflow-y-auto`}>
+                
+                <div className={`w-full ${inboxState.step === 'reading' ? '' : 'hidden md:flex'} md:w-3/5 h-[600px]`}>
                   <EmailDetail />
                 </div>
               </div>
@@ -86,22 +89,19 @@ export function EmailSimulator({ scenarioId }: EmailSimulatorProps) {
           </div>
         </div>
         
-        {/* Questions panel - only shown when in question mode */}
-        {showingQuestions && (
-          <div className="lg:col-span-3">
-             {inboxState.selectedEmailId && (
-                <EmailActionButtons />
-              )}
-              
-              {/* Questions panel - only shown when in analysis modes */}
-              {showingQuestions && (
-                <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
-                  <EmailQuestions />
-                </div>
-              )}
-            <EmailRedFlags />
-          </div>
-        )}
+        <div className="lg:col-span-3 space-y-4">
+          {/* Action Buttons - only shown when email is selected */}
+          {inboxState.selectedEmailId && <EmailActionButtons />}
+          
+          {/* Red flags - only shown when email is selected */}
+          {inboxState.selectedEmailId && <EmailRedFlags />}
+
+          {/* Feedback - shown after identification question */}
+          {showingFeedback && <EmailFeedback />}
+          
+          {/* Questions - only shown in analysis mode */}
+          {showingQuestions && !showingFeedback && <EmailQuestions />}
+        </div>
       </div>
       
       {/* Footer reminder */}
