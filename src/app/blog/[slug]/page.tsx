@@ -3,7 +3,6 @@ import { BlogDetail } from '@/components/blog/blog-detail';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-
 interface BlogPostPageProps {
   params: {
     slug: string;
@@ -31,6 +30,11 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   return {
     title: `${post.title} - ScamSafe Blog`,
     description: post.description,
+    openGraph: {
+      title:  post.title,
+      description: post.description,
+      url: `https://yourwebsite.com/blog/${post.slug}`
+    }
   };
 }
 
