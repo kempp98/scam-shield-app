@@ -1,4 +1,13 @@
-import { ScenarioSequence } from '@/types/simulation';
+// DEPRECATED: This file is legacy code and not currently used
+// The application now uses simulation-v2.ts for sequence management
+
+interface ScenarioSequence {
+  id: string;
+  title: string;
+  description: string;
+  scenarioIds: string[];
+  category: string;
+}
 
 // Define sample sequences
 const sequences: Record<string, ScenarioSequence> = {

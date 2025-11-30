@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ContentSection } from '@/lib/education';
+import ReactMarkdown from 'react-markdown';
 
 interface ExpandableCardProps {
   section: ContentSection;
@@ -24,7 +25,7 @@ export function ExpandableCard({ section }: ExpandableCardProps) {
     <Card>
       <CardContent className="pt-6">
         <h2 className="text-2xl font-semibold mb-4">{section.title}</h2>
-        <p className="mb-6">{section.body}</p>
+        <p className="mb-6"><ReactMarkdown>{section.body}</ReactMarkdown></p>
         
         <div className="space-y-3">
           {expandableItems?.map(item => (
@@ -52,7 +53,7 @@ export function ExpandableCard({ section }: ExpandableCardProps) {
               
               {expandedItems.includes(item.id) && (
                 <div className="p-4 bg-gray-50 border-t">
-                  <p>{item.content}</p>
+                  <p><ReactMarkdown>{item.content}</ReactMarkdown></p>
                 </div>
               )}
             </div>

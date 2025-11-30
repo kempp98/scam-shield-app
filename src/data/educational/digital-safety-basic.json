@@ -1,0 +1,53 @@
+{
+    "id": "digital-safety-basic",
+    "title": "Intro to Digital Hygiene",
+    "description": "Just like physical hygiene, we need to practice good digital hygiene to protect our personal information and finances. This module introduces digital hygiene and teaches best practices to keep yourself safe.",
+    "coverImage": "",
+    "estimatedTime": "5 minutes",
+    "content": {
+        "sections": [
+        {
+            "id": "introduction",
+            "title": "Intro to Digital Hygiene",
+            "body": "What is 'digital hygiene'? Think of it like regular habits for keeping your information safe online. Just like personal hygiene helps keep you healthy, good digital habits help protect your accounts and identity. This module covers simple practices you can build into your routine to reduce your risk from scams and fraud.",
+            "cardType": "basic"
+        },
+        {
+            "id": "why-it-matters",
+            "title": "Why Digital Hygiene Matters",
+            "body": "Staying connected online is great, but it also means your personal information exists digitally. Unfortunately, criminals look for this data to use in identity theft, scams, or other harmful ways. Practicing good digital hygiene helps create a stronger shield, making it harder for them to access your sensitive info and misuse it. Let's look at how.",
+            "cardType": "basic"
+        },
+        {
+            "id": "password-safety",
+            "title": "Password Safety Basics",
+            "body": "Your passwords are like keys to your online accounts. Using strong, unique passwords is a fundamental step in digital hygiene. Explore these tips to help keep your accounts secure.",
+            "cardType": "expandable",
+            "interactionData": {
+                "expandableItems": [
+                    {
+                        "id": "strong",
+                        "title": "Create Strong Passwords",
+                        "content": "Aim for length and complexity. Good passwords are:\n* **Long:** At least 12-15 characters, longer is better.\n* **Mixed:** Use uppercase letters, lowercase letters, numbers, and symbols (!@#$).\n* **Unpredictable:** Avoid common words, names, dates, or easy patterns (like 'password123' or 'qwerty')."
+                    },
+                    {
+                        "id": "dont-reuse",
+                        "title": "Use Unique Passwords",
+                        "content": "Don't use the same password for multiple websites or apps. If one account gets compromised in a data breach, using unique passwords prevents criminals from easily accessing your other accounts with that stolen password."
+                    },
+                    {
+                        "id": "passphrase",
+                        "title": "Consider Using Passphrases",
+                        "content": "A passphrase is like a password made from multiple words. Example: 'CorrectHorseBatteryStaple'. They are often easier to remember than complex passwords but can still be very long and strong. You can make them even stronger by adding symbols or numbers, like 'C0rrectH0rseB@tterySt@ple!'."
+                    },
+                    {
+                        "id": "password-manager",
+                        "title": "Use a Password Manager App",
+                        "content": "Remembering many unique, strong passwords is hard. A password manager app securely stores all your passwords and can help generate strong ones. You only need to remember one master password for the manager itself. Many reputable options are available."
+                    }
+                ]
+            }
+        }
+    ]
+    }
+}

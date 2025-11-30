@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { logger } from './logger';
 
 // Define types for educational content
 export interface RedFlag {
@@ -117,7 +118,7 @@ export async function getAllModules(): Promise<EducationalModule[]> {
     // Sort modules by title or any other criteria
     return allModules.sort((a, b) => a.title.localeCompare(b.title));
   } catch (error) {
-    console.error('Error loading educational modules:', error);
+    logger.error('Error loading educational modules:', error);
     return [];
   }
 }
@@ -136,7 +137,7 @@ export async function getModuleById(id: string): Promise<EducationalModule | nul
     
     return moduleData;
   } catch (error) {
-    console.error(`Error loading module with ID ${id}:`, error);
+    logger.error(`Error loading module with ID ${id}:`, error);
     return null;
   }
 }
@@ -157,7 +158,7 @@ export async function getModuleSummaries(): Promise<Array<Omit<EducationalModule
       estimatedTime
     }));
   } catch (error) {
-    console.error('Error loading module summaries:', error);
+    logger.error('Error loading module summaries:', error);
     return [];
   }
 }
@@ -175,7 +176,7 @@ export async function getModuleQuiz(moduleId: string): Promise<QuizQuestion[] | 
     
     return moduleData.quiz;
   } catch (error) {
-    console.error(`Error loading quiz for module ${moduleId}:`, error);
+    logger.error(`Error loading quiz for module ${moduleId}:`, error);
     return null;
   }
 }
@@ -198,12 +199,12 @@ export async function saveUserProgress(
 ): Promise<boolean> {
   try {
     // This would be replaced with actual storage logic (e.g., to a database)
-    console.log('Saving progress:', progress);
-    
+    logger.debug('Saving progress:', progress);
+
     // For now, just return success
     return true;
   } catch (error) {
-    console.error('Error saving user progress:', error);
+    logger.error('Error saving user progress:', error);
     return false;
   }
 }
@@ -228,7 +229,7 @@ export async function getUserProgress(
     // For now, just return null to indicate no saved progress
     return null;
   } catch (error) {
-    console.error('Error getting user progress:', error);
+    logger.error('Error getting user progress:', error);
     return null;
   }
 }

@@ -76,14 +76,16 @@ export function ModuleDetail({ id, title, description, estimatedTime, content }:
       
       {/* Progress indicator - more compact for many sections */}
       <div className="flex items-center justify-center mb-8 overflow-x-auto py-2 no-scrollbar">
-        <div className="flex space-x-1">
+        <div className="flex space-x-1" role="navigation" aria-label="Section progress">
           {sections.map((section, index) => (
             <button
               key={section.id}
               onClick={() => setActiveSection(index)}
+              aria-label={`${section.title} (section ${index + 1} of ${sections.length})`}
+              aria-current={index === activeSection ? 'true' : 'false'}
               className={`w-3 h-3 rounded-full transition-all ${
-                index === activeSection 
-                  ? 'bg-primary w-6' 
+                index === activeSection
+                  ? 'bg-primary w-6'
                   : sectionProgress[section.id]
                     ? 'bg-primary/40'
                     : 'bg-gray-200'
@@ -101,14 +103,15 @@ export function ModuleDetail({ id, title, description, estimatedTime, content }:
           size="icon"
           onClick={goToPreviousSection}
           disabled={isFirstSection}
+          aria-label="Go to previous section"
           className={`rounded-full p-2 ${isFirstSection ? 'opacity-0' : 'opacity-90 hover:opacity-100'}`}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M15 18l-6-6 6-6" />
           </svg>
         </Button>
       </div>
-      
+
       {/* Only show right arrow if not on last section */}
       {!isLastSection && (
         <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-12 hidden md:block">
@@ -116,17 +119,16 @@ export function ModuleDetail({ id, title, description, estimatedTime, content }:
             variant="default"
             size="icon"
             onClick={goToNextSection}
+            aria-label="Go to next section"
             className="rounded-full p-2"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M9 18l6-6-6-6" />
             </svg>
           </Button>
         </div>
       )}
       
-      {/* Current section title */}
-      <h2 className="text-2xl font-semibold mb-6">{currentSection.title}</h2>
       
       {/* Current section content using the CardRenderer */}
       <CardRenderer 
@@ -154,27 +156,28 @@ export function ModuleDetail({ id, title, description, estimatedTime, content }:
           variant="outline"
           onClick={goToPreviousSection}
           disabled={isFirstSection}
+          aria-label="Go to previous section"
           className="flex items-center"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1" aria-hidden="true">
             <path d="M15 18l-6-6 6-6" />
           </svg>
           Previous
         </Button>
-        
+
         {isLastSection ? (
           <Link href={`/learn/${id}/quiz`}>
-            <Button variant="default" className="flex items-center">
+            <Button variant="default" aria-label="Take quiz for this module" className="flex items-center">
               Take Quiz
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1" aria-hidden="true">
                 <path d="M9 18l6-6-6-6" />
               </svg>
             </Button>
           </Link>
         ) : (
-          <Button variant="default" onClick={goToNextSection} className="flex items-center">
+          <Button variant="default" onClick={goToNextSection} aria-label="Go to next section" className="flex items-center">
             Next
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1" aria-hidden="true">
               <path d="M9 18l6-6-6-6" />
             </svg>
           </Button>
@@ -187,20 +190,22 @@ export function ModuleDetail({ id, title, description, estimatedTime, content }:
           <summary className="text-gray-500 cursor-pointer font-medium">
             Module Outline
           </summary>
-          <ul className="mt-2 space-y-1">
+          <ul className="mt-2 space-y-1" role="navigation" aria-label="Module sections">
             {sections.map((section, index) => (
               <li key={section.id}>
-                <button 
+                <button
                   onClick={() => setActiveSection(index)}
+                  aria-label={`Go to section ${index + 1}: ${section.title}`}
+                  aria-current={index === activeSection ? 'true' : 'false'}
                   className={`text-left w-full px-2 py-1 rounded ${
-                    index === activeSection 
-                      ? 'bg-primary/10 text-primary font-medium' 
+                    index === activeSection
+                      ? 'bg-primary/10 text-primary font-medium'
                       : 'hover:bg-gray-100'
                   }`}
                 >
                   <span className="inline-block w-6">{index + 1}.</span> {section.title}
                   {sectionProgress[section.id] && (
-                    <span className="ml-2 text-green-500">✓</span>
+                    <span className="ml-2 text-green-500" aria-label="completed">✓</span>
                   )}
                 </button>
               </li>

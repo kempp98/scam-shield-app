@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ContentSection } from '@/lib/education';
+import ReactMarkdown from 'react-markdown';
 
 interface DragDropResult {
     correct: boolean;
@@ -84,7 +85,7 @@ export function DragDropCard({ section, onComplete }: DragDropCardProps) {
     <Card>
       <CardContent className="pt-6">
         <h2 className="text-2xl font-semibold mb-4">{section.title}</h2>
-        <p className="mb-6">{section.body}</p>
+        <p className="mb-6"><ReactMarkdown>{section.body}</ReactMarkdown></p>
         
         {/* Available items */}
         <div className="mb-6">

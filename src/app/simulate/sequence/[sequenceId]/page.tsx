@@ -6,35 +6,34 @@ import { getSequenceById } from '@/lib/simulation-v2';
 import { SequenceProvider } from '@/components/simulation/sequence-context';
 import { SequenceSimulator } from '@/components/simulation/sequence-simulator';
 import { CollapsibleInstructions } from '@/components/simulation/collapsible-instructions';
+import { Metadata } from 'next';
 
 interface SequencePageProps {
-  params: {
+  params: Promise<{
     sequenceId: string;
-  };
+  }>;
 }
 
-export async function generateMetadata({ params }: SequencePageProps) {
-    // Access the sequenceId directly without destructuring
-    const sequenceId = params.sequenceId;
-    const sequence = await getSequenceById(sequenceId);
-    
-    if (!sequence) {
-      return {
-        title: 'Sequence Not Found - ScamSafe',
-        description: 'The requested simulation sequence could not be found.'
-      };
-    }
-    
+export async function generateMetadata({ params }: SequencePageProps): Promise<Metadata> {
+  const { sequenceId } = await params;
+  const sequence = await getSequenceById(sequenceId);
+
+  if (!sequence) {
     return {
-      title: `${sequence.title} - ScamSafe Simulation`,
-      description: sequence.description
+      title: 'Sequence Not Found - ScamSafe',
+      description: 'The requested simulation sequence could not be found.'
     };
   }
 
+  return {
+    title: `${sequence.title} - ScamSafe Simulation`,
+    description: sequence.description
+  };
+}
+
 export default async function SequencePage({ params }: SequencePageProps) {
-    // Access the sequenceId directly without destructuring
-    const sequenceId = params.sequenceId;
-    const sequence = await getSequenceById(sequenceId);
+  const { sequenceId } = await params;
+  const sequence = await getSequenceById(sequenceId);
     
     if (!sequence) {
       notFound();

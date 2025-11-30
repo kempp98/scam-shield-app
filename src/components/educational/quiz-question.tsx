@@ -24,15 +24,15 @@ export function QuizQuestion({
       <CardContent className="pt-6">
         <h3 className="text-xl font-semibold mb-4">{question}</h3>
         
-        <div className="space-y-3">
+        <div className="space-y-3" role="radiogroup" aria-label={question}>
           {options.map((option) => {
             // Determine option styling based on selection state
             const isSelected = selectedOptionId === option.id;
             const showCorrectStyle = isAnswered && option.isCorrect;
             const showIncorrectStyle = isAnswered && isSelected && !option.isCorrect;
-            
+
             let optionClassName = "w-full text-left p-4 rounded-md border transition-colors";
-            
+
             if (isSelected && !isAnswered) {
               // Selected but not answered yet
               optionClassName += " bg-primary/10 border-primary";
@@ -46,20 +46,23 @@ export function QuizQuestion({
               // Default/unselected style
               optionClassName += " bg-white border-gray-200 hover:bg-gray-50";
             }
-            
+
             // Disable options after answering
             const isDisabled = isAnswered;
-            
+
             return (
               <div key={option.id} className="relative">
                 <button
+                  role="radio"
+                  aria-checked={isSelected}
+                  aria-label={option.text}
                   onClick={() => !isAnswered && onAnswer(option.id, option.isCorrect)}
                   disabled={isDisabled}
                   className={optionClassName}
                 >
                   {option.text}
                 </button>
-                
+
                 {/* Show feedback when answered */}
                 {isAnswered && isSelected && (
                   <div className={`mt-2 p-3 rounded text-sm ${option.isCorrect ? 'bg-success/10 text-success' : 'bg-danger/10 text-danger'}`}>

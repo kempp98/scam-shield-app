@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { BlogPost } from '@/types/blog';
+import { logger } from './logger';
 
 // Path to blog content directory
 const BLOG_DIR = path.join(process.cwd(), 'src/data/blog');
@@ -12,24 +13,24 @@ const BLOG_DIR = path.join(process.cwd(), 'src/data/blog');
 export async function getAllPosts(): Promise<BlogPost[]> {
   // Ensure directory exists
   if (!fs.existsSync(BLOG_DIR)) {
-    console.warn(`Blog directory not found: ${BLOG_DIR}`);
+    logger.warn(`Blog directory not found: ${BLOG_DIR}`);
     return [];
   }
-  
+
   // Get all .md files from the blog directory
   const files = fs.readdirSync(BLOG_DIR).filter(file => file.endsWith('.md'));
-  
+
   // Read and parse each file
   const posts = files.map(file => {
     const filePath = path.join(BLOG_DIR, file);
     const fileContent = fs.readFileSync(filePath, 'utf8');
-    
+
     // Parse frontmatter and content
     const { data, content } = matter(fileContent);
-    
+
     // Ensure all required fields are present
     if (!data.id || !data.slug || !data.title) {
-      console.warn(`Blog post ${file} is missing required frontmatter fields`);
+      logger.warn(`Blog post ${file} is missing required frontmatter fields`);
     }
     
     // Create blog post object
@@ -70,33 +71,33 @@ export async function getAllPosts(): Promise<BlogPost[]> {
  */
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
-    console.log(`Looking for post with slug: "${slug}"`);
-    
+    logger.debug(`Looking for post with slug: "${slug}"`);
+
     // Check if slug is empty or invalid
     if (!slug || typeof slug !== 'string') {
-      console.error(`Invalid slug: ${slug}`);
+      logger.error(`Invalid slug: ${slug}`);
       return null;
     }
-    
+
     // Get all posts
     const allPosts = await getAllPosts();
-    
+
     // Find the post with matching slug (case-insensitive)
-    const post = allPosts.find(p => 
+    const post = allPosts.find(p =>
       p.slug.toLowerCase() === slug.toLowerCase()
     );
-    
+
     if (!post) {
-      console.warn(`No post found with slug "${slug}"`);
+      logger.warn(`No post found with slug "${slug}"`);
       // Log all available slugs for debugging
-      console.log('Available slugs:', allPosts.map(p => p.slug));
+      logger.debug('Available slugs:', allPosts.map(p => p.slug));
       return null;
     }
-    
-    console.log(`Found post: ${post.title}`);
+
+    logger.debug(`Found post: ${post.title}`);
     return post;
   } catch (error) {
-    console.error(`Error getting post by slug "${slug}":`, error);
+    logger.error(`Error getting post by slug "${slug}":`, error);
     return null;
   }
 }
