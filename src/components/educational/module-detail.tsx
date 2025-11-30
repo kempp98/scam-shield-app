@@ -125,8 +125,6 @@ export function ModuleDetail({ id, title, description, estimatedTime, content }:
         </div>
       )}
       
-      {/* Current section title */}
-      <h2 className="text-2xl font-semibold mb-6">{currentSection.title}</h2>
       
       {/* Current section content using the CardRenderer */}
       <CardRenderer 
