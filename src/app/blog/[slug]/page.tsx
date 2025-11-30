@@ -3,30 +3,32 @@ import { BlogDetail } from '@/components/blog/blog-detail';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
-  
+
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
-  const post = await getPostBySlug(params.slug);
-  
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+
   if (!post) {
     return {
       title: 'Post Not Found',
       description: 'The blog post you are looking for does not exist.',
     };
   }
-  
+
   return {
     title: `${post.title} - ScamSafe Blog`,
     description: post.description,
@@ -39,7 +41,8 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   
   if (!post) {
     notFound();

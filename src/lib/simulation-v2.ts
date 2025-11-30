@@ -1,5 +1,6 @@
 // Updated simulation data functions
 import { SimulationSequence, ScenarioData, SequenceSummary } from '@/types/simulation-v2';
+import { logger } from './logger';
 
 // For a real application, these would be loaded dynamically or from an API
 // For the MVP, we'll define them directly
@@ -99,7 +100,7 @@ export async function getScenarioById(id: string): Promise<ScenarioData | null> 
     
     return scenarioData;
   } catch (error) {
-    console.error(`Failed to load scenario with ID ${id}:`, error);
+    logger.error(`Failed to load scenario with ID ${id}:`, error);
     return null;
   }
 }
@@ -118,6 +119,6 @@ export async function saveSequenceProgress(
   }
 ): Promise<boolean> {
   // In a real implementation, this would save to a database or API
-  console.log(`Saving progress for user ${userId} on sequence ${sequenceId}:`, progress);
+  logger.debug(`Saving progress for user ${userId} on sequence ${sequenceId}:`, progress);
   return true;
 }

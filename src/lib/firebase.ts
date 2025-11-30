@@ -2,19 +2,18 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 import { getAnalytics, isSupported } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase configuration using environment variables
+// These values are safe to expose in client-side code
+// See: https://firebase.google.com/docs/web/setup#config-object
 const firebaseConfig = {
-  apiKey: "AIzaSyA-SbHgiVRPqTzwzXE29o-yPMnI8Rm1y8Q",
-  authDomain: "scamsafe-fba42.firebaseapp.com",
-  projectId: "scamsafe-fba42",
-  storageBucket: "scamsafe-fba42.firebasestorage.app",
-  messagingSenderId: "909412171180",
-  appId: "1:909412171180:web:38854d66e5c92b0e8bce09",
-  measurementId: "G-PK8QRXFMTF"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase

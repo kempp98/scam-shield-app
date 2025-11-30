@@ -16,11 +16,11 @@ export function MessageBubble({ message, showRedFlags = false }: MessageBubblePr
   const formatMessageText = (text: string) => {
     // Simple URL regex
     const urlRegex = /(https?:\/\/[^\s]+)/g;
-    
+
     // Split by URLs and map to elements
     const parts = text.split(urlRegex);
-    const matches = text.match(urlRegex) || [];
-    
+    const matches: string[] = text.match(urlRegex) || [];
+
     return parts.map((part, i) => {
       // If this is a URL part
       if (matches.includes(part)) {

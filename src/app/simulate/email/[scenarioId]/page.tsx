@@ -4,34 +4,35 @@ import { notFound } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { mockEmailScenarios } from '@/data/simulation/email-scenarios';
 import { ClientEmailSimulator } from '@/components/simulation/client-email-simulator';
+import { Metadata } from 'next';
 
 interface EmailSimulationPageProps {
-  params: {
+  params: Promise<{
     scenarioId: string;
-  };
+  }>;
 }
 
-export async function generateMetadata({ params }: EmailSimulationPageProps) {
-  const { scenarioId } = params;
+export async function generateMetadata({ params }: EmailSimulationPageProps): Promise<Metadata> {
+  const { scenarioId } = await params;
   const scenario = mockEmailScenarios.find(s => s.id === scenarioId);
-  
+
   if (!scenario) {
     return {
       title: 'Email Scenario Not Found - ScamSafe',
       description: 'The requested email simulation scenario could not be found.'
     };
   }
-  
+
   return {
     title: `${scenario.sender.name} - Email Simulation - ScamSafe`,
-    description: scenario.isScam 
-      ? 'Practice identifying and safely responding to email scams' 
+    description: scenario.isScam
+      ? 'Practice identifying and safely responding to email scams'
       : 'Practice identifying and safely responding to legitimate emails'
   };
 }
 
-export default function EmailSimulationPage({ params }: EmailSimulationPageProps) {
-  const { scenarioId } = params;
+export default async function EmailSimulationPage({ params }: EmailSimulationPageProps) {
+  const { scenarioId } = await params;
   
   // Using mock data for now
   const scenario = mockEmailScenarios.find(s => s.id === scenarioId);
