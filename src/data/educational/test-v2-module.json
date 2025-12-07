@@ -1,0 +1,167 @@
+{
+  "id": "test-v2-module",
+  "title": "Test Module (V2 Format)",
+  "description": "A test module to verify the V2 educational system with enhanced scoring and feedback.",
+  "coverImage": "/images/red-flags-cover.jpg",
+  "estimatedTime": "3 minutes",
+  "difficulty": "beginner",
+  "badge": {
+    "id": "test-v2-badge",
+    "name": "V2 Pioneer",
+    "description": "Completed the V2 test module",
+    "icon": "🧪",
+    "color": "#3b82f6"
+  },
+  "scoring": {
+    "passingScore": 70,
+    "moduleWeight": 70,
+    "quizWeight": 30
+  },
+  "content": {
+    "sections": [
+      {
+        "id": "test-intro",
+        "title": "Welcome to V2",
+        "body": "This is a test module demonstrating the new V2 educational format with enhanced scoring, feedback, and coaching.",
+        "sectionType": "informational",
+        "cardType": "content",
+        "requiresCompletion": false
+      },
+      {
+        "id": "test-multiple-choice",
+        "title": "Test: Enhanced Multiple Choice",
+        "body": "Try the enhanced multiple choice with better feedback and scoring.",
+        "sectionType": "interactive",
+        "cardType": "multipleChoice",
+        "requiresCompletion": true,
+        "maxScore": 10,
+        "interactionData": {
+          "type": "multipleChoice",
+          "question": "Which of these is a red flag in a scam message?",
+          "allowMultiple": false,
+          "shuffleOptions": false,
+          "options": [
+            {
+              "id": "opt-1",
+              "text": "A friendly greeting",
+              "isCorrect": false,
+              "feedback": "A friendly greeting alone isn't a red flag - scammers often use them to seem legitimate.",
+              "points": 0
+            },
+            {
+              "id": "opt-2",
+              "text": "Urgent language like 'ACT NOW!'",
+              "isCorrect": true,
+              "feedback": "Correct! Urgent language is a classic scam tactic designed to make you act without thinking.",
+              "points": 10
+            },
+            {
+              "id": "opt-3",
+              "text": "Professional formatting",
+              "isCorrect": false,
+              "feedback": "Professional formatting doesn't indicate a scam - in fact, many scams look very professional.",
+              "points": 0
+            },
+            {
+              "id": "opt-4",
+              "text": "Sent during business hours",
+              "isCorrect": false,
+              "feedback": "When a message is sent doesn't tell you if it's a scam or not.",
+              "points": 0
+            }
+          ]
+        },
+        "coaching": {
+          "onSuccess": "Great job! You correctly identified the pressure tactic. Remember, legitimate businesses rarely create artificial urgency.",
+          "onPartialSuccess": "You're getting there! Think about what tactics scammers use to rush you into action.",
+          "onFailure": "Don't worry - this is a learning process. Scammers often use urgent language to make you act without thinking.",
+          "hints": [
+            "Think about what makes you feel pressured",
+            "Scammers want you to act fast before you can think"
+          ]
+        }
+      },
+      {
+        "id": "test-multi-select",
+        "title": "Test: Multi-Select Question",
+        "body": "This tests the 'select all that apply' feature with partial credit scoring.",
+        "sectionType": "interactive",
+        "cardType": "multipleChoice",
+        "requiresCompletion": true,
+        "maxScore": 10,
+        "interactionData": {
+          "type": "multipleChoice",
+          "question": "Select ALL the red flags you see in this message:\n\n> 'URGENT! Your bank account will be CLOSED in 1 hour! Click here to verify: http://bank-secure-login.xyz'",
+          "allowMultiple": true,
+          "shuffleOptions": false,
+          "options": [
+            {
+              "id": "ms-opt-1",
+              "text": "Uses urgent language (URGENT, CLOSED in 1 hour)",
+              "isCorrect": true,
+              "feedback": "Yes! The all-caps 'URGENT' and impossibly short deadline are pressure tactics.",
+              "points": 3
+            },
+            {
+              "id": "ms-opt-2",
+              "text": "Suspicious link (xyz domain, not official bank)",
+              "isCorrect": true,
+              "feedback": "Correct! The .xyz domain and 'bank-secure-login' are not from a real bank.",
+              "points": 4
+            },
+            {
+              "id": "ms-opt-3",
+              "text": "Threatens account closure",
+              "isCorrect": true,
+              "feedback": "Right! Threatening consequences is a common scare tactic.",
+              "points": 3
+            },
+            {
+              "id": "ms-opt-4",
+              "text": "Message is about banking",
+              "isCorrect": false,
+              "feedback": "Messages about banking aren't automatically scams - it's the other elements that make this suspicious.",
+              "points": 0
+            }
+          ]
+        },
+        "coaching": {
+          "onSuccess": "Excellent! You identified all the key red flags. You're developing strong scam detection skills!",
+          "onPartialSuccess": "Good work finding some red flags! Review the ones you missed to strengthen your awareness.",
+          "onFailure": "That's okay - spotting multiple red flags takes practice. Let's review what makes this message suspicious.",
+          "hints": [
+            "Look at the language - is it creating pressure?",
+            "Check the link - does it look like a real bank URL?",
+            "What is the message threatening?"
+          ]
+        }
+      }
+    ]
+  },
+  "finalQuiz": [
+    {
+      "id": "fq-1",
+      "question": "What should you do FIRST when you receive a suspicious message?",
+      "options": [
+        {
+          "id": "fq-1-a",
+          "text": "Click the link to investigate",
+          "isCorrect": false,
+          "feedback": "Never click links in suspicious messages - they could lead to phishing sites or malware."
+        },
+        {
+          "id": "fq-1-b",
+          "text": "Pause and look for red flags",
+          "isCorrect": true,
+          "feedback": "Correct! Pausing gives you time to think and spot warning signs before taking any action."
+        },
+        {
+          "id": "fq-1-c",
+          "text": "Reply asking if it's real",
+          "isCorrect": false,
+          "feedback": "Replying confirms your number is active and could lead to more scam attempts."
+        }
+      ]
+    }
+  ]
+}
