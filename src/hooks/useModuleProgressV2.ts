@@ -56,7 +56,7 @@ interface UseModuleProgressV2Return {
   /** Reset all progress */
   resetAllProgress: () => void;
   /** Check if section is unlocked (for locked progression) */
-  isSectionUnlocked: (moduleId: string, sectionIndex: number, totalSections: number) => boolean;
+  isSectionUnlocked: (moduleId: string, sectionIndex: number) => boolean;
 }
 
 // =============================================================================
@@ -182,8 +182,8 @@ export function useModuleProgressV2(): UseModuleProgressV2Return {
     maxScore: number
   ) => {
     updateProgress(prev => {
-      const module = prev.modules[moduleId] || createEmptyModuleProgress(moduleId);
-      const existingSection = module.sections[sectionId] || createEmptySectionProgress();
+      const moduleData = prev.modules[moduleId] || createEmptyModuleProgress(moduleId);
+      const existingSection = moduleData.sections[sectionId] || createEmptySectionProgress();
       const now = new Date().toISOString();
 
       // Keep best score
@@ -200,7 +200,7 @@ export function useModuleProgressV2(): UseModuleProgressV2Return {
       };
 
       const updatedSections = {
-        ...module.sections,
+        ...moduleData.sections,
         [sectionId]: updatedSection,
       };
 
@@ -217,7 +217,7 @@ export function useModuleProgressV2(): UseModuleProgressV2Return {
         modules: {
           ...prev.modules,
           [moduleId]: {
-            ...module,
+            ...moduleData,
             status: 'in_progress',
             sections: updatedSections,
             cumulativeScore,
@@ -234,8 +234,8 @@ export function useModuleProgressV2(): UseModuleProgressV2Return {
   // ---------------------------------------------------------------------------
   const markSectionCompleted = useCallback((moduleId: string, sectionId: string) => {
     updateProgress(prev => {
-      const module = prev.modules[moduleId] || createEmptyModuleProgress(moduleId);
-      const existingSection = module.sections[sectionId] || createEmptySectionProgress();
+      const moduleData = prev.modules[moduleId] || createEmptyModuleProgress(moduleId);
+      const existingSection = moduleData.sections[sectionId] || createEmptySectionProgress();
       const now = new Date().toISOString();
 
       return {
@@ -243,10 +243,10 @@ export function useModuleProgressV2(): UseModuleProgressV2Return {
         modules: {
           ...prev.modules,
           [moduleId]: {
-            ...module,
+            ...moduleData,
             status: 'in_progress',
             sections: {
-              ...module.sections,
+              ...moduleData.sections,
               [sectionId]: {
                 ...existingSection,
                 attempted: true,
@@ -270,11 +270,11 @@ export function useModuleProgressV2(): UseModuleProgressV2Return {
     scoringConfig: ScoringConfig = DEFAULT_SCORING_CONFIG
   ) => {
     updateProgress(prev => {
-      const module = prev.modules[moduleId] || createEmptyModuleProgress(moduleId);
+      const moduleData = prev.modules[moduleId] || createEmptyModuleProgress(moduleId);
       const now = new Date().toISOString();
 
       // Calculate weighted score
-      const sectionScores = Object.values(module.sections)
+      const sectionScores = Object.values(moduleData.sections)
         .filter(s => s.maxScore > 0)
         .map(s => ({ score: s.score, maxScore: s.maxScore }));
 
@@ -284,14 +284,13 @@ export function useModuleProgressV2(): UseModuleProgressV2Return {
       };
 
       const percentageScore = calculateModuleScore(sectionScores, quizScore, scoringConfig);
-      const passed = hasPassed(percentageScore, scoringConfig);
 
       return {
         ...prev,
         modules: {
           ...prev.modules,
           [moduleId]: {
-            ...module,
+            ...moduleData,
             finalQuiz: quizProgress,
             percentageScore,
             lastAccessedDate: now,
@@ -309,21 +308,21 @@ export function useModuleProgressV2(): UseModuleProgressV2Return {
     scoringConfig: ScoringConfig = DEFAULT_SCORING_CONFIG
   ) => {
     updateProgress(prev => {
-      const module = prev.modules[moduleId];
-      if (!module) return prev;
+      const moduleData = prev.modules[moduleId];
+      if (!moduleData) return prev;
 
       const now = new Date().toISOString();
-      const passed = hasPassed(module.percentageScore, scoringConfig);
+      const passed = hasPassed(moduleData.percentageScore, scoringConfig);
 
       return {
         ...prev,
         modules: {
           ...prev.modules,
           [moduleId]: {
-            ...module,
+            ...moduleData,
             status: 'completed',
-            badgeEarned: passed || module.badgeEarned, // Don't remove badge
-            badgeEarnedDate: passed && !module.badgeEarned ? now : module.badgeEarnedDate,
+            badgeEarned: passed || moduleData.badgeEarned, // Don't remove badge
+            badgeEarnedDate: passed && !moduleData.badgeEarned ? now : moduleData.badgeEarnedDate,
             completedDate: now,
             lastAccessedDate: now,
           },
@@ -374,21 +373,17 @@ export function useModuleProgressV2(): UseModuleProgressV2Return {
   // ---------------------------------------------------------------------------
   const isSectionUnlocked = useCallback((
     moduleId: string,
-    sectionIndex: number,
-    totalSections: number
+    sectionIndex: number
   ): boolean => {
     // First section is always unlocked
     if (sectionIndex === 0) return true;
 
-    const module = progressData.modules[moduleId];
-    if (!module) return false;
-
-    // Check if previous sections are completed
-    const sectionIds = Object.keys(module.sections);
+    const moduleData = progressData.modules[moduleId];
+    if (!moduleData) return false;
 
     // For now, allow if the module is in progress
     // More strict checking can be added based on section IDs
-    return module.status === 'in_progress' || module.status === 'completed';
+    return moduleData.status === 'in_progress' || moduleData.status === 'completed';
   }, [progressData.modules]);
 
   // ---------------------------------------------------------------------------

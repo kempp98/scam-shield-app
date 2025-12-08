@@ -58,6 +58,24 @@ export function MultipleChoiceCardV2({
   // Extract interaction data
   const interaction = section.interactionData as MultipleChoiceInteraction | undefined;
 
+  // State - must be declared before any conditional returns
+  const [selectedOptions, setSelectedOptions] = useState<Set<string>>(new Set());
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [result, setResult] = useState<MultipleChoiceResult | null>(null);
+
+  // Shuffle options if configured (only on initial render)
+  // Must be called before any conditional returns
+  const displayOptions = useMemo(() => {
+    if (!interaction) return [];
+    return interaction.shuffleOptions
+      ? shuffleArray(interaction.options)
+      : interaction.options;
+  }, [interaction]);
+
+  // Whether this is a multi-select question
+  const isMultiSelect = interaction?.allowMultiple ?? false;
+
+  // Early return for invalid data - after all hooks
   if (!interaction || interaction.type !== 'multipleChoice') {
     return (
       <Card className={className}>
@@ -67,27 +85,6 @@ export function MultipleChoiceCardV2({
       </Card>
     );
   }
-
-  // State
-  const [selectedOptions, setSelectedOptions] = useState<Set<string>>(new Set());
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [result, setResult] = useState<MultipleChoiceResult | null>(null);
-
-  // Shuffle options if configured (only on initial render)
-  const displayOptions = useMemo(() => {
-    return interaction.shuffleOptions
-      ? shuffleArray(interaction.options)
-      : interaction.options;
-  }, [interaction.options, interaction.shuffleOptions]);
-
-  // Get correct option IDs
-  const correctOptionIds = useMemo(
-    () => interaction.options.filter(opt => opt.isCorrect).map(opt => opt.id),
-    [interaction.options]
-  );
-
-  // Whether this is a multi-select question
-  const isMultiSelect = interaction.allowMultiple ?? false;
 
   // ---------------------------------------------------------------------------
   // Event Handlers

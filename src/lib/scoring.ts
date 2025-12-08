@@ -9,7 +9,6 @@
 import {
   ScoringConfig,
   MultipleChoiceInteraction,
-  MultipleChoiceOption,
   DragDropInteraction,
   HighlightRiskInteraction,
   TimelineInteraction,
